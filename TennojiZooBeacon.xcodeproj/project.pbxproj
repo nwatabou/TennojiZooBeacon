@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		633BCD8F1C3271EE00648852 /* gyo.png in Resources */ = {isa = PBXBuildFile; fileRef = 633BCD8A1C3271EE00648852 /* gyo.png */; };
+		633BCD901C3271EE00648852 /* hatyu.png in Resources */ = {isa = PBXBuildFile; fileRef = 633BCD8B1C3271EE00648852 /* hatyu.png */; };
+		633BCD911C3271EE00648852 /* ho.png in Resources */ = {isa = PBXBuildFile; fileRef = 633BCD8C1C3271EE00648852 /* ho.png */; };
+		633BCD921C3271EE00648852 /* ryou.png in Resources */ = {isa = PBXBuildFile; fileRef = 633BCD8D1C3271EE00648852 /* ryou.png */; };
+		633BCD931C3271EE00648852 /* tyou.png in Resources */ = {isa = PBXBuildFile; fileRef = 633BCD8E1C3271EE00648852 /* tyou.png */; };
+		633BCD951C32728400648852 /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633BCD941C32728400648852 /* CardListViewController.swift */; };
+		633BCD971C35221700648852 /* WalkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633BCD961C35221700648852 /* WalkingViewController.swift */; };
+		633BCD991C353C3B00648852 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633BCD981C353C3B00648852 /* CardViewController.swift */; };
+		63CEC2701C2DADA900632FDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CEC26F1C2DADA900632FDB /* AppDelegate.swift */; };
+		63CEC2721C2DADA900632FDB /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CEC2711C2DADA900632FDB /* HomeController.swift */; };
+		63CEC2771C2DADA900632FDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CEC2761C2DADA900632FDB /* Assets.xcassets */; };
+		63CEC27A1C2DADA900632FDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CEC2781C2DADA900632FDB /* LaunchScreen.storyboard */; };
+		63CEC2851C2DADA900632FDB /* TennojiZooBeaconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CEC2841C2DADA900632FDB /* TennojiZooBeaconTests.swift */; };
+		63CEC2901C2DADA900632FDB /* TennojiZooBeaconUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CEC28F1C2DADA900632FDB /* TennojiZooBeaconUITests.swift */; };
+		63CEC2A51C2DAE8A00632FDB /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CEC29D1C2DAE8A00632FDB /* button.png */; };
+		63CEC2A61C2DAE8A00632FDB /* elephant.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CEC29E1C2DAE8A00632FDB /* elephant.png */; };
+		63CEC2A71C2DAE8A00632FDB /* false.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CEC29F1C2DAE8A00632FDB /* false.png */; };
+		63CEC2A81C2DAE8A00632FDB /* giraffe.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CEC2A01C2DAE8A00632FDB /* giraffe.png */; };
+		63CEC2A91C2DAE8A00632FDB /* lion.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CEC2A11C2DAE8A00632FDB /* lion.png */; };
+		63CEC2AA1C2DAE8A00632FDB /* quiz.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CEC2A21C2DAE8A00632FDB /* quiz.png */; };
+		63CEC2AB1C2DAE8A00632FDB /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CEC2A31C2DAE8A00632FDB /* start.png */; };
+		63CEC2AC1C2DAE8A00632FDB /* true.png in Resources */ = {isa = PBXBuildFile; fileRef = 63CEC2A41C2DAE8A00632FDB /* true.png */; };
+		63CEC2B01C304B8900632FDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CEC2AF1C304B8900632FDB /* UIKit.framework */; };
+		63CEC2B21C304B9400632FDB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CEC2B11C304B9400632FDB /* CoreLocation.framework */; };
+		63CEC2B61C31212900632FDB /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CEC2B51C31212900632FDB /* QuizViewController.swift */; };
+		63CEC2B81C312B1E00632FDB /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CEC2B71C312B1E00632FDB /* RouteViewController.swift */; };
+		63CEC2BA1C312DE400632FDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CEC2B91C312DE400632FDB /* Main.storyboard */; };
+		63CEC2BC1C31632700632FDB /* CorrectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CEC2BB1C31632700632FDB /* CorrectViewController.swift */; };
+		63CEC2BE1C31633E00632FDB /* FalseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CEC2BD1C31633E00632FDB /* FalseViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		63CEC2811C2DADA900632FDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63CEC2641C2DADA900632FDB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63CEC26B1C2DADA900632FDB;
+			remoteInfo = TennojiZooBeacon;
+		};
+		63CEC28C1C2DADA900632FDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63CEC2641C2DADA900632FDB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63CEC26B1C2DADA900632FDB;
+			remoteInfo = TennojiZooBeacon;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		633BCD8A1C3271EE00648852 /* gyo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gyo.png; sourceTree = SOURCE_ROOT; };
+		633BCD8B1C3271EE00648852 /* hatyu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hatyu.png; sourceTree = SOURCE_ROOT; };
+		633BCD8C1C3271EE00648852 /* ho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ho.png; sourceTree = SOURCE_ROOT; };
+		633BCD8D1C3271EE00648852 /* ryou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ryou.png; sourceTree = SOURCE_ROOT; };
+		633BCD8E1C3271EE00648852 /* tyou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tyou.png; sourceTree = SOURCE_ROOT; };
+		633BCD941C32728400648852 /* CardListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListViewController.swift; sourceTree = "<group>"; };
+		633BCD961C35221700648852 /* WalkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingViewController.swift; sourceTree = "<group>"; };
+		633BCD981C353C3B00648852 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		63CEC26C1C2DADA900632FDB /* TennojiZooBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennojiZooBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63CEC26F1C2DADA900632FDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		63CEC2711C2DADA900632FDB /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		63CEC2761C2DADA900632FDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		63CEC2791C2DADA900632FDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		63CEC27B1C2DADA900632FDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63CEC2801C2DADA900632FDB /* TennojiZooBeaconTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TennojiZooBeaconTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63CEC2841C2DADA900632FDB /* TennojiZooBeaconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennojiZooBeaconTests.swift; sourceTree = "<group>"; };
+		63CEC2861C2DADA900632FDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63CEC28B1C2DADA900632FDB /* TennojiZooBeaconUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TennojiZooBeaconUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63CEC28F1C2DADA900632FDB /* TennojiZooBeaconUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennojiZooBeaconUITests.swift; sourceTree = "<group>"; };
+		63CEC2911C2DADA900632FDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63CEC29D1C2DAE8A00632FDB /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = SOURCE_ROOT; };
+		63CEC29E1C2DAE8A00632FDB /* elephant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = elephant.png; sourceTree = SOURCE_ROOT; };
+		63CEC29F1C2DAE8A00632FDB /* false.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = false.png; sourceTree = SOURCE_ROOT; };
+		63CEC2A01C2DAE8A00632FDB /* giraffe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = giraffe.png; sourceTree = SOURCE_ROOT; };
+		63CEC2A11C2DAE8A00632FDB /* lion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lion.png; sourceTree = SOURCE_ROOT; };
+		63CEC2A21C2DAE8A00632FDB /* quiz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quiz.png; sourceTree = SOURCE_ROOT; };
+		63CEC2A31C2DAE8A00632FDB /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = start.png; sourceTree = SOURCE_ROOT; };
+		63CEC2A41C2DAE8A00632FDB /* true.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = true.png; sourceTree = SOURCE_ROOT; };
+		63CEC2AF1C304B8900632FDB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		63CEC2B11C304B9400632FDB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		63CEC2B51C31212900632FDB /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuizViewController.swift; path = ../QuizViewController.swift; sourceTree = "<group>"; };
+		63CEC2B71C312B1E00632FDB /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RouteViewController.swift; path = ../RouteViewController.swift; sourceTree = "<group>"; };
+		63CEC2B91C312DE400632FDB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
+		63CEC2BB1C31632700632FDB /* CorrectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrectViewController.swift; sourceTree = "<group>"; };
+		63CEC2BD1C31633E00632FDB /* FalseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FalseViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63CEC2691C2DADA900632FDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63CEC2B21C304B9400632FDB /* CoreLocation.framework in Frameworks */,
+				63CEC2B01C304B8900632FDB /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63CEC27D1C2DADA900632FDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63CEC2881C2DADA900632FDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		63CEC2631C2DADA900632FDB = {
+			isa = PBXGroup;
+			children = (
+				63CEC2B11C304B9400632FDB /* CoreLocation.framework */,
+				63CEC2AF1C304B8900632FDB /* UIKit.framework */,
+				63CEC26E1C2DADA900632FDB /* TennojiZooBeacon */,
+				63CEC2831C2DADA900632FDB /* TennojiZooBeaconTests */,
+				63CEC28E1C2DADA900632FDB /* TennojiZooBeaconUITests */,
+				63CEC26D1C2DADA900632FDB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		63CEC26D1C2DADA900632FDB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63CEC26C1C2DADA900632FDB /* TennojiZooBeacon.app */,
+				63CEC2801C2DADA900632FDB /* TennojiZooBeaconTests.xctest */,
+				63CEC28B1C2DADA900632FDB /* TennojiZooBeaconUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63CEC26E1C2DADA900632FDB /* TennojiZooBeacon */ = {
+			isa = PBXGroup;
+			children = (
+				63CEC26F1C2DADA900632FDB /* AppDelegate.swift */,
+				63CEC2711C2DADA900632FDB /* HomeController.swift */,
+				63CEC2B71C312B1E00632FDB /* RouteViewController.swift */,
+				63CEC2B51C31212900632FDB /* QuizViewController.swift */,
+				63CEC2B91C312DE400632FDB /* Main.storyboard */,
+				633BCD981C353C3B00648852 /* CardViewController.swift */,
+				633BCD961C35221700648852 /* WalkingViewController.swift */,
+				633BCD941C32728400648852 /* CardListViewController.swift */,
+				63CEC2BB1C31632700632FDB /* CorrectViewController.swift */,
+				63CEC2BD1C31633E00632FDB /* FalseViewController.swift */,
+				63CEC2761C2DADA900632FDB /* Assets.xcassets */,
+				63CEC2781C2DADA900632FDB /* LaunchScreen.storyboard */,
+				63CEC27B1C2DADA900632FDB /* Info.plist */,
+				633BCD8A1C3271EE00648852 /* gyo.png */,
+				633BCD8B1C3271EE00648852 /* hatyu.png */,
+				633BCD8C1C3271EE00648852 /* ho.png */,
+				633BCD8D1C3271EE00648852 /* ryou.png */,
+				633BCD8E1C3271EE00648852 /* tyou.png */,
+				63CEC29D1C2DAE8A00632FDB /* button.png */,
+				63CEC29E1C2DAE8A00632FDB /* elephant.png */,
+				63CEC29F1C2DAE8A00632FDB /* false.png */,
+				63CEC2A01C2DAE8A00632FDB /* giraffe.png */,
+				63CEC2A11C2DAE8A00632FDB /* lion.png */,
+				63CEC2A21C2DAE8A00632FDB /* quiz.png */,
+				63CEC2A31C2DAE8A00632FDB /* start.png */,
+				63CEC2A41C2DAE8A00632FDB /* true.png */,
+			);
+			path = TennojiZooBeacon;
+			sourceTree = "<group>";
+		};
+		63CEC2831C2DADA900632FDB /* TennojiZooBeaconTests */ = {
+			isa = PBXGroup;
+			children = (
+				63CEC2841C2DADA900632FDB /* TennojiZooBeaconTests.swift */,
+				63CEC2861C2DADA900632FDB /* Info.plist */,
+			);
+			path = TennojiZooBeaconTests;
+			sourceTree = "<group>";
+		};
+		63CEC28E1C2DADA900632FDB /* TennojiZooBeaconUITests */ = {
+			isa = PBXGroup;
+			children = (
+				63CEC28F1C2DADA900632FDB /* TennojiZooBeaconUITests.swift */,
+				63CEC2911C2DADA900632FDB /* Info.plist */,
+			);
+			path = TennojiZooBeaconUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63CEC26B1C2DADA900632FDB /* TennojiZooBeacon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63CEC2941C2DADA900632FDB /* Build configuration list for PBXNativeTarget "TennojiZooBeacon" */;
+			buildPhases = (
+				63CEC2681C2DADA900632FDB /* Sources */,
+				63CEC2691C2DADA900632FDB /* Frameworks */,
+				63CEC26A1C2DADA900632FDB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TennojiZooBeacon;
+			productName = TennojiZooBeacon;
+			productReference = 63CEC26C1C2DADA900632FDB /* TennojiZooBeacon.app */;
+			productType = "com.apple.product-type.application";
+		};
+		63CEC27F1C2DADA900632FDB /* TennojiZooBeaconTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63CEC2971C2DADA900632FDB /* Build configuration list for PBXNativeTarget "TennojiZooBeaconTests" */;
+			buildPhases = (
+				63CEC27C1C2DADA900632FDB /* Sources */,
+				63CEC27D1C2DADA900632FDB /* Frameworks */,
+				63CEC27E1C2DADA900632FDB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63CEC2821C2DADA900632FDB /* PBXTargetDependency */,
+			);
+			name = TennojiZooBeaconTests;
+			productName = TennojiZooBeaconTests;
+			productReference = 63CEC2801C2DADA900632FDB /* TennojiZooBeaconTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		63CEC28A1C2DADA900632FDB /* TennojiZooBeaconUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63CEC29A1C2DADA900632FDB /* Build configuration list for PBXNativeTarget "TennojiZooBeaconUITests" */;
+			buildPhases = (
+				63CEC2871C2DADA900632FDB /* Sources */,
+				63CEC2881C2DADA900632FDB /* Frameworks */,
+				63CEC2891C2DADA900632FDB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63CEC28D1C2DADA900632FDB /* PBXTargetDependency */,
+			);
+			name = TennojiZooBeaconUITests;
+			productName = TennojiZooBeaconUITests;
+			productReference = 63CEC28B1C2DADA900632FDB /* TennojiZooBeaconUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		63CEC2641C2DADA900632FDB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = nwatabou;
+				TargetAttributes = {
+					63CEC26B1C2DADA900632FDB = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = GXEN49NFED;
+					};
+					63CEC27F1C2DADA900632FDB = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = GXEN49NFED;
+						TestTargetID = 63CEC26B1C2DADA900632FDB;
+					};
+					63CEC28A1C2DADA900632FDB = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = GXEN49NFED;
+						TestTargetID = 63CEC26B1C2DADA900632FDB;
+					};
+				};
+			};
+			buildConfigurationList = 63CEC2671C2DADA900632FDB /* Build configuration list for PBXProject "TennojiZooBeacon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 63CEC2631C2DADA900632FDB;
+			productRefGroup = 63CEC26D1C2DADA900632FDB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63CEC26B1C2DADA900632FDB /* TennojiZooBeacon */,
+				63CEC27F1C2DADA900632FDB /* TennojiZooBeaconTests */,
+				63CEC28A1C2DADA900632FDB /* TennojiZooBeaconUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		63CEC26A1C2DADA900632FDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63CEC27A1C2DADA900632FDB /* LaunchScreen.storyboard in Resources */,
+				63CEC2A61C2DAE8A00632FDB /* elephant.png in Resources */,
+				633BCD911C3271EE00648852 /* ho.png in Resources */,
+				63CEC2AB1C2DAE8A00632FDB /* start.png in Resources */,
+				63CEC2AA1C2DAE8A00632FDB /* quiz.png in Resources */,
+				63CEC2A51C2DAE8A00632FDB /* button.png in Resources */,
+				63CEC2BA1C312DE400632FDB /* Main.storyboard in Resources */,
+				63CEC2A71C2DAE8A00632FDB /* false.png in Resources */,
+				63CEC2A81C2DAE8A00632FDB /* giraffe.png in Resources */,
+				63CEC2A91C2DAE8A00632FDB /* lion.png in Resources */,
+				633BCD901C3271EE00648852 /* hatyu.png in Resources */,
+				633BCD921C3271EE00648852 /* ryou.png in Resources */,
+				633BCD931C3271EE00648852 /* tyou.png in Resources */,
+				633BCD8F1C3271EE00648852 /* gyo.png in Resources */,
+				63CEC2771C2DADA900632FDB /* Assets.xcassets in Resources */,
+				63CEC2AC1C2DAE8A00632FDB /* true.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63CEC27E1C2DADA900632FDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63CEC2891C2DADA900632FDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		63CEC2681C2DADA900632FDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63CEC2BE1C31633E00632FDB /* FalseViewController.swift in Sources */,
+				63CEC2721C2DADA900632FDB /* HomeController.swift in Sources */,
+				633BCD971C35221700648852 /* WalkingViewController.swift in Sources */,
+				63CEC2701C2DADA900632FDB /* AppDelegate.swift in Sources */,
+				63CEC2B81C312B1E00632FDB /* RouteViewController.swift in Sources */,
+				633BCD991C353C3B00648852 /* CardViewController.swift in Sources */,
+				63CEC2B61C31212900632FDB /* QuizViewController.swift in Sources */,
+				63CEC2BC1C31632700632FDB /* CorrectViewController.swift in Sources */,
+				633BCD951C32728400648852 /* CardListViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63CEC27C1C2DADA900632FDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63CEC2851C2DADA900632FDB /* TennojiZooBeaconTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63CEC2871C2DADA900632FDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63CEC2901C2DADA900632FDB /* TennojiZooBeaconUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		63CEC2821C2DADA900632FDB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63CEC26B1C2DADA900632FDB /* TennojiZooBeacon */;
+			targetProxy = 63CEC2811C2DADA900632FDB /* PBXContainerItemProxy */;
+		};
+		63CEC28D1C2DADA900632FDB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63CEC26B1C2DADA900632FDB /* TennojiZooBeacon */;
+			targetProxy = 63CEC28C1C2DADA900632FDB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		63CEC2781C2DADA900632FDB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63CEC2791C2DADA900632FDB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		63CEC2921C2DADA900632FDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		63CEC2931C2DADA900632FDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		63CEC2951C2DADA900632FDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TennojiZooBeacon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nwatabou.TennojiZooBeacon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		63CEC2961C2DADA900632FDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TennojiZooBeacon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nwatabou.TennojiZooBeacon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		63CEC2981C2DADA900632FDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TennojiZooBeaconTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nwatabou.TennojiZooBeaconTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TennojiZooBeacon.app/TennojiZooBeacon";
+			};
+			name = Debug;
+		};
+		63CEC2991C2DADA900632FDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = TennojiZooBeaconTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nwatabou.TennojiZooBeaconTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TennojiZooBeacon.app/TennojiZooBeacon";
+			};
+			name = Release;
+		};
+		63CEC29B1C2DADA900632FDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TennojiZooBeaconUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nwatabou.TennojiZooBeaconUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TennojiZooBeacon;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		63CEC29C1C2DADA900632FDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TennojiZooBeaconUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = nwatabou.TennojiZooBeaconUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = TennojiZooBeacon;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63CEC2671C2DADA900632FDB /* Build configuration list for PBXProject "TennojiZooBeacon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63CEC2921C2DADA900632FDB /* Debug */,
+				63CEC2931C2DADA900632FDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63CEC2941C2DADA900632FDB /* Build configuration list for PBXNativeTarget "TennojiZooBeacon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63CEC2951C2DADA900632FDB /* Debug */,
+				63CEC2961C2DADA900632FDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63CEC2971C2DADA900632FDB /* Build configuration list for PBXNativeTarget "TennojiZooBeaconTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63CEC2981C2DADA900632FDB /* Debug */,
+				63CEC2991C2DADA900632FDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63CEC29A1C2DADA900632FDB /* Build configuration list for PBXNativeTarget "TennojiZooBeaconUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63CEC29B1C2DADA900632FDB /* Debug */,
+				63CEC29C1C2DADA900632FDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 63CEC2641C2DADA900632FDB /* Project object */;
+}

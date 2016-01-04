@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="C07-bc-xdK">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Home Controller-->
+        <scene sceneID="UAc-sO-s7E">
+            <objects>
+                <viewController storyboardIdentifier="home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="C07-bc-xdK" customClass="HomeController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b64-Nd-TmU"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hu2-Vg-vjJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WQG-rX-4wy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="start.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Le-Ne-dXV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="591"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWa-HA-86x">
+                                <rect key="frame" x="48" y="369" width="266" height="59"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="スタート">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="OWD-nb-dk0" kind="show" identifier="start" id="dvx-QM-Aez"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWv-hp-JRA">
+                                <rect key="frame" x="48" y="551" width="266" height="49"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="カードリスト">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="POr-SL-PKJ" kind="show" id="32w-Pb-vrn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e9A-yF-L04" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="214.5" y="381.5"/>
+        </scene>
+        <!--Card List View Controller-->
+        <scene sceneID="Kke-2I-U9W">
+            <objects>
+                <viewController storyboardIdentifier="cardlist" useStoryboardIdentifierAsRestorationIdentifier="YES" id="POr-SL-PKJ" customClass="CardListViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R1T-w9-Hgk"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Du-gL-1x0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xTv-KZ-a7L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U5g-NN-KOf">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="xaI-Fe-Fn7">
+                                        <barButtonItem key="leftBarButtonItem" title=" " style="done" id="V3A-4I-Nk4">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="To7-fq-6cN">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="＜戻る　　"/>
+                                                <connections>
+                                                    <action selector="backButton:" destination="POr-SL-PKJ" eventType="touchUpInside" id="FZF-Jh-0hx"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7qK-TA-giM">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="cardList" destination="7qK-TA-giM" id="7Ff-Xl-tuW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x1P-We-tf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="214.5" y="1306.5"/>
+        </scene>
+        <!--Route View Controller-->
+        <scene sceneID="CaT-Ss-6LS">
+            <objects>
+                <viewController storyboardIdentifier="route" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OWD-nb-dk0" customClass="RouteViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ev6-8U-avk"/>
+                        <viewControllerLayoutGuide type="bottom" id="m0K-Wt-Zm9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CVG-3n-QZk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="どの動物に会いに行こう？" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvV-1U-STn">
+                                <rect key="frame" x="20" y="125" width="294" height="75"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRM-kV-7vh">
+                                <rect key="frame" x="20" y="243" width="335" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="routeButton1:" destination="OWD-nb-dk0" eventType="touchUpInside" id="Ra2-ah-TeV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDc-N6-HQx">
+                                <rect key="frame" x="20" y="364" width="335" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="routeButton2:" destination="OWD-nb-dk0" eventType="touchUpInside" id="UgP-4T-6I2"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WMi-7E-La7">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="c98-sc-lBx">
+                                        <barButtonItem key="leftBarButtonItem" title=" " style="done" id="ziA-RH-6Yp">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Xw-7e-add">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="＜戻る　　"/>
+                                                <connections>
+                                                    <segue destination="C07-bc-xdK" kind="show" id="BRT-n4-KDT"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aba-ve-tn0">
+                                <rect key="frame" x="20" y="487" width="335" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="routeButton3:" destination="OWD-nb-dk0" eventType="touchUpInside" id="ZTD-Tc-TjP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="routeButton1" destination="bRM-kV-7vh" id="MY5-rw-k9g"/>
+                        <outlet property="routeButton2" destination="uDc-N6-HQx" id="G9M-7v-mBO"/>
+                        <outlet property="routeButton3" destination="aba-ve-tn0" id="Asf-da-OZe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PhG-0d-IOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="656.5" y="381.5"/>
+        </scene>
+        <!--Quiz View Controller-->
+        <scene sceneID="uFB-ka-tWB">
+            <objects>
+                <viewController storyboardIdentifier="quiz" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sps-3J-OL0" customClass="QuizViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="52W-QM-Ngg"/>
+                        <viewControllerLayoutGuide type="bottom" id="EcO-Do-Sdr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Spd-VO-e9z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3T-eS-8MS">
+                                <rect key="frame" x="20" y="209" width="335" height="70"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="answerButton1:" destination="sps-3J-OL0" eventType="touchUpInside" id="fwR-6p-Vwb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSX-ga-vYQ">
+                                <rect key="frame" x="20" y="332" width="335" height="70"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="answerButton2:" destination="sps-3J-OL0" eventType="touchUpInside" id="ged-th-dXz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XhU-e3-aOZ">
+                                <rect key="frame" x="20" y="474" width="335" height="70"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="answerButton3:" destination="sps-3J-OL0" eventType="touchUpInside" id="BBa-hP-Lhd"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7B-hO-2Yz">
+                                <rect key="frame" x="20" y="57" width="335" height="99"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpD-FB-bWZ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="9s5-3G-Hwh">
+                                        <barButtonItem key="leftBarButtonItem" title=" " style="done" id="fDc-pb-pAW">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="x6f-Gp-hfR">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="＜戻る　　"/>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="answerButton1" destination="z3T-eS-8MS" id="Kb1-8b-CKd"/>
+                        <outlet property="answerButton2" destination="iSX-ga-vYQ" id="34X-lo-WRM"/>
+                        <outlet property="answerButton3" destination="XhU-e3-aOZ" id="y5s-x9-yy3"/>
+                        <outlet property="quizLabel" destination="z7B-hO-2Yz" id="5Zj-qv-ktK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ecm-27-Vw4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1520.5" y="381.5"/>
+        </scene>
+        <!--False View Controller-->
+        <scene sceneID="aaq-XT-ONr">
+            <objects>
+                <viewController storyboardIdentifier="false" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e2q-Om-XWq" customClass="FalseViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yKK-uO-s7A"/>
+                        <viewControllerLayoutGuide type="bottom" id="Khz-dc-KdN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Ee-DF-mWH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="false.png" translatesAutoresizingMaskIntoConstraints="NO" id="xv0-2D-LfL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="615"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7s-Z3-NIB">
+                                <rect key="frame" x="195" y="611" width="160" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="次へ"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ilB-hR-Q8P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2065.5" y="750.5"/>
+        </scene>
+        <!--Correct View Controller-->
+        <scene sceneID="MK6-6l-nVs">
+            <objects>
+                <viewController storyboardIdentifier="correct" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1oX-tq-L3j" customClass="CorrectViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Kh-Zl-CBg"/>
+                        <viewControllerLayoutGuide type="bottom" id="8yf-ii-OmX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="czF-kg-eWv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="true.png" translatesAutoresizingMaskIntoConstraints="NO" id="DPU-6Y-z5O">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="12K-ED-Vv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2065.5" y="13.5"/>
+        </scene>
+        <!--Card View Controller-->
+        <scene sceneID="paa-Dz-xj6">
+            <objects>
+                <viewController storyboardIdentifier="card" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xgN-Jf-uin" customClass="CardViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zFX-oW-nN9"/>
+                        <viewControllerLayoutGuide type="bottom" id="bpT-sL-Nch"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oA2-c1-gqc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vJt-9S-q5y">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="j7X-kl-egU">
+                                        <barButtonItem key="leftBarButtonItem" title=" " style="done" id="cWj-Sz-sWj">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="E8E-SU-Qib">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Home　　"/>
+                                                <connections>
+                                                    <action selector="homeButton:" destination="xgN-Jf-uin" eventType="touchUpInside" id="I79-3A-oDd"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ijb-aX-lgs">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOO-a0-Ljz">
+                                <rect key="frame" x="20" y="601" width="145" height="58"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="カードリストへ"/>
+                                <connections>
+                                    <segue destination="POr-SL-PKJ" kind="show" id="EMj-yU-rgp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lg6-0l-0WT">
+                                <rect key="frame" x="214" y="601" width="128" height="58"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="次へ"/>
+                                <connections>
+                                    <action selector="nextButton:" destination="xgN-Jf-uin" eventType="touchUpInside" id="tA1-su-yEE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="cardListButton" destination="IOO-a0-Ljz" id="zcV-sR-dbT"/>
+                        <outlet property="imageView" destination="Ijb-aX-lgs" id="IRj-z9-yai"/>
+                        <outlet property="nextButton" destination="lg6-0l-0WT" id="P1R-da-hpd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1B4-IR-kgO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2545.5" y="381.5"/>
+        </scene>
+        <!--Walking View Controller-->
+        <scene sceneID="qU3-02-IAD">
+            <objects>
+                <viewController storyboardIdentifier="walk" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9bo-V1-WXY" customClass="WalkingViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kfd-01-3uX"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Ey-Wl-wFM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="e3x-AK-UQY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="移動中" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omr-dq-bHN">
+                                <rect key="frame" x="112" y="307" width="151" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ここで良いかな？" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXP-tQ-EFK">
+                                <rect key="frame" x="53" y="574" width="153" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hga-q1-MK2">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="VFO-jZ-PHg">
+                                        <barButtonItem key="leftBarButtonItem" title=" " style="done" id="AZT-86-Wqc">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="t70-zt-xGb">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="＜戻る　　"/>
+                                                <connections>
+                                                    <segue destination="OWD-nb-dk0" kind="show" id="UBl-cv-DUz"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNp-sM-Tfv">
+                                <rect key="frame" x="202" y="600" width="89" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Yes"/>
+                                <connections>
+                                    <action selector="nextButton:" destination="9bo-V1-WXY" eventType="touchUpInside" id="q99-Jx-uQf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="checkLable" destination="CXP-tQ-EFK" id="wdh-Ch-wG1"/>
+                        <outlet property="message" destination="omr-dq-bHN" id="y5J-XI-N3i"/>
+                        <outlet property="nextButton" destination="bNp-sM-Tfv" id="tR4-7p-Cwm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ElA-KL-NSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073.5" y="381.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="false.png" width="366" height="591"/>
+        <image name="start.png" width="366" height="591"/>
+        <image name="true.png" width="366" height="591"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="EMj-yU-rgp"/>
+        <segue reference="UBl-cv-DUz"/>
+    </inferredMetricsTieBreakers>
+</document>

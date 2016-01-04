@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MJU-YR-UzD">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="5Vi-bx-UHN">
+            <objects>
+                <viewController storyboardIdentifier="start" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MJU-YR-UzD" customClass="ViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hmF-CI-Edp"/>
+                        <viewControllerLayoutGuide type="bottom" id="mj7-b6-vtR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mIQ-VK-2qd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="start.png" translatesAutoresizingMaskIntoConstraints="NO" id="XLI-ao-TIw">
+                                <rect key="frame" x="4" y="20" width="366" height="627"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="start" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2C-GA-Isw">
+                                <rect key="frame" x="51" y="389" width="272" height="57"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="スタート">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButton:" destination="MJU-YR-UzD" eventType="touchUpInside" id="Raw-hu-PSE"/>
+                                    <segue destination="UCY-YM-WsQ" kind="show" identifier="start" id="9SM-6B-3pc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uOP-Zw-5Yt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2701.5" y="338.5"/>
+        </scene>
+        <!--Route View Controller-->
+        <scene sceneID="Ccy-DI-RzN">
+            <objects>
+                <viewController storyboardIdentifier="route" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UCY-YM-WsQ" customClass="RouteViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qkl-wk-GOo"/>
+                        <viewControllerLayoutGuide type="bottom" id="DTB-An-RDt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RRV-TX-wo7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1mV-E6-SHm">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="FCW-PG-0oS">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="keo-ao-PvW">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fwl-1e-Iid">
+                                                <rect key="frame" x="16" y="7" width="90" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="＜戻る　　　"/>
+                                                <connections>
+                                                    <segue destination="MJU-YR-UzD" kind="show" identifier="home" id="0tB-jn-xNC"/>
+                                                </connections>
+                                            </button>
+                                            <connections>
+                                                <action selector="goBack" destination="cDF-Vn-XDT" id="aIq-Hw-Jqf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUs-uL-2nQ">
+                                <rect key="frame" x="20" y="284" width="335" height="63"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="routeButton1:" destination="UCY-YM-WsQ" eventType="touchUpInside" id="H4C-db-Yvb"/>
+                                    <segue destination="CTt-8O-vqw" kind="show" id="Eyu-mx-wXz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNf-f1-U08">
+                                <rect key="frame" x="20" y="406" width="335" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="routeButton2:" destination="UCY-YM-WsQ" eventType="touchUpInside" id="Dev-LX-Xzg"/>
+                                    <segue destination="CTt-8O-vqw" kind="show" id="b85-MM-wi7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E78-Qp-7m3">
+                                <rect key="frame" x="20" y="533" width="335" height="42"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="routeButton3:" destination="UCY-YM-WsQ" eventType="touchUpInside" id="Vjf-tH-8ri"/>
+                                    <segue destination="CTt-8O-vqw" kind="show" id="6nd-C1-JzP"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="どの動物に会いに行こう？" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5O-qq-kUx">
+                                <rect key="frame" x="20" y="162" width="213" height="70"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="routeButton1" destination="xUs-uL-2nQ" id="WQ4-KD-D8L"/>
+                        <outlet property="routeButton2" destination="jNf-f1-U08" id="vJb-M2-cJa"/>
+                        <outlet property="routeButton3" destination="E78-Qp-7m3" id="i20-ik-1v2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cDF-Vn-XDT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3133.5" y="338.5"/>
+        </scene>
+        <!--Quiz View Controller-->
+        <scene sceneID="U49-ql-yCL">
+            <objects>
+                <viewController id="CTt-8O-vqw" customClass="QuizViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ybI-1Q-fxh"/>
+                        <viewControllerLayoutGuide type="bottom" id="hCx-r1-fp7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LyI-iw-6Ma">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Bj-cH-Oxx">
+                                <rect key="frame" x="20" y="278" width="335" height="50"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cel-3W-xwt">
+                                <rect key="frame" x="20" y="392" width="335" height="50"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZW-mn-5cb">
+                                <rect key="frame" x="20" y="507" width="335" height="50"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1U-Vo-wJR">
+                                <rect key="frame" x="20" y="102" width="335" height="83"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="answerButton1" destination="5Bj-cH-Oxx" id="RLe-Ww-LHa"/>
+                        <outlet property="answerButton2" destination="cel-3W-xwt" id="Afy-mn-03t"/>
+                        <outlet property="answerButton3" destination="HZW-mn-5cb" id="w2P-Lp-dNK"/>
+                        <outlet property="quizLabel" destination="s1U-Vo-wJR" id="2Z9-s7-mpI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XeQ-7b-PAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3565.5" y="338.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="start.png" width="366" height="591"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="b85-MM-wi7"/>
+    </inferredMetricsTieBreakers>
+</document>
