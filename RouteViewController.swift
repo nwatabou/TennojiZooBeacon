@@ -19,37 +19,48 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     
     //押されたボタンによって選択されたルートを変化させて画面移動
     @IBAction func routeButton1(sender: AnyObject) {
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        appDelegate.route = beaconNo+1
-        appDelegate.beaconNo = beaconNo
         
-        let walkViewController = self.storyboard!.instantiateViewControllerWithIdentifier("walk")
-        self.presentViewController(walkViewController, animated: true, completion: nil)
+        if(flg){
+            let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            appDelegate.route = beaconNo+1
+            appDelegate.beaconNo = beaconNo
+        
+            let walkViewController = self.storyboard!.instantiateViewControllerWithIdentifier("walk")
+            self.presentViewController(walkViewController, animated: true, completion: nil)
+        }
     }
     @IBAction func routeButton2(sender: AnyObject) {
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        appDelegate.route = beaconNo+2
-        appDelegate.beaconNo = beaconNo
+        if(flg){
+            let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            appDelegate.route = beaconNo+2
+            appDelegate.beaconNo = beaconNo
         
-        let walkViewController = self.storyboard!.instantiateViewControllerWithIdentifier("walk")
-        self.presentViewController(walkViewController, animated: true, completion: nil)
+            let walkViewController = self.storyboard!.instantiateViewControllerWithIdentifier("walk")
+            self.presentViewController(walkViewController, animated: true, completion: nil)
+        }
     }
     @IBAction func routeButton3(sender: AnyObject) {
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        appDelegate.route = beaconNo+3
-        appDelegate.beaconNo = beaconNo
+        if(flg){
+            let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+            appDelegate.route = beaconNo+3
+            appDelegate.beaconNo = beaconNo
         
-        let walkViewController = self.storyboard!.instantiateViewControllerWithIdentifier("walk")
-        self.presentViewController(walkViewController, animated: true, completion: nil)
+            let walkViewController = self.storyboard!.instantiateViewControllerWithIdentifier("walk")
+            self.presentViewController(walkViewController, animated: true, completion: nil)
+        }
     }
     
-    var route1:String = "???"
-    var route2:String = "???"
-    var route3:String = "???"
+    var route1:String = "?　?　?"
+    var route2:String = "?　?　?"
+    var route3:String = "?　?　?"
     
     //beacon番号格納用変数
     var beaconNo = 0
+
+    var i = 0
     
+    //beaconの近くにいるかどうかの判定のためのフラグ
+    var flg = false
     
     //beaconの値取得関係の変数
     var trackLocationManager : CLLocationManager!
@@ -153,20 +164,38 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
         //測定を停止する
         self.trackLocationManager.stopRangingBeaconsInRegion(self.beaconRegion)
+        flg = false
     }
     
     
     //領域内にいるので測定をする
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion){
         let beacon = beacons[0]
-        
+        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         //開発用にimmediateのみ観測の条件式追加
         if(beacon.proximity == CLProximity.Immediate){
         //beacon.minorをint型に変換
         beaconNo = (beacon.minor).integerValue
-        
+        flg = true
+
         //appDelegateで定義しておいた動物別キャッチコピーを表示
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        
+            
+            //何とかしてカードを獲得したBeaconには反応しないようにしたい
+//        if(appDelegate.cardFlg[beaconNo+1] == "false"){
+//            route1 = appDelegate.message[beaconNo+1]
+//            routeButton1.setTitle(route1, forState: .Normal)
+//        }else{
+//            for(i = beaconNo+1; i < appDelegate.animals.count; i++){
+//                if(appDelegate.cardFlg[i] == "false"){
+//                    break
+//                }
+//            }
+//            route1 = appDelegate.message[i]
+//            routeButton1.setTitle(route1, forState: .Normal)
+//        }
+        
+        
         route1 = appDelegate.message[beaconNo+1]
         routeButton1.setTitle(route1, forState: .Normal)
         

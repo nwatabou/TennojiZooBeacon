@@ -14,17 +14,32 @@ class CardViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var cardListButton: UIButton!
     
+    @IBOutlet weak var homeButton: UIButton!
     @IBAction func homeButton(sender: AnyObject) {
-        let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
-        self.presentViewController(homeViewController, animated: true, completion: nil)
+        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        if(appDelegate.listFlg){
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }else{
+            let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
+            self.presentViewController(homeViewController, animated: true, completion: nil)
+        }
     }
     @IBAction func nextButton(sender: AnyObject) {
         let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        appDelegate.decideRoute = 0
-        appDelegate.route = 0
+        //カードを獲得した時は次の動物へ、カードリストからカードを表示した時は図鑑へ画面移動するようにする
+        if(appDelegate.listFlg){
+            /*ここに図鑑移動処理を書く
+            
+            appDelegateにID配列を作って、appDelegate.decideRouteで今表示中の配列番号を参照して飛ぶようにする？
+            
+            */
+        }else{
+            appDelegate.decideRoute = 0
+            appDelegate.route = 0
         
-        let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
-        self.presentViewController(routeViewController, animated: true, completion: nil)
+            let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
+            self.presentViewController(routeViewController, animated: true, completion: nil)
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +59,15 @@ class CardViewController: UIViewController {
         
         
         print(appDelegate.cardFlg[appDelegate.decideRoute])
+        
+        if(appDelegate.listFlg){
+            nextButton.setTitle("詳しく！", forState: .Normal)
+            homeButton.setTitle("＜戻る　　", forState: .Normal)
+        }else{
+            nextButton.setTitle("次の動物へ", forState: .Normal)
+            homeButton.setTitle("Home　　", forState: .Normal)
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {

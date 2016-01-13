@@ -10,6 +10,16 @@ import Foundation
 import UIKit
 
 class FalseViewController: UIViewController {
+    
+    
+    @IBAction func nextButton(sender: AnyObject) {
+        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        appDelegate.decideRoute = 0
+        appDelegate.route = 0
+        
+        let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
+        self.presentViewController(routeViewController, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
     }

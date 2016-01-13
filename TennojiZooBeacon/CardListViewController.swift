@@ -13,11 +13,20 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var cardList: UITableView!
     
+    
     @IBAction func backButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        //カード表示された状況によって挙動の修正
+        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        if(appDelegate.listFlg){
+            appDelegate.decideRoute = 0
+            let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
+            self.presentViewController(homeViewController, animated: true, completion: nil)
+        }else{
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     //セクション別に動物を定義
-    var honyurui = ["アミメキリン","アムールトラ","ヴィクトリアコアラ","エリマキキツネザル","カルオニアアシカ","コビトマングース","シシオザル","タイゾウ","チュウゴクオオカミ","チンパンジー","ツシマヤマネコ","ヒガシクロサイ","フサオネズミカンガルー","フタコブラクダ","ホッキョクグマ","ムフロン","ライオン"]
+    var honyurui = ["アミメキリン","アムールトラ","ヴィクトリアコアラ","エリマキキツネザル","カリフォルニアアシカ","コビトマングース","シシオザル","タイゾウ","チュウゴクオオカミ","チンパンジー","ツシマヤマネコ","ヒガシクロサイ","フサオネズミカンガルー","フタコブラクダ","ホッキョクグマ","ムフロン","ライオン"]
     var tyorui = ["キーウイ","コサンケイ キジ","セーカーハヤブサ","ソデグロヅル","ニホンコウノトリ","フンボルトペンギン","ホオアカトキ","ワライカワセミ"]
     var hatyurui = ["ホウシャガメ","ヨウスコウワニ"]
     var ryoseirui = ["シリケンイモリ","ヘルメットガエル"]
@@ -28,7 +37,6 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var displayWidth: CGFloat = 0.0
     
-    var cardGet = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +51,6 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         // Delegateを設定する.
         cardList.delegate = self
-        
         
     }
     
@@ -196,68 +203,97 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     
-    /*
+
     //選択されたcellを判断する処理
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         //選択されたセル番号をセクションごとに判定
+        //哺乳類セクション
         if(indexPath.section == 0){
             var i:Int
             for(i = 0; i < appDelegate.animals.count; i++){
                 //選択されたセル番号の動物名と、AppDelegateで定義した動物リストと比較
-                if(appDelegate.animals[i] == hatyurui[indexPath.row]){
+                if(appDelegate.animals[i] == honyurui[indexPath.row]){
                     //比較した動物名が同じで、その動物のカードを獲得していたら画面遷移
                     break
                 }
-                print(i)
             }
             if(appDelegate.cardFlg[i] == "get"){
                 //移動先でカードを表示するためにappDelegate.decideRouteに代入
+                //appDelegate.listFlgをtrueにすることで、カード表示画面のボタン処理を変更
                 appDelegate.decideRoute = i
+                appDelegate.listFlg = true
                 let cardViewController = self.storyboard!.instantiateViewControllerWithIdentifier("card")
                 self.presentViewController(cardViewController, animated: true, completion: nil)
             }
+            
+            
+            
+            //鳥類セクション
         }else if(indexPath.section == 1){
-            for(var i = 0; i < appDelegate.animals.count; i++){
+            var i:Int
+            for(i = 0; i <= appDelegate.animals.count; i++){
                 if(appDelegate.animals[i] == tyorui[indexPath.row]){
-                    if(appDelegate.cardFlg[i] == "get"){
-                        appDelegate.decideRoute = i
-                        let cardViewController = self.storyboard!.instantiateViewControllerWithIdentifier("card")
-                        self.presentViewController(cardViewController, animated: true, completion: nil)
-                    }
+                    break
                 }
             }
+            if(appDelegate.cardFlg[i] == "get"){
+                appDelegate.decideRoute = i
+                appDelegate.listFlg = true
+                let cardViewController = self.storyboard!.instantiateViewControllerWithIdentifier("card")
+                self.presentViewController(cardViewController, animated: true, completion: nil)
+            }
+            
+            
+            //爬虫類セクション
         }else if(indexPath.section == 2){
-            for(var i = 0; i < appDelegate.animals.count; i++){
+            var i:Int
+            for(i = 0; i <= appDelegate.animals.count; i++){
                 if(appDelegate.animals[i] == hatyurui[indexPath.row]){
-                    if(appDelegate.cardFlg[i] == "get"){
-                        appDelegate.decideRoute = i
-                        let cardViewController = self.storyboard!.instantiateViewControllerWithIdentifier("card")
-                        self.presentViewController(cardViewController, animated: true, completion: nil)
-                    }
+                    break
                 }
             }
+            if(appDelegate.cardFlg[i] == "get"){
+                appDelegate.decideRoute = i
+                appDelegate.listFlg = true
+                let cardViewController = self.storyboard!.instantiateViewControllerWithIdentifier("card")
+                self.presentViewController(cardViewController, animated: true, completion: nil)
+            }
+
+            
+            
+            //両生類セクション
         }else if(indexPath.section == 3){
-            for(var i = 0; i < appDelegate.animals.count; i++){
+            var i:Int
+            for(i = 0; i <= appDelegate.animals.count; i++){
                 if(appDelegate.animals[i] == ryoseirui[indexPath.row]){
-                    if(appDelegate.cardFlg[i] == "get"){
-                        appDelegate.decideRoute = i
-                        let cardViewController = self.storyboard!.instantiateViewControllerWithIdentifier("card")
-                        self.presentViewController(cardViewController, animated: true, completion: nil)
-                    }
+                    break
                 }
             }
+            if(appDelegate.cardFlg[i] == "get"){
+                appDelegate.decideRoute = i
+                appDelegate.listFlg = true
+                let cardViewController = self.storyboard!.instantiateViewControllerWithIdentifier("card")
+                self.presentViewController(cardViewController, animated: true, completion: nil)
+            }
+
+            
+            
+            //魚類セクション
         }else if(indexPath.section == 4){
-            for(var i = 0; i < appDelegate.animals.count; i++){
-                if(appDelegate.animals[i] == gyorui[indexPath.row]){
-                    if(appDelegate.cardFlg[i] == "get"){
-                        appDelegate.decideRoute = i
-                        let cardViewController = self.storyboard!.instantiateViewControllerWithIdentifier("card")
-                        self.presentViewController(cardViewController, animated: true, completion: nil)
-                    }
+            var i:Int
+            for(i = 0; i <= appDelegate.animals.count; i++){
+                if(appDelegate.animals[i] == ryoseirui[indexPath.row]){
+                    break
                 }
+            }
+            if(appDelegate.cardFlg[i] == "get"){
+                appDelegate.decideRoute = i
+                appDelegate.listFlg = true
+                let cardViewController = self.storyboard!.instantiateViewControllerWithIdentifier("card")
+                self.presentViewController(cardViewController, animated: true, completion: nil)
             }
         }
-        print(indexPath.row)
-    }*/
+
+    }
 }

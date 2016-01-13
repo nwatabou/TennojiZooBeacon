@@ -38,12 +38,17 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
             
             self.trackLocationManager.requestAlwaysAuthorization();
         }
+        
+        //Home画面に来たら初期化する
+        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        appDelegate.listFlg = false
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
 
 
 }
