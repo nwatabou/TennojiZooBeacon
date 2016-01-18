@@ -21,7 +21,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     @IBAction func routeButton1(sender: AnyObject) {
         
         if(flg){
-            let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
             appDelegate.route = beaconNo+1
             appDelegate.beaconNo = beaconNo
         
@@ -31,7 +30,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     }
     @IBAction func routeButton2(sender: AnyObject) {
         if(flg){
-            let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
             appDelegate.route = beaconNo+2
             appDelegate.beaconNo = beaconNo
         
@@ -41,7 +39,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     }
     @IBAction func routeButton3(sender: AnyObject) {
         if(flg){
-            let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
             appDelegate.route = beaconNo+3
             appDelegate.beaconNo = beaconNo
         
@@ -65,6 +62,9 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     //beaconの値取得関係の変数
     var trackLocationManager : CLLocationManager!
     var beaconRegion : CLBeaconRegion!
+    
+    //最初に宣言しておく
+    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -171,7 +171,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     //領域内にいるので測定をする
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion){
         let beacon = beacons[0]
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         //開発用にimmediateのみ観測の条件式追加
         if(beacon.proximity == CLProximity.Immediate){
         //beacon.minorをint型に変換

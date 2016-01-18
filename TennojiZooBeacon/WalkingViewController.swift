@@ -17,7 +17,6 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBAction func nextButton(sender: AnyObject) {
         //画面移動する前に値を渡しておく
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         appDelegate.decideRoute = beaconNo
         
         let quizViewController = self.storyboard!.instantiateViewControllerWithIdentifier("quiz")
@@ -31,6 +30,8 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
     
     var beaconNo = 0
     
+    //最初に宣言しておく
+    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,14 +135,12 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         
         //開発用にimmediateのみ観測の条件式追加
         if(beacon.proximity == CLProximity.Immediate){
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         //beacon.minorをint型に変換してappDelegate.decideRouteに格納
         beaconNo = (beacon.minor).integerValue
         
         //前の画面(RouteViewController)で選択した番号(appDelegate.route)と、今観測できるbeacon.minorが一緒なら画面移動
         //違うなら確認ボタンを設置
         if(appDelegate.route == beacon.minor && beacon.proximity == CLProximity.Immediate){
-            let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
             appDelegate.decideRoute = beaconNo
             
             let quizViewController = self.storyboard!.instantiateViewControllerWithIdentifier("quiz")

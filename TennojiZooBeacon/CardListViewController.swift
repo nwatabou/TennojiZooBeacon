@@ -16,7 +16,6 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func backButton(sender: AnyObject) {
         //カード表示された状況によって挙動の修正
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         if(appDelegate.listFlg){
             appDelegate.decideRoute = 0
             let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
@@ -26,10 +25,10 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     //セクション別に動物を定義
-    var honyurui = ["アミメキリン","アムールトラ","ヴィクトリアコアラ","エリマキキツネザル","カリフォルニアアシカ","コビトマングース","シシオザル","タイゾウ","チュウゴクオオカミ","チンパンジー","ツシマヤマネコ","ヒガシクロサイ","フサオネズミカンガルー","フタコブラクダ","ホッキョクグマ","ムフロン","ライオン"]
-    var tyorui = ["キーウイ","コサンケイ キジ","セーカーハヤブサ","ソデグロヅル","ニホンコウノトリ","フンボルトペンギン","ホオアカトキ","ワライカワセミ"]
-    var hatyurui = ["ホウシャガメ","ヨウスコウワニ"]
-    var ryoseirui = ["シリケンイモリ","ヘルメットガエル"]
+    var honyurui = ["アミメキリン","アムールトラ","ヴィクトリアコアラ","カリフォルニアアシカ","コビトマングース","シシオザル","タイゾウ","チュウゴクオオカミ","チンパンジー","ヒガシクロサイ","ヒツジ","フサオネズミカンガルー","フタコブラクダ","ホッキョクグマ","ムフロン","ライオン"]
+    var tyorui = ["コサンケイ","シロフクロウ","セーカーハヤブサ","ソデグロヅル","チリーフラミンゴ","ニホンコウノトリ","フンボルトペンギン","ホオアカトキ"]
+    var hatyurui = ["ヨウスコウワニ"]
+    var ryoseirui = ["シリケンイモリ"]
     var gyorui = ["コイ"]
 
     //この配列に画像名を格納
@@ -37,6 +36,8 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var displayWidth: CGFloat = 0.0
     
+    //最初に宣言しておく
+    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +74,6 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //ここの条件分岐でカードを獲得したのかしていないのか判定する
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         appDelegate.cardFlg = (NSUserDefaults.standardUserDefaults().arrayForKey("cardGet") as? [String])!
         
         
@@ -81,7 +81,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             //セクションごとの分類の配列を回す
             for(var i = 0;i < honyurui.count; i++){
                 //次に、その配列と、appDelegateで定義した動物名の配列を回す
-                for(var j = 0;j < appDelegate.animals.count; j++){
+                for(var j = 1;j < appDelegate.animals.count; j++){
                     //哺乳類の動物リストと、すべての動物リストを比較
                     if(honyurui[i] == appDelegate.animals[j]){
                         //動物名が同じなら、その配列番号のカード獲得状況を参照
@@ -206,7 +206,6 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
 
     //選択されたcellを判断する処理
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         //選択されたセル番号をセクションごとに判定
         //哺乳類セクション
         if(indexPath.section == 0){

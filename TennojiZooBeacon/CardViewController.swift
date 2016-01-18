@@ -16,7 +16,6 @@ class CardViewController: UIViewController {
     
     @IBOutlet weak var homeButton: UIButton!
     @IBAction func homeButton(sender: AnyObject) {
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         if(appDelegate.listFlg){
             self.dismissViewControllerAnimated(true, completion: nil)
         }else{
@@ -25,7 +24,6 @@ class CardViewController: UIViewController {
         }
     }
     @IBAction func nextButton(sender: AnyObject) {
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         //カードを獲得した時は次の動物へ、カードリストからカードを表示した時は図鑑へ画面移動するようにする
         if(appDelegate.listFlg){
             /*ここに図鑑移動処理を書く
@@ -41,11 +39,14 @@ class CardViewController: UIViewController {
             self.presentViewController(routeViewController, animated: true, completion: nil)
         }
     }
+    
+    //最初に宣言しておく
+    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //appDelegateに画像を配列で定義しておいて、配列番号で参照する。
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         let img = UIImage(named: appDelegate.image[appDelegate.decideRoute])
         
         imageView!.image = img

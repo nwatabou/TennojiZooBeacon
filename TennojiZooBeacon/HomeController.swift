@@ -20,6 +20,7 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
     var trackLocationManager : CLLocationManager!
     var beaconRegion : CLBeaconRegion!
     
+    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,6 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
         }
         
         //Home画面に来たら初期化する
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         appDelegate.listFlg = false
     }
 

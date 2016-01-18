@@ -13,13 +13,16 @@ class FalseViewController: UIViewController {
     
     
     @IBAction func nextButton(sender: AnyObject) {
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         appDelegate.decideRoute = 0
         appDelegate.route = 0
         
         let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
         self.presentViewController(routeViewController, animated: true, completion: nil)
     }
+    
+    //最初に宣言しておく
+    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

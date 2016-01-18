@@ -11,6 +11,7 @@ import UIKit
 
 class QuizViewController: UIViewController {
     
+    @IBOutlet weak var animalLabel: UILabel!
     @IBOutlet weak var quizLabel: UILabel!
     
     @IBOutlet weak var answerButton1: UIButton!
@@ -47,11 +48,13 @@ class QuizViewController: UIViewController {
         }
     }
     
+    //最初に宣言しておく
+    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
     //選択したルートを問題番号として、この変数に格納
     var quizNo = 0
     
-    //どのanswerボタンが正解なのかを判定する変数
+    //どのanswerボタンが正解なのかを判定する変数      
     //配列番号を3で割った余りを格納する変数
     var trueNo = 0
     
@@ -65,8 +68,9 @@ class QuizViewController: UIViewController {
         super.viewDidLoad()
         
         //RouteViewControllerで選択したルートを変数に格納
-        let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         quizNo = appDelegate.decideRoute
+        
+        self.animalLabel.text = appDelegate.animals[quizNo]
         
         //正解のanswerボタンは3で割った余り
         trueNo = (quizNo % 3)
