@@ -11,35 +11,60 @@ import UIKit
 
 class CardViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var nextButton: UIButton!
+    
+    //NavigationBarに表示されるボタン
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var cardListButton: UIButton!
     
-    @IBOutlet weak var homeButton: UIButton!
-    @IBAction func homeButton(sender: AnyObject) {
-        if(appDelegate.listFlg){
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }else{
+    //下に表示されるボタン
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
+
+    
+    //上のボタン
+    @IBAction func backButton(sender: AnyObject) {
+            appDelegate.decideRoute = 0
             let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
             self.presentViewController(homeViewController, animated: true, completion: nil)
+    }
+
+    @IBAction func cardListButton(sender: AnyObject) {
+        appDelegate.listFlg = false
+        
+        let cardListViewController = self.storyboard!.instantiateViewControllerWithIdentifier("cardlist")
+        self.presentViewController(cardListViewController, animated: true, completion: nil)
+    }
+    
+    //下のボタン
+    @IBAction func leftButton(sender: AnyObject) {
+        if(appDelegate.listFlg){
+            appDelegate.decideRoute = 0
+            
+            let cardListViewController = self.storyboard!.instantiateViewControllerWithIdentifier("cardlist")
+            self.presentViewController(cardListViewController, animated: true, completion: nil)
+        }else{
+            /*
+            ここに図鑑移動処理を書く
+            URL + id = ○○
+            */
         }
     }
-    @IBAction func nextButton(sender: AnyObject) {
-        //カードを獲得した時は次の動物へ、カードリストからカードを表示した時は図鑑へ画面移動するようにする
+    
+    @IBAction func rightButton(sender: AnyObject) {
         if(appDelegate.listFlg){
-            /*ここに図鑑移動処理を書く
-            
-            appDelegateにID配列を作って、appDelegate.decideRouteで今表示中の配列番号を参照して飛ぶようにする？
-            
+            /*
+            ここに図鑑移動処理を書く
+            URL + id = ○○
             */
         }else{
             appDelegate.decideRoute = 0
             appDelegate.route = 0
-        
+            
             let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
             self.presentViewController(routeViewController, animated: true, completion: nil)
         }
+        
     }
-    
     //最初に宣言しておく
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
@@ -61,13 +86,21 @@ class CardViewController: UIViewController {
         
         print(appDelegate.cardFlg[appDelegate.decideRoute])
         
+        
         if(appDelegate.listFlg){
-            nextButton.setTitle("詳しく！", forState: .Normal)
-            homeButton.setTitle("＜戻る　　", forState: .Normal)
+            //カードリストから表示されたパターン
+            backButton.setTitle("Home　　", forState: .Normal)
+            rightButton.setTitle("詳しく！", forState: .Normal)
+            leftButton.setTitle("カードリストへ", forState: .Normal)
+            cardListButton.hidden = true
         }else{
-            nextButton.setTitle("次の動物へ", forState: .Normal)
-            homeButton.setTitle("Home　　", forState: .Normal)
+            //カードゲットした時パターン
+            backButton.setTitle("Home　　", forState: .Normal)
+            rightButton.setTitle("次へ", forState: .Normal)
+            leftButton.setTitle("詳しく！", forState: .Normal)
+            cardListButton.hidden = false
         }
+        
         
     }
     

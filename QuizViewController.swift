@@ -13,10 +13,18 @@ class QuizViewController: UIViewController {
     
     @IBOutlet weak var animalLabel: UILabel!
     @IBOutlet weak var quizLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
     
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var answerButton1: UIButton!
     @IBOutlet weak var answerButton2: UIButton!
     @IBOutlet weak var answerButton3: UIButton!
+    
+    
+    @IBAction func backButton(sender: AnyObject) {
+        let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
+        self.presentViewController(routeViewController, animated: true, completion: nil)
+    }
     
     
     //動物の番号を3で割った余りが正解の問題。
@@ -70,6 +78,7 @@ class QuizViewController: UIViewController {
         //RouteViewControllerで選択したルートを変数に格納
         quizNo = appDelegate.decideRoute
         
+        self.messageLabel.text = appDelegate.message[quizNo]
         self.animalLabel.text = appDelegate.animals[quizNo]
         
         //正解のanswerボタンは3で割った余り
