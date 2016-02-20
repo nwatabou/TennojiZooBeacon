@@ -140,11 +140,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
 
             // 不明→領域に入った場合はdidEnterRegionが呼ばれる
             break;
-            
-        //なんで警告が出ているのか要チェック
-            //swiftはbreke文いらないんやっけ？
-        default:
-            break;
         }
     }
     
@@ -172,9 +167,11 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion){
         let beacon = beacons[0]
         //開発用にimmediateのみ観測の条件式追加
-        if(beacon.proximity == CLProximity.Immediate){
+//        if(beacon.proximity == CLProximity.Immediate){
         //beacon.minorをint型に変換
         beaconNo = (beacon.minor).integerValue
+        
+        
         flg = true
 
         //appDelegateで定義しておいた動物別キャッチコピーを表示
@@ -204,7 +201,7 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
         route3 = appDelegate.message[beaconNo+3]
         routeButton3.setTitle(route3, forState: .Normal)
         }
-    }
+//    }
     
     
     override func didReceiveMemoryWarning() {

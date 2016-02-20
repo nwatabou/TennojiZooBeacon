@@ -11,9 +11,13 @@ import CoreLocation
 
 class HomeController: UIViewController, CLLocationManagerDelegate {
     
-    //ボタンを押したらセグエで画面移動
-    @IBAction func startButton(sender: AnyObject) {
+    @IBOutlet weak var imageView: UIImageView!
 
+    @IBAction func dictionary(sender: AnyObject) {
+        let url:NSURL = NSURL(string: "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji/")!
+        if UIApplication.sharedApplication().canOpenURL(url){
+            UIApplication.sharedApplication().openURL(url)
+        }
     }
     
     //beaconの値取得関係の変数
@@ -24,7 +28,7 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //起動したらHome画面で位置情報の許可を得る
         // ロケーションマネージャを作成する
         self.trackLocationManager = CLLocationManager();
         
@@ -39,6 +43,9 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
             
             self.trackLocationManager.requestAlwaysAuthorization();
         }
+        
+        let img = UIImage(named: "start.png")
+        imageView!.image = img
         
         //Home画面に来たら初期化する
         appDelegate.listFlg = false

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
     
@@ -23,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //カードを獲得して表示されたのか、カードリストから表示されたのかを判別するFlg
     var listFlg = false
+    
+    var locationManager: CLLocationManager!
 
     //ここに動物の情報を格納
     //配列番号が同じものは、同じくくりで登録
@@ -37,11 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    let quiz = ["none","","","","狩りをするのは？","天王寺動物園で飼われているゾウの名前は？","キリンはどうやって寝るでしょう？","トラの肌は何色でしょう？","",""]
     
     
-    let answer1 = ["gate1","クスノキ","　要再考　","悲しむ","オス","10〜20年","ダンス","口の中","30cmぐらい","青色","6本","足で歩く","gate2","人間","うろこ","皮膚の表面","泥ごと口に含む","首","毛","100匹以上の群で行動する","1m〜1.2m","プライド","赤色","砂取り猫","オスの方が大きい","ベンガルトラ","大きい","敵に見つけられにくいように","クライミング","2本","2個","骨"]
+    let answer1 = ["gate1","クスノキ","　要再考　","悲しむ","オス","10〜20年","木登り","口の中","30cmぐらい","青色","6本","足で歩く","gate2","人間","うろこ","皮膚の表面","泥ごと口に含む","首","毛","100匹以上の群で行動する","1m〜1.2m","プライド","赤色","砂取り猫","オスの方が大きい","ベンガルトラ","大きい","敵に見つけられにくいように","クライミング","2本","2個","骨"]
     //問題の答えは、配列番号を3で割った余りのanswer番号
 //    let answer1 = ["none","","","","オスの仕事","サニー花子","たったまま寝る","肌色","",]//余り0　黄
     
-    let answer2 = ["gate1","ユーカリ","　要再考　","喜ぶ","オスとメス両方","40〜50年","木登り","肝臓","100cmぐらい","茶色","5本","手のひらで歩く","gate2","貝類","歯","内蔵","木をつつく","くちばし","筋肉","卵を見つけると、岩にぶつけて割る","1.3m〜1.5m","パック","青色","巣な取り猫","メスの方が大きい","シベリアトラ","小さい","お腹を地面にすりながら歩くから","クラッタリング","3本","5個","脂肪"]
+    let answer2 = ["gate1","ユーカリ","　要再考　","喜ぶ","オスとメス両方","40〜50年","ダンス","肝臓","100cmぐらい","茶色","5本","手のひらで歩く","gate2","貝類","歯","内蔵","木をつつく","くちばし","筋肉","卵を見つけると、岩にぶつけて割る","1.3m〜1.5m","パック","青色","巣な取り猫","メスの方が大きい","シベリアトラ","小さい","お腹を地面にすりながら歩くから","クラッタリング","3本","5個","脂肪"]
 //    let answer2 = ["none","","","","メスの仕事","エレファント陽子","横になって寝る","黒色","",]//余り1　青
     
     let answer3 = ["gate1","タンポポ","　要再考　","怒る","メスだけ","70〜80年","ジャンプ","胃","140cmよりも長い","灰色","4本","手の甲をついて歩く","gate2","干し草","胃","舌","食べない","羽の先端","骨","ヘビを襲って食べてしまう","1.6m〜1.8mぐらい","タワー","黄色","漁り猫","オスもメスも同じくらい","スマトラトラ","中くらい","お腹を洗わないから","クローリング","いやいや、1本でしょ","3個","筋肉"]
@@ -50,12 +53,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //それぞれの動物のカード画像名を格納しておく変数
     let image = ["none","vikutoriakoara.png","husaonezumikangaru.png","hooakatoki.png","shishiozaru.png","taizou.png","meganeguma.png","hokkyokuguma.png","sirohukurou.png","kosankei.png","asika.png","tinpanji.png","gate2","yousukouwani.png","koi.png","sirikennimori.png","tirihuramingo.png","sodeguroduru.png","higasikurosai.png","kobito-mangusu.png","aminekirin.png","raion.png","se-ka-hayabusa.png","sunadorineko.png","muhuron.png","amurutora.png","tyugokuookami.png","ressa-panda.png","nihonkounotori.png","hunborutopengin.png","hituji.png","hutakoburakuda.png"]
     
-    var cardFlg = ["none","false","false","false","false","false","false","false","false","false","false","false","gate2","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false"]
+    var cardFlg = ["none","false","false","false","false","false","false","false","false","false","false","false","gate2","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false"]
+    
+    let url = ["gate1","2634","2636","2755","2642","2662","2650","2652","2782","2738","2661","2647","gate2","2790","2843","2830","2718","2745","2693","2654","2668","2660","2769","2655","2671","2657","2649","2685","2714","2709","2698","2666"]
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        //　ボタン付きの通知の通知設定を作成する
+        let settings = createInteractiveNotificationSettings()
+        // アプリケーションに通知設定を登録
+        application.registerUserNotificationSettings(settings)
+        
+        self.locationManager = CLLocationManager()
+        self.locationManager.delegate = self
+        // 位置情報使用許可を求める
+        self.locationManager.requestAlwaysAuthorization()
         return true
     }
+    
+    
+    // 位置情報使用許可の認証状態が変わったタイミングで呼ばれるデリゲートメソッド
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedAlways {
+            let uuid: NSUUID! = NSUUID(UUIDString:"00000000-7DE6-1001-B000-001C4DF13E76")
+            
+            let message = "Beaconが近くにあります"
+            
+            // ビーコン領域をトリガーとした通知を作成(後述)
+            let notification = createRegionNotification(uuid, message: message)
+            // 通知を登録する
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        }
+    }
+    
+    private func createRegionNotification(uuid: NSUUID, message: String) -> UILocalNotification {
+        
+        // ## ビーコン領域を作成 ##
+        let beaconRegion :CLBeaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: "RegionId")
+        beaconRegion.notifyEntryStateOnDisplay = false
+        beaconRegion.notifyOnEntry = true
+        // 領域に入ったときにも出たときにも通知される
+        // 今回は領域から出たときの通知はRegion側でOFFにしておく
+        beaconRegion.notifyOnExit = false
+
+        // ## 通知を作成し、領域を設定 ##
+        let notification = UILocalNotification()
+        notification.soundName = UILocalNotificationDefaultSoundName
+        notification.alertBody = message
+        
+        // 通知の対象となる領域 *今回のポイント
+        notification.region = beaconRegion
+        // 一度だけの通知かどうか
+        notification.regionTriggersOnce = false
+        
+        return notification
+    }
+    
+    
+    // ボタン付きの通知設定を作成する
+    private func createInteractiveNotificationSettings() -> UIUserNotificationSettings {
+        // アクションを登録したカテゴリで通知設定を生成する
+        let notificationSettings =  UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound,], categories: nil)
+        
+        // この通知設定を登録する
+        return notificationSettings
+    }
+    
+    
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

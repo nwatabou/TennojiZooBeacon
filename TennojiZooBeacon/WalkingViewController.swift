@@ -11,9 +11,13 @@ import UIKit
 import CoreLocation
 
 class WalkingViewController: UIViewController, CLLocationManagerDelegate {
-    @IBOutlet weak var message: UILabel!
     @IBOutlet weak var checkLable: UILabel!
     @IBOutlet weak var nextButton: UIButton!
+    
+    //デバッグ確認用ラベル
+    @IBOutlet weak var beaconNoLabel: UILabel!
+    @IBOutlet weak var animalNameLabel: UILabel!
+    
 
     @IBAction func nextButton(sender: AnyObject) {
         //画面移動する前に値を渡しておく
@@ -103,8 +107,6 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
             // 不明→領域に入った場合はdidEnterRegionが呼ばれる
             break;
             
-        default:
-            break;
         }
     }
     
@@ -132,20 +134,22 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
     //領域内にいるので測定をする
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion){
         let beacon = beacons[0]
-        
+        //開発用
+
         //開発用にimmediateのみ観測の条件式追加
-        if(beacon.proximity == CLProximity.Immediate){
+        //if(beacon.proximity == CLProximity.Immediate){
         //beacon.minorをint型に変換してappDelegate.decideRouteに格納
         beaconNo = (beacon.minor).integerValue
         
         //前の画面(RouteViewController)で選択した番号(appDelegate.route)と、今観測できるbeacon.minorが一緒なら画面移動
         //違うなら確認ボタンを設置
+            /*
         if(appDelegate.route == beacon.minor && beacon.proximity == CLProximity.Immediate){
             appDelegate.decideRoute = beaconNo
             
             let quizViewController = self.storyboard!.instantiateViewControllerWithIdentifier("quiz")
             self.presentViewController(quizViewController, animated: true, completion: nil)
-            
+
         //すぐにボタンが出ないように、appDelegate.beaconNoとbeacon.minorが同じではない時に表示
         }else if(appDelegate.beaconNo != beacon.minor && beacon.proximity == CLProximity.Immediate){
             self.checkLable.hidden = false
@@ -154,8 +158,25 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
             self.checkLable.hidden = true
             self.nextButton.hidden = true
             }
+*/
+            
+            
+            //実地試験用
+            //常にこの場所でいいかの確認+Beacon番号、動物名の確認
+            beaconNo = (beacon.minor).integerValue
+            self.beaconNoLabel.text = "\(beacon.minor)"
+            self.animalNameLabel.text = appDelegate.animals[beaconNo]
+            
+            if(appDelegate.beaconNo != beacon.minor){
+                self.checkLable.hidden = false
+                self.nextButton.hidden = false
+            }else{
+                self.checkLable.hidden = true
+                self.nextButton.hidden = true
+            }
         }
-    }
+
+//    }
     
     
     

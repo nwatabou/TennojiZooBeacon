@@ -20,7 +20,7 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var answerButton2: UIButton!
     @IBOutlet weak var answerButton3: UIButton!
     
-    
+    //デバッグ用戻るボタン
     @IBAction func backButton(sender: AnyObject) {
         let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
         self.presentViewController(routeViewController, animated: true, completion: nil)

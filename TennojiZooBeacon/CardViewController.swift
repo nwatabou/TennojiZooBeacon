@@ -43,19 +43,25 @@ class CardViewController: UIViewController {
             let cardListViewController = self.storyboard!.instantiateViewControllerWithIdentifier("cardlist")
             self.presentViewController(cardListViewController, animated: true, completion: nil)
         }else{
-            /*
-            ここに図鑑移動処理を書く
-            URL + id = ○○
-            */
+            
+            //動物ごとの図鑑に移動処理（Web）
+            let URLString = base + add
+            let url:NSURL = NSURL(string: URLString)!
+            if UIApplication.sharedApplication().canOpenURL(url){
+            UIApplication.sharedApplication().openURL(url)
+            }
         }
     }
     
     @IBAction func rightButton(sender: AnyObject) {
         if(appDelegate.listFlg){
-            /*
-            ここに図鑑移動処理を書く
-            URL + id = ○○
-            */
+            
+            //動物ごとの図鑑に移動処理（Web）
+            let URLString = base + add
+            let url:NSURL = NSURL(string: URLString)!
+            if UIApplication.sharedApplication().canOpenURL(url){
+                UIApplication.sharedApplication().openURL(url)
+            }
         }else{
             appDelegate.decideRoute = 0
             appDelegate.route = 0
@@ -68,8 +74,13 @@ class CardViewController: UIViewController {
     //最初に宣言しておく
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
+    var base = "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji/document/show/id/"
+    var add = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        add = appDelegate.url[appDelegate.decideRoute]
         
         //appDelegateに画像を配列で定義しておいて、配列番号で参照する。
         let img = UIImage(named: appDelegate.image[appDelegate.decideRoute])

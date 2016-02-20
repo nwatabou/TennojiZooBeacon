@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="C07-bc-xdK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="C07-bc-xdK">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Home Controller-->
@@ -10,52 +10,75 @@
             <objects>
                 <viewController storyboardIdentifier="home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="C07-bc-xdK" customClass="HomeController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="b64-Nd-TmU"/>
-                        <viewControllerLayoutGuide type="bottom" id="Hu2-Vg-vjJ"/>
+                        <viewControllerLayoutGuide type="top" id="Zey-cd-agX"/>
+                        <viewControllerLayoutGuide type="bottom" id="bbE-He-WSH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WQG-rX-4wy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="start.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Le-Ne-dXV">
-                                <rect key="frame" x="0.0" y="20" width="375" height="591"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qN5-5f-tbB">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWa-HA-86x">
-                                <rect key="frame" x="48" y="369" width="266" height="59"/>
+                                <rect key="frame" x="61" y="338" width="266" height="59"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="スタート">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="OWD-nb-dk0" kind="show" identifier="start" id="dvx-QM-Aez"/>
+                                    <segue destination="OWD-nb-dk0" kind="presentation" identifier="start" id="dvx-QM-Aez"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6c-in-58A">
+                                <rect key="frame" x="66" y="512" width="266" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="図鑑">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dictionary:" destination="C07-bc-xdK" eventType="touchUpInside" id="HVy-a9-7OG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWv-hp-JRA">
-                                <rect key="frame" x="48" y="551" width="266" height="49"/>
+                                <rect key="frame" x="61" y="598" width="266" height="49"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="カードリスト">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="POr-SL-PKJ" kind="show" id="32w-Pb-vrn"/>
+                                    <segue destination="POr-SL-PKJ" kind="presentation" id="32w-Pb-vrn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doS-Rx-U6s">
+                                <rect key="frame" x="61" y="417" width="266" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="遊び方">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="sUy-fr-IgE" kind="presentation" id="3cZ-Jg-ZtV"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageView" destination="qN5-5f-tbB" id="m1t-AY-LLn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9A-yF-L04" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="214.5" y="381.5"/>
+            <point key="canvasLocation" x="213.5" y="380.5"/>
         </scene>
         <!--Card List View Controller-->
         <scene sceneID="Kke-2I-U9W">
             <objects>
                 <viewController storyboardIdentifier="cardlist" useStoryboardIdentifierAsRestorationIdentifier="YES" id="POr-SL-PKJ" customClass="CardListViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="R1T-w9-Hgk"/>
-                        <viewControllerLayoutGuide type="bottom" id="7Du-gL-1x0"/>
+                        <viewControllerLayoutGuide type="top" id="gHZ-Qw-OEQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gy2-fm-L89"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xTv-KZ-a7L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -92,15 +115,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x1P-We-tf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="214.5" y="1306.5"/>
+            <point key="canvasLocation" x="200.5" y="1204.5"/>
         </scene>
         <!--Route View Controller-->
         <scene sceneID="CaT-Ss-6LS">
             <objects>
                 <viewController storyboardIdentifier="route" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OWD-nb-dk0" customClass="RouteViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ev6-8U-avk"/>
-                        <viewControllerLayoutGuide type="bottom" id="m0K-Wt-Zm9"/>
+                        <viewControllerLayoutGuide type="top" id="4uB-c5-acw"/>
+                        <viewControllerLayoutGuide type="bottom" id="SOZ-dd-I4C"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CVG-3n-QZk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -116,7 +139,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="＜戻る　　"/>
                                                 <connections>
-                                                    <segue destination="C07-bc-xdK" kind="show" id="BRT-n4-KDT"/>
+                                                    <segue destination="C07-bc-xdK" kind="presentation" id="BRT-n4-KDT"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -162,15 +185,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PhG-0d-IOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="656.5" y="381.5"/>
+            <point key="canvasLocation" x="656.5" y="381.49999999999994"/>
         </scene>
         <!--Quiz View Controller-->
         <scene sceneID="uFB-ka-tWB">
             <objects>
                 <viewController storyboardIdentifier="quiz" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sps-3J-OL0" customClass="QuizViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="52W-QM-Ngg"/>
-                        <viewControllerLayoutGuide type="bottom" id="EcO-Do-Sdr"/>
+                        <viewControllerLayoutGuide type="top" id="ujD-DR-XAm"/>
+                        <viewControllerLayoutGuide type="bottom" id="9aG-zO-yQx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Spd-VO-e9z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -207,7 +230,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSK-y5-7lb">
-                                <rect key="frame" x="66" y="133" width="289" height="85"/>
+                                <rect key="frame" x="53" y="133" width="302" height="85"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -219,9 +242,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdP-dm-aFC">
-                                <rect key="frame" x="20" y="92" width="335" height="65"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <rect key="frame" x="11" y="92" width="344" height="65"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="40h-PB-p0V">
@@ -257,15 +280,83 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecm-27-Vw4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1520.5" y="381.5"/>
+            <point key="canvasLocation" x="1520.5" y="380.5"/>
+        </scene>
+        <!--How To Play View Controller-->
+        <scene sceneID="zUW-ox-O01">
+            <objects>
+                <viewController storyboardIdentifier="how" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sUy-fr-IgE" customClass="HowToPlayViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="smt-Cy-g2e"/>
+                        <viewControllerLayoutGuide type="bottom" id="bak-0f-xlj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WcV-qb-Gkr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7y-Tf-lqf">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="ueR-jI-lje">
+                                        <barButtonItem key="leftBarButtonItem" title=" " style="plain" id="WjO-1g-vlk">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dKz-D8-2Ao">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="＜戻る　　"/>
+                                                <connections>
+                                                    <segue destination="C07-bc-xdK" kind="presentation" id="Lmo-WU-CUD"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1D-U9-Ssg">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="629-db-iS7">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="629-db-iS7" firstAttribute="top" secondItem="q1D-U9-Ssg" secondAttribute="top" id="7MZ-6o-hfx"/>
+                                    <constraint firstItem="629-db-iS7" firstAttribute="centerY" secondItem="q1D-U9-Ssg" secondAttribute="centerY" id="Ew5-sv-er7"/>
+                                    <constraint firstItem="629-db-iS7" firstAttribute="leading" secondItem="q1D-U9-Ssg" secondAttribute="leading" id="Hmg-9o-TWP"/>
+                                    <constraint firstAttribute="bottom" secondItem="629-db-iS7" secondAttribute="bottom" id="Ptl-rW-nSv"/>
+                                    <constraint firstItem="629-db-iS7" firstAttribute="centerX" secondItem="q1D-U9-Ssg" secondAttribute="centerX" id="gyu-3e-g5R"/>
+                                    <constraint firstAttribute="trailing" secondItem="629-db-iS7" secondAttribute="trailing" id="r4j-p3-kGe"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="q1D-U9-Ssg" secondAttribute="trailing" id="C7V-H4-lAr"/>
+                            <constraint firstItem="q1D-U9-Ssg" firstAttribute="top" secondItem="WcV-qb-Gkr" secondAttribute="top" constant="64" id="Zhh-nx-jUd"/>
+                            <constraint firstItem="q1D-U9-Ssg" firstAttribute="bottom" secondItem="bak-0f-xlj" secondAttribute="top" id="m7t-Ov-IjI"/>
+                            <constraint firstItem="q1D-U9-Ssg" firstAttribute="leading" secondItem="WcV-qb-Gkr" secondAttribute="leading" id="xPW-h4-afJ"/>
+                            <constraint firstItem="q1D-U9-Ssg" firstAttribute="trailing" secondItem="G7y-Tf-lqf" secondAttribute="trailing" id="xfY-PN-BvS"/>
+                            <constraint firstItem="q1D-U9-Ssg" firstAttribute="leading" secondItem="G7y-Tf-lqf" secondAttribute="leading" id="ye6-Xb-AgC"/>
+                            <constraint firstItem="q1D-U9-Ssg" firstAttribute="top" secondItem="G7y-Tf-lqf" secondAttribute="bottom" id="z5Q-4n-5pr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="QQf-aD-EWr"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageView" destination="629-db-iS7" id="bxZ-95-vkQ"/>
+                        <outlet property="scroll" destination="q1D-U9-Ssg" id="tWF-r6-WPw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RGV-AC-IUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="656.5" y="1151.5"/>
         </scene>
         <!--False View Controller-->
         <scene sceneID="aaq-XT-ONr">
             <objects>
                 <viewController storyboardIdentifier="false" useStoryboardIdentifierAsRestorationIdentifier="YES" id="e2q-Om-XWq" customClass="FalseViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yKK-uO-s7A"/>
-                        <viewControllerLayoutGuide type="bottom" id="Khz-dc-KdN"/>
+                        <viewControllerLayoutGuide type="top" id="jPI-Me-Dbv"/>
+                        <viewControllerLayoutGuide type="bottom" id="Iei-rc-QeI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Ee-DF-mWH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -296,8 +387,8 @@
             <objects>
                 <viewController storyboardIdentifier="correct" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1oX-tq-L3j" customClass="CorrectViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3Kh-Zl-CBg"/>
-                        <viewControllerLayoutGuide type="bottom" id="8yf-ii-OmX"/>
+                        <viewControllerLayoutGuide type="top" id="Q1A-66-mdc"/>
+                        <viewControllerLayoutGuide type="bottom" id="gjs-Ln-ogQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="czF-kg-eWv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -313,15 +404,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12K-ED-Vv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2065.5" y="13.5"/>
+            <point key="canvasLocation" x="2065.5" y="13.499999999999998"/>
         </scene>
         <!--Card View Controller-->
         <scene sceneID="paa-Dz-xj6">
             <objects>
                 <viewController storyboardIdentifier="card" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xgN-Jf-uin" customClass="CardViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zFX-oW-nN9"/>
-                        <viewControllerLayoutGuide type="bottom" id="bpT-sL-Nch"/>
+                        <viewControllerLayoutGuide type="top" id="5yS-VV-IVg"/>
+                        <viewControllerLayoutGuide type="bottom" id="R2g-k7-1WJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oA2-c1-gqc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -387,56 +478,84 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1B4-IR-kgO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2545.5" y="381.5"/>
+            <point key="canvasLocation" x="2545.5" y="381.49999999999994"/>
         </scene>
         <!--Walking View Controller-->
         <scene sceneID="qU3-02-IAD">
             <objects>
                 <viewController storyboardIdentifier="walk" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9bo-V1-WXY" customClass="WalkingViewController" customModule="TennojiZooBeacon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kfd-01-3uX"/>
-                        <viewControllerLayoutGuide type="bottom" id="0Ey-Wl-wFM"/>
+                        <viewControllerLayoutGuide type="top" id="Qyx-VZ-B3O"/>
+                        <viewControllerLayoutGuide type="bottom" id="wEU-DQ-7Lh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="e3x-AK-UQY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ここで良いかな？" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXP-tQ-EFK">
-                                <rect key="frame" x="29" y="599" width="215" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="walking.png" translatesAutoresizingMaskIntoConstraints="NO" id="kqI-vl-40E">
+                                <rect key="frame" x="9" y="-161" width="366" height="732"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="選んだ動物と違うけど、ここでいいかな？" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jx-2J-g9e">
+                                <rect key="frame" x="9" y="516" width="280" height="79"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNp-sM-Tfv">
-                                <rect key="frame" x="252" y="611" width="89" height="48"/>
+                                <rect key="frame" x="279" y="547" width="89" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Yes"/>
                                 <connections>
                                     <action selector="nextButton:" destination="9bo-V1-WXY" eventType="touchUpInside" id="q99-Jx-uQf"/>
                                 </connections>
                             </button>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="walking.png" translatesAutoresizingMaskIntoConstraints="NO" id="kqI-vl-40E">
-                                <rect key="frame" x="4" y="-103" width="366" height="732"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Beacon番号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dW4-Oh-iAM">
+                                <rect key="frame" x="37" y="595" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2B-e1-LOP">
+                                <rect key="frame" x="160" y="595" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="動物名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWK-0r-6mx">
+                                <rect key="frame" x="58" y="633" width="51" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0m-uP-L6L">
+                                <rect key="frame" x="131" y="633" width="218" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="checkLable" destination="CXP-tQ-EFK" id="wdh-Ch-wG1"/>
+                        <outlet property="animalNameLabel" destination="V0m-uP-L6L" id="Rtt-jG-AW4"/>
+                        <outlet property="beaconNoLabel" destination="H2B-e1-LOP" id="ACb-o9-rWr"/>
+                        <outlet property="checkLable" destination="4jx-2J-g9e" id="OVB-9J-68I"/>
                         <outlet property="nextButton" destination="bNp-sM-Tfv" id="tR4-7p-Cwm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ElA-KL-NSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073.5" y="381.5"/>
+            <point key="canvasLocation" x="1073.5" y="380.5"/>
         </scene>
     </scenes>
     <resources>
         <image name="false.png" width="366" height="591"/>
         <image name="select.png" width="366" height="591"/>
-        <image name="start.png" width="366" height="591"/>
         <image name="true.png" width="366" height="591"/>
         <image name="walking.png" width="366" height="591"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Lmo-WU-CUD"/>
+    </inferredMetricsTieBreakers>
 </document>
