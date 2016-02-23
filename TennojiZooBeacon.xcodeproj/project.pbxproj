@@ -10,7 +10,6 @@
 		633BCD951C32728400648852 /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633BCD941C32728400648852 /* CardListViewController.swift */; };
 		633BCD971C35221700648852 /* WalkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633BCD961C35221700648852 /* WalkingViewController.swift */; };
 		633BCD991C353C3B00648852 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633BCD981C353C3B00648852 /* CardViewController.swift */; };
-		638297C31C77309800CCF4EA /* HowToPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638297C21C77309800CCF4EA /* HowToPlayViewController.swift */; };
 		63C614271C4C957200DC9707 /* aminekirin.png in Resources */ = {isa = PBXBuildFile; fileRef = 63C613FA1C4C957200DC9707 /* aminekirin.png */; };
 		63C614281C4C957200DC9707 /* amurutora.png in Resources */ = {isa = PBXBuildFile; fileRef = 63C613FB1C4C957200DC9707 /* amurutora.png */; };
 		63C614291C4C957200DC9707 /* asika.png in Resources */ = {isa = PBXBuildFile; fileRef = 63C613FC1C4C957200DC9707 /* asika.png */; };
@@ -71,6 +70,7 @@
 		63CEC2BC1C31632700632FDB /* CorrectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CEC2BB1C31632700632FDB /* CorrectViewController.swift */; };
 		63CEC2BE1C31633E00632FDB /* FalseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CEC2BD1C31633E00632FDB /* FalseViewController.swift */; };
 		63D6C1BD1C74534F00B3B7D1 /* HowToPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D6C1BC1C74534F00B3B7D1 /* HowToPlay.png */; };
+		63FDFE601C7CBC3700E06597 /* HowToPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FDFE5F1C7CBC3700E06597 /* HowToPlayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +94,6 @@
 		633BCD941C32728400648852 /* CardListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListViewController.swift; sourceTree = "<group>"; };
 		633BCD961C35221700648852 /* WalkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingViewController.swift; sourceTree = "<group>"; };
 		633BCD981C353C3B00648852 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
-		638297C21C77309800CCF4EA /* HowToPlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToPlayViewController.swift; sourceTree = "<group>"; };
 		63C613FA1C4C957200DC9707 /* aminekirin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aminekirin.png; sourceTree = SOURCE_ROOT; };
 		63C613FB1C4C957200DC9707 /* amurutora.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amurutora.png; sourceTree = SOURCE_ROOT; };
 		63C613FC1C4C957200DC9707 /* asika.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asika.png; sourceTree = SOURCE_ROOT; };
@@ -161,6 +160,7 @@
 		63CEC2BB1C31632700632FDB /* CorrectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorrectViewController.swift; sourceTree = "<group>"; };
 		63CEC2BD1C31633E00632FDB /* FalseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FalseViewController.swift; sourceTree = "<group>"; };
 		63D6C1BC1C74534F00B3B7D1 /* HowToPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HowToPlay.png; sourceTree = SOURCE_ROOT; };
+		63FDFE5F1C7CBC3700E06597 /* HowToPlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToPlayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,7 +220,7 @@
 				63CEC2B71C312B1E00632FDB /* RouteViewController.swift */,
 				63CEC2B51C31212900632FDB /* QuizViewController.swift */,
 				63C6140E1C4C957200DC9707 /* Main.storyboard */,
-				638297C21C77309800CCF4EA /* HowToPlayViewController.swift */,
+				63FDFE5F1C7CBC3700E06597 /* HowToPlayViewController.swift */,
 				633BCD981C353C3B00648852 /* CardViewController.swift */,
 				633BCD961C35221700648852 /* WalkingViewController.swift */,
 				633BCD941C32728400648852 /* CardListViewController.swift */,
@@ -488,7 +488,7 @@
 				63CEC2721C2DADA900632FDB /* HomeController.swift in Sources */,
 				633BCD971C35221700648852 /* WalkingViewController.swift in Sources */,
 				63CEC2701C2DADA900632FDB /* AppDelegate.swift in Sources */,
-				638297C31C77309800CCF4EA /* HowToPlayViewController.swift in Sources */,
+				63FDFE601C7CBC3700E06597 /* HowToPlayViewController.swift in Sources */,
 				63CEC2B81C312B1E00632FDB /* RouteViewController.swift in Sources */,
 				633BCD991C353C3B00648852 /* CardViewController.swift in Sources */,
 				63CEC2B61C31212900632FDB /* QuizViewController.swift in Sources */,
