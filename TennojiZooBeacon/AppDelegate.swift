@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     var window: UIWindow?
     
-    var beaconNo = 0
+    var nowBeaconNo = 0
     
     //RouteViewControllerで選択したルート格納用変数
     var route = 0
@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     let url = ["gate1","2634","2636","2755","2642","2662","2650","2652","2782","2738","2661","2647","gate2","2790","2843","2830","2718","2745","2693","2654","2668","2660","2769","2655","2671","2657","2649","2685","2714","2709","2698","2666"]
     
-    let animalURL = ["gate1","53"," フサオネズミカンガルー ","23","シシオザル","250","メガネグマ","312","312","333","128","353","47","47","47","88","180","152","コビトマングース","16","140","3","1","128","6","16","20","23","29","202","194"]
+    let routeURL = ["gate1","53"," フサオネズミカンガルー ","23","シシオザル","250","312","312","312","333","128","353","47","47","47","88","180","152","コビトマングース","16","140","3","1","128","6","16","20","23","29","202","194"]
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         

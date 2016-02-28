@@ -11,6 +11,7 @@ import UIKit
 import CoreLocation
 
 class WalkingViewController: UIViewController, CLLocationManagerDelegate {
+    @IBOutlet weak var animalLabel: UILabel!
     @IBOutlet weak var checkLable: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     
@@ -33,14 +34,12 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         let quizViewController = self.storyboard!.instantiateViewControllerWithIdentifier("quiz")
         self.presentViewController(quizViewController, animated: true, completion: nil)
         }else{
-            /*
             //falseの時は近くにBeaconがなくてルート表示したい時
             let URL = baseURL + addURL
             let url:NSURL = NSURL(string:URL)!
             if UIApplication.sharedApplication().canOpenURL(url){
                 UIApplication.sharedApplication().openURL(url)
             }
-            */
         }
     }
     
@@ -80,7 +79,7 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         let img = UIImage(named: "walking.png")
         imageView!.image = img
         
-        addURL = appDelegate.animalURL[appDelegate.route]
+        addURL = appDelegate.routeURL[appDelegate.route]
         
     }
     
@@ -162,41 +161,19 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion){
         let beacon = beacons[0]
         
-        //beacon.minorをint型に変換
+        //beacon.minorをint型に変換(appDelegate.decideRouteに渡す為に必要)
         beaconNo = (beacon.minor).integerValue
         
-        flg = true
-
-        /*
-        //近くに他のBeaconがあるなら確認ボタン。そうでないならルート表示ボタンにする
-        if(beacon.proximity != CLProximity.Unknown && beacon.minor != beaconNo){
-            self.checkLable.text = "この動物でいいかな？"
+        self.animalLabel.text = appDelegate.animals[beaconNo]
+        
+        if(beacon.proximity != CLProximity.Unknown && beacon.minor != appDelegate.nowBeaconNo){
+            self.checkLable.text = "この動物で良いかな?"
             flg = true
-        }else{
-            self.checkLable.text = "選んだ動物までのルートを表示しますか？"
+        }else if(beacon.proximity == CLProximity.Unknown || beacon.minor == appDelegate.nowBeaconNo){
+            self.checkLable.text = "選んだ動物までのルートを表示しますか?"
             flg = false
+            addURL = appDelegate.routeURL[appDelegate.route]
         }
-    */
-
-            
-/*
-            //実地試験用
-            //常にこの場所でいいかの確認+Beacon番号、動物名の確認
-            beaconNo = (beacon.minor).integerValue
-            self.beaconNoLabel.text = "\(beacon.minor)"
-            self.animalNameLabel.text = appDelegate.animals[beaconNo]
-            
-            if(appDelegate.beaconNo != beacon.minor){
-                self.checkLable.hidden = false
-                self.nextButton.hidden = false
-            }else{
-                self.checkLable.hidden = true
-                self.nextButton.hidden = true
-            }
-
-        }
-*/
-
     }
     
     

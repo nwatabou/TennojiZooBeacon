@@ -22,7 +22,8 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
         
         if(flg){
             appDelegate.route = beaconNo+1
-            appDelegate.beaconNo = beaconNo
+            //ルート選択時の現在地Beacon番号を格納
+            appDelegate.nowBeaconNo = beaconNo
         
             let walkViewController = self.storyboard!.instantiateViewControllerWithIdentifier("walk")
             self.presentViewController(walkViewController, animated: true, completion: nil)
@@ -31,7 +32,7 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     @IBAction func routeButton2(sender: AnyObject) {
         if(flg){
             appDelegate.route = beaconNo+2
-            appDelegate.beaconNo = beaconNo
+            appDelegate.nowBeaconNo = beaconNo
         
             let walkViewController = self.storyboard!.instantiateViewControllerWithIdentifier("walk")
             self.presentViewController(walkViewController, animated: true, completion: nil)
@@ -40,7 +41,7 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     @IBAction func routeButton3(sender: AnyObject) {
         if(flg){
             appDelegate.route = beaconNo+3
-            appDelegate.beaconNo = beaconNo
+            appDelegate.nowBeaconNo = beaconNo
         
             let walkViewController = self.storyboard!.instantiateViewControllerWithIdentifier("walk")
             self.presentViewController(walkViewController, animated: true, completion: nil)
