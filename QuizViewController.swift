@@ -20,16 +20,17 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var answerButton2: UIButton!
     @IBOutlet weak var answerButton3: UIButton!
     
+    @IBOutlet weak var imageVIew: UIImageView!
     //デバッグ用戻るボタン
     @IBAction func backButton(sender: AnyObject) {
-        let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
-        self.presentViewController(routeViewController, animated: true, completion: nil)
+        let walkingViewController = self.storyboard!.instantiateViewControllerWithIdentifier("walk")
+        self.presentViewController(walkingViewController, animated: true, completion: nil)
     }
     
     
     //動物の番号を3で割った余りが正解の問題。
     @IBAction func answerButton1(sender: AnyObject) {
-        if(trueNo == 0){
+        if(appDelegate.decideRoute % questionCount == 0){
             let correctViewController = self.storyboard!.instantiateViewControllerWithIdentifier("correct")
             self.presentViewController(correctViewController, animated: true, completion: nil)
         }else{
@@ -38,7 +39,7 @@ class QuizViewController: UIViewController {
         }
     }
     @IBAction func answerButton2(sender: AnyObject) {
-        if(trueNo == 1){
+        if(appDelegate.decideRoute % questionCount == 1){
             let correctViewController = self.storyboard!.instantiateViewControllerWithIdentifier("correct")
             self.presentViewController(correctViewController, animated: true, completion: nil)
         }else{
@@ -47,7 +48,7 @@ class QuizViewController: UIViewController {
         }
     }
     @IBAction func answerButton3(sender: AnyObject) {
-        if(trueNo == 2){
+        if(appDelegate.decideRoute % questionCount == 2){
             let correctViewController = self.storyboard!.instantiateViewControllerWithIdentifier("correct")
             self.presentViewController(correctViewController, animated: true, completion: nil)
         }else{
@@ -59,37 +60,26 @@ class QuizViewController: UIViewController {
     //最初に宣言しておく
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
-    //選択したルートを問題番号として、この変数に格納
-    var quizNo = 0
     
-    //どのanswerボタンが正解なのかを判定する変数      
-    //配列番号を3で割った余りを格納する変数
-    var trueNo = 0
-    
-    //未実装(書いただけ)
-    //選択したルートと、今一番近いbeacon番号が一緒だったら〜みたいな処理をしたい
-    var flg = false
-    
+    //問題数を指定する変数
+    let questionCount = 3
+
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //RouteViewControllerで選択したルートを変数に格納
-        quizNo = appDelegate.decideRoute
+        //appDelegate.decideRouteには最終的に選んだ動物のBeacon番号を格納
+        self.messageLabel.text = appDelegate.message[appDelegate.decideRoute]
+        self.animalLabel.text = appDelegate.animals[appDelegate.decideRoute]
         
-        self.messageLabel.text = appDelegate.message[quizNo]
-        self.animalLabel.text = appDelegate.animals[quizNo]
+        self.quizLabel.text = appDelegate.quiz[appDelegate.decideRoute]
+        answerButton1.setTitle(appDelegate.answer1[appDelegate.decideRoute], forState: .Normal)
+        answerButton2.setTitle(appDelegate.answer2[appDelegate.decideRoute], forState: .Normal)
+        answerButton3.setTitle(appDelegate.answer3[appDelegate.decideRoute], forState: .Normal)
         
-        //正解のanswerボタンは3で割った余り
-        trueNo = (quizNo % 3)
-        
-        self.quizLabel.text = appDelegate.quiz[quizNo]
-        answerButton1.setTitle(appDelegate.answer1[quizNo], forState: .Normal)
-        answerButton2.setTitle(appDelegate.answer2[quizNo], forState: .Normal)
-        answerButton3.setTitle(appDelegate.answer3[quizNo], forState: .Normal)
-        
-        
+        let img = UIImage(named: "quiz.png")
+        imageVIew.image = img
     }
     
 

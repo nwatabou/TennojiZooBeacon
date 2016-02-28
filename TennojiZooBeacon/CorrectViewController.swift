@@ -10,8 +10,14 @@ import Foundation
 import UIKit
 
 class CorrectViewController: UIViewController {
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let img = UIImage(named: "true.png")
+        imageView.image = img
     }
     
     override func viewDidAppear(animated: Bool) {

@@ -25,6 +25,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     //セクション別に動物を定義
+    //この辺のカード獲得保存処理スマートにしたいなー
     let honyurui = ["アミメキリン","アムールトラ","ヴィクトリアコアラ","カリフォルニアアシカ","コビトマングース","シシオザル","タイゾウ","チュウゴクオオカミ","チンパンジー","ヒガシクロサイ","ヒツジ","フサオネズミカンガルー","フタコブラクダ","ホッキョクグマ","ムフロン","メガネグマ","ライオン"]
     let tyorui = ["コサンケイ","シロフクロウ","セーカーハヤブサ","ソデグロヅル","チリーフラミンゴ","ニホンコウノトリ","フンボルトペンギン","ホオアカトキ"]
     let hatyurui = ["ヨウスコウワニ"]
@@ -37,6 +38,13 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     var Hryoseirui = [""]
     var Hgyorui = [""]
 
+    let honyuruiSection = 0
+    let tyoruiSection = 1
+    let hatyuruiSection = 2
+    let ryoseiruiSection = 3
+    let gyoruiSection = 4
+    
+    
     //この配列に画像名を格納
     let sections = ["ho.png","tyou.png","hatyu.png","ryou.png","gyo.png"]
     
@@ -83,7 +91,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
         appDelegate.cardFlg = (NSUserDefaults.standardUserDefaults().arrayForKey("cardGet") as? [String])!
         
         
-        if(section == 0){
+        if(section == honyuruiSection){
             //セクションごとの分類の配列を回す
             for(var i = 0;i < honyurui.count; i++){
                 //次に、その配列と、appDelegateで定義した動物名の配列を回す
@@ -102,7 +110,9 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
             }
             return honyurui.count
-        }else if(section == 1){
+            
+            
+        }else if(section == tyoruiSection){
             for(var i = 0;i < tyorui.count; i++){
                 for(var j = 0;j < appDelegate.animals.count; j++){
                     if(tyorui[i] == appDelegate.animals[j]){
@@ -114,9 +124,10 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
                     }
                 }
             }
-
             return tyorui.count
-        }else if(section == 2){
+            
+            
+        }else if(section == hatyuruiSection){
             for(var i = 0;i < hatyurui.count; i++){
                 for(var j = 0;j < appDelegate.animals.count; j++){
                     if(hatyurui[i] == appDelegate.animals[j]){
@@ -130,7 +141,9 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             }
 
             return hatyurui.count
-        }else if(section == 3){
+            
+            
+        }else if(section == ryoseiruiSection){
             for(var i = 0;i < ryoseirui.count; i++){
                 for(var j = 0;j < appDelegate.animals.count; j++){
                     if(ryoseirui[i] == appDelegate.animals[j]){
@@ -143,7 +156,9 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
             }
             return ryoseirui.count
-        }else if(section == 4){
+            
+            
+        }else if(section == gyoruiSection){
             for(var i = 0;i < gyorui.count; i++){
                 for(var j = 0;j < appDelegate.animals.count; j++){
                     if(gyorui[i] == appDelegate.animals[j]){
@@ -156,6 +171,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
             }
             return gyorui.count
+            
         }else{
             return 0
         }
@@ -193,15 +209,19 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         // Cellに値を設定する.
         //セクションごとにセルの記述処理をする
-        if(indexPath.section == 0){
+        if(indexPath.section == hatyuruiSection){
             cell.textLabel!.text = "\(Hhonyurui[indexPath.row])"
-        }else if(indexPath.section == 1){
+            
+        }else if(indexPath.section == tyoruiSection){
             cell.textLabel!.text = "\(Htyorui[indexPath.row])"
-        }else if(indexPath.section == 2){
+            
+        }else if(indexPath.section == hatyuruiSection){
             cell.textLabel!.text = "\(Hhatyurui[indexPath.row])"
-        }else if(indexPath.section == 3){
+            
+        }else if(indexPath.section == ryoseiruiSection){
             cell.textLabel!.text = "\(Hryoseirui[indexPath.row])"
-        }else if(indexPath.section == 4){
+            
+        }else if(indexPath.section == gyoruiSection){
             cell.textLabel!.text = "\(Hgyorui[indexPath.row])"
         }
         
@@ -214,7 +234,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //選択されたセル番号をセクションごとに判定
         //哺乳類セクション
-        if(indexPath.section == 0){
+        if(indexPath.section == honyuruiSection){
             var i:Int
             for(i = 0; i < appDelegate.animals.count - 1; i++){
                 //選択されたセル番号の動物名と、AppDelegateで定義した動物リストと比較
@@ -235,7 +255,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             
             
             //鳥類セクション
-        }else if(indexPath.section == 1){
+        }else if(indexPath.section == tyoruiSection){
             var i:Int
             for(i = 0; i < appDelegate.animals.count; i++){
                 if(appDelegate.animals[i] == tyorui[indexPath.row]){
@@ -251,7 +271,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             
             
             //爬虫類セクション
-        }else if(indexPath.section == 2){
+        }else if(indexPath.section == hatyuruiSection){
             var i:Int
             for(i = 0; i < appDelegate.animals.count; i++){
                 if(appDelegate.animals[i] == hatyurui[indexPath.row]){
@@ -268,7 +288,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             
             
             //両生類セクション
-        }else if(indexPath.section == 3){
+        }else if(indexPath.section == ryoseiruiSection){
             var i:Int
             for(i = 0; i < appDelegate.animals.count; i++){
                 if(appDelegate.animals[i] == ryoseirui[indexPath.row]){
@@ -285,7 +305,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             
             
             //魚類セクション
-        }else if(indexPath.section == 4){
+        }else if(indexPath.section == gyoruiSection){
             var i:Int
             for(i = 0; i < appDelegate.animals.count; i++){
                 if(appDelegate.animals[i] == ryoseirui[indexPath.row]){

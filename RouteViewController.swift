@@ -53,8 +53,9 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     
     //beacon番号格納用変数
     var beaconNo = 0
-
-    var i = 0
+    
+    //初期化用の変数
+    var defaultNumber = 0
     
     //beaconの近くにいるかどうかの判定のためのフラグ
     var flg = false
@@ -84,6 +85,10 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
         
         //Beacon領域を作成
         self.beaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: "net.noumenon-th")
+        
+        appDelegate.decideRoute = defaultNumber
+        appDelegate.route = defaultNumber
+        
     }
     
     

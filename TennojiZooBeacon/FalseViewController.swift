@@ -11,6 +11,7 @@ import UIKit
 
 class FalseViewController: UIViewController {
     
+    @IBOutlet weak var imageVIew: UIImageView!
     
     @IBAction func nextButton(sender: AnyObject) {
         appDelegate.decideRoute = 0
@@ -25,6 +26,9 @@ class FalseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let img = UIImage(named: "false.png")
+        imageVIew.image = img
     }
     
     override func didReceiveMemoryWarning() {

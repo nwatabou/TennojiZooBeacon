@@ -252,50 +252,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ih9-rz-QL4">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3T-eS-8MS">
-                                <rect key="frame" x="20" y="384" width="335" height="70"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="20" y="311" width="335" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="answerButton1:" destination="sps-3J-OL0" eventType="touchUpInside" id="fwR-6p-Vwb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSX-ga-vYQ">
-                                <rect key="frame" x="20" y="481" width="335" height="70"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="20" y="378" width="335" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="answerButton2:" destination="sps-3J-OL0" eventType="touchUpInside" id="ged-th-dXz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XhU-e3-aOZ">
-                                <rect key="frame" x="20" y="577" width="335" height="70"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="answerButton3:" destination="sps-3J-OL0" eventType="touchUpInside" id="BBa-hP-Lhd"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7B-hO-2Yz">
-                                <rect key="frame" x="20" y="277" width="335" height="99"/>
+                                <rect key="frame" x="0.0" y="219" width="375" height="99"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSK-y5-7lb">
-                                <rect key="frame" x="53" y="133" width="302" height="85"/>
+                                <rect key="frame" x="36" y="112" width="302" height="85"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="についての問題です" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulh-OX-RFp">
-                                <rect key="frame" x="180" y="215" width="175" height="35"/>
+                                <rect key="frame" x="171" y="186" width="175" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdP-dm-aFC">
-                                <rect key="frame" x="11" y="92" width="344" height="65"/>
+                                <rect key="frame" x="0.0" y="75" width="299" height="65"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -317,6 +312,14 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XhU-e3-aOZ">
+                                <rect key="frame" x="20" y="456" width="335" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="answerButton3:" destination="sps-3J-OL0" eventType="touchUpInside" id="BBa-hP-Lhd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -327,6 +330,7 @@
                         <outlet property="answerButton2" destination="iSX-ga-vYQ" id="34X-lo-WRM"/>
                         <outlet property="answerButton3" destination="XhU-e3-aOZ" id="y5s-x9-yy3"/>
                         <outlet property="backButton" destination="FBI-gg-hnZ" id="GzZ-Xx-nR1"/>
+                        <outlet property="imageVIew" destination="ih9-rz-QL4" id="DJl-WL-HyS"/>
                         <outlet property="messageLabel" destination="ZdP-dm-aFC" id="z9p-rM-01f"/>
                         <outlet property="quizLabel" destination="z7B-hO-2Yz" id="5Zj-qv-ktK"/>
                     </connections>
@@ -347,11 +351,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="false.png" translatesAutoresizingMaskIntoConstraints="NO" id="xv0-2D-LfL">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="615"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vws-Fh-9LG">
+                                <rect key="frame" x="0.0" y="20" width="375" height="601"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7s-Z3-NIB">
-                                <rect key="frame" x="195" y="611" width="160" height="43"/>
+                                <rect key="frame" x="206" y="616" width="160" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="次へ"/>
                                 <connections>
@@ -362,6 +366,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageVIew" destination="vws-Fh-9LG" id="btG-fA-quC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ilB-hR-Q8P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -379,17 +386,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="true.png" translatesAutoresizingMaskIntoConstraints="NO" id="DPU-6Y-z5O">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXI-mq-jsY">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageView" destination="eXI-mq-jsY" id="1Zd-PF-0dz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12K-ED-Vv1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2065.5" y="13.499999999999998"/>
+            <point key="canvasLocation" x="2065.5" y="13.5"/>
         </scene>
         <!--Card View Controller-->
         <scene sceneID="paa-Dz-xj6">
@@ -477,55 +487,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="walking.png" translatesAutoresizingMaskIntoConstraints="NO" id="kqI-vl-40E">
-                                <rect key="frame" x="9" y="-161" width="366" height="732"/>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahr-1l-qxK">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="Ktn-bV-bz0">
+                                        <barButtonItem key="leftBarButtonItem" title=" " style="plain" id="Hj5-qJ-8ho">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yW7-2Z-3a3">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="＜戻る　　"/>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title=" " style="plain" id="orP-go-IeY">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8eu-T1-RwF">
+                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="ルート検索"/>
+                                                <connections>
+                                                    <action selector="routeSearchButton:" destination="9bo-V1-WXY" eventType="touchUpInside" id="gnx-l4-VWD"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fcN-sN-jcr">
+                                <rect key="frame" x="0.0" y="64" width="375" height="533"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="選んだ動物と違うけど、ここでいいかな？" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jx-2J-g9e">
-                                <rect key="frame" x="9" y="516" width="280" height="79"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKq-7k-gWT">
+                                <rect key="frame" x="0.0" y="605" width="290" height="62"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNp-sM-Tfv">
-                                <rect key="frame" x="279" y="547" width="89" height="48"/>
+                                <rect key="frame" x="281" y="611" width="89" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Yes"/>
                                 <connections>
                                     <action selector="nextButton:" destination="9bo-V1-WXY" eventType="touchUpInside" id="q99-Jx-uQf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Beacon番号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dW4-Oh-iAM">
-                                <rect key="frame" x="37" y="595" width="92" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2B-e1-LOP">
-                                <rect key="frame" x="160" y="595" width="87" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="動物名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWK-0r-6mx">
-                                <rect key="frame" x="58" y="633" width="51" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0m-uP-L6L">
-                                <rect key="frame" x="131" y="633" width="218" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="animalNameLabel" destination="V0m-uP-L6L" id="Rtt-jG-AW4"/>
-                        <outlet property="beaconNoLabel" destination="H2B-e1-LOP" id="ACb-o9-rWr"/>
-                        <outlet property="checkLable" destination="4jx-2J-g9e" id="OVB-9J-68I"/>
+                        <outlet property="checkLable" destination="pKq-7k-gWT" id="ep3-n2-elt"/>
+                        <outlet property="imageView" destination="fcN-sN-jcr" id="0Ax-gd-J1A"/>
                         <outlet property="nextButton" destination="bNp-sM-Tfv" id="tR4-7p-Cwm"/>
                     </connections>
                 </viewController>
@@ -535,10 +544,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="false.png" width="366" height="591"/>
         <image name="select.png" width="366" height="591"/>
-        <image name="true.png" width="366" height="591"/>
-        <image name="walking.png" width="366" height="591"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aLb-wu-kVW"/>

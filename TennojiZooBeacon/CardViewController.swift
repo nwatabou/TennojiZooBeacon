@@ -22,12 +22,13 @@ class CardViewController: UIViewController {
 
     
     //上のボタン
+    //Homeボタン
     @IBAction func backButton(sender: AnyObject) {
-            appDelegate.decideRoute = 0
             let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
             self.presentViewController(homeViewController, animated: true, completion: nil)
     }
 
+    //カードリストへボタン
     @IBAction func cardListButton(sender: AnyObject) {
         appDelegate.listFlg = false
         
@@ -36,14 +37,16 @@ class CardViewController: UIViewController {
     }
     
     //下のボタン
+    //appDelegate.listFlgがtrueなら、カードリストからカードを表示された時の処理(戻るボタン)
     @IBAction func leftButton(sender: AnyObject) {
         if(appDelegate.listFlg){
-            appDelegate.decideRoute = 0
+//            appDelegate.decideRoute = defaultNunber
             
             let cardListViewController = self.storyboard!.instantiateViewControllerWithIdentifier("cardlist")
             self.presentViewController(cardListViewController, animated: true, completion: nil)
-        }else{
             
+        //falseなら、クイズに正解してカードが表示された時の処理(図鑑ボタン)
+        }else{
             //動物ごとの図鑑に移動処理（Web）
             let URLString = base + add
             let url:NSURL = NSURL(string: URLString)!
@@ -56,16 +59,14 @@ class CardViewController: UIViewController {
     @IBAction func rightButton(sender: AnyObject) {
         if(appDelegate.listFlg){
             
-            //動物ごとの図鑑に移動処理（Web）
+            //動物ごとの図鑑に移動処理（Web）(図鑑ボタン)
             let URLString = base + add
             let url:NSURL = NSURL(string: URLString)!
             if UIApplication.sharedApplication().canOpenURL(url){
                 UIApplication.sharedApplication().openURL(url)
             }
+            //次の問題へボタン
         }else{
-            appDelegate.decideRoute = 0
-            appDelegate.route = 0
-            
             let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
             self.presentViewController(routeViewController, animated: true, completion: nil)
         }
@@ -76,6 +77,9 @@ class CardViewController: UIViewController {
     
     var base = "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji/document/show/id/"
     var add = ""
+    
+    //初期化用の変数
+    let defaultNunber = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()

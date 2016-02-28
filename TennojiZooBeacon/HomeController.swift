@@ -13,6 +13,7 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
 
+    //図鑑表示
     @IBAction func dictionary(sender: AnyObject) {
         let url:NSURL = NSURL(string: "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji/")!
         if UIApplication.sharedApplication().canOpenURL(url){
@@ -25,6 +26,9 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
     var beaconRegion : CLBeaconRegion!
     
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    
+    //初期化用の変数
+    let defaultNumber = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +53,9 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
         
         //Home画面に来たら初期化する
         appDelegate.listFlg = false
+        
+        appDelegate.route = defaultNumber
+        appDelegate.decideRoute = defaultNumber
     }
 
     override func didReceiveMemoryWarning() {
