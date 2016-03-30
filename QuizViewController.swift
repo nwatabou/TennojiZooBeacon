@@ -28,30 +28,36 @@ class QuizViewController: UIViewController {
     }
     
     
-    //動物の番号を3で割った余りが正解の問題。
+    //動物の番号を3(questionCount)で割った余りが正解の問題。
     @IBAction func answerButton1(sender: AnyObject) {
-        if(appDelegate.decideRoute % questionCount == 0){
+        if(appDelegate.decideRoute % questionCount == remainder0){
+            appDelegate.quizFlg = true
             let correctViewController = self.storyboard!.instantiateViewControllerWithIdentifier("correct")
             self.presentViewController(correctViewController, animated: true, completion: nil)
         }else{
+            appDelegate.quizFlg = false
             let falseViewController = self.storyboard!.instantiateViewControllerWithIdentifier("false")
             self.presentViewController(falseViewController, animated: true, completion: nil)
         }
     }
     @IBAction func answerButton2(sender: AnyObject) {
-        if(appDelegate.decideRoute % questionCount == 1){
+        if(appDelegate.decideRoute % questionCount == remainder1){
+            appDelegate.quizFlg = true
             let correctViewController = self.storyboard!.instantiateViewControllerWithIdentifier("correct")
             self.presentViewController(correctViewController, animated: true, completion: nil)
         }else{
+            appDelegate.quizFlg = false
             let falseViewController = self.storyboard!.instantiateViewControllerWithIdentifier("false")
             self.presentViewController(falseViewController, animated: true, completion: nil)
         }
     }
     @IBAction func answerButton3(sender: AnyObject) {
-        if(appDelegate.decideRoute % questionCount == 2){
+        if(appDelegate.decideRoute % questionCount == remainder2){
+            appDelegate.quizFlg = true
             let correctViewController = self.storyboard!.instantiateViewControllerWithIdentifier("correct")
             self.presentViewController(correctViewController, animated: true, completion: nil)
         }else{
+            appDelegate.quizFlg = false
             let falseViewController = self.storyboard!.instantiateViewControllerWithIdentifier("false")
             self.presentViewController(falseViewController, animated: true, completion: nil)
         }
@@ -63,7 +69,11 @@ class QuizViewController: UIViewController {
     
     //問題数を指定する変数
     let questionCount = 3
-
+    
+    //余りを定義
+    let remainder0 = 0
+    let remainder1 = 1
+    let remainder2 = 2
     
     
     override func viewDidLoad() {

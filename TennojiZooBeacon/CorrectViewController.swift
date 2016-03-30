@@ -28,8 +28,8 @@ class CorrectViewController: UIViewController {
     
     //2秒たったら呼ばれる
     func transition(){
-        let cardViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("card")
-        self.presentViewController(cardViewController, animated: true, completion: nil)
+        let comentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("coment")
+        self.presentViewController(comentViewController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

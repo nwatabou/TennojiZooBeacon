@@ -13,42 +13,41 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var cardList: UITableView!
     
-    
+    @IBOutlet weak var backButton: UIButton!
     @IBAction func backButton(sender: AnyObject) {
         //カード表示された状況によって挙動の修正
+        //flgがtrueならHome画面へ
         if(appDelegate.listFlg){
-            appDelegate.decideRoute = 0
+            appDelegate.decideRoute = defaultNum
             let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
             self.presentViewController(homeViewController, animated: true, completion: nil)
+        //falseなら前の画面へ
         }else{
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     //セクション別に動物を定義
     //この辺のカード獲得保存処理スマートにしたいなー
-    let honyurui = ["アミメキリン","アムールトラ","ヴィクトリアコアラ","カリフォルニアアシカ","コビトマングース","シシオザル","タイゾウ","チュウゴクオオカミ","チンパンジー","ヒガシクロサイ","ヒツジ","フサオネズミカンガルー","フタコブラクダ","ホッキョクグマ","ムフロン","メガネグマ","ライオン"]
-    let tyorui = ["コサンケイ","シロフクロウ","セーカーハヤブサ","ソデグロヅル","チリーフラミンゴ","ニホンコウノトリ","フンボルトペンギン","ホオアカトキ"]
-    let hatyurui = ["ヨウスコウワニ"]
-    let ryoseirui = ["シリケンイモリ"]
-    let gyorui = ["コイ"]
-    
-    var Hhonyurui = ["","","","","","","","","","","","","","","","",""]
-    var Htyorui = ["","","","","","","",""]
-    var Hhatyurui = [""]
-    var Hryoseirui = [""]
-    var Hgyorui = [""]
+    var honyurui = ["アミメキリン","アムールトラ","ヴィクトリアコアラ","カリフォルニアアシカ","コビトマングース","シシオザル","タイゾウ","チュウゴクオオカミ","チンパンジー","ヒガシクロサイ","ヒツジ","フサオネズミカンガルー","フタコブラクダ","ホッキョクグマ","ムフロン","メガネグマ","ライオン"]
+    var tyorui = ["コサンケイ","シロフクロウ","セーカーハヤブサ","ソデグロヅル","チリーフラミンゴ","ニホンコウノトリ","フンボルトペンギン","ホオアカトキ"]
+    var hatyurui = ["ヨウスコウワニ"]
+    var ryoseirui = ["シリケンイモリ"]
+    var gyorui = ["コイ"]
 
     let honyuruiSection = 0
     let tyoruiSection = 1
     let hatyuruiSection = 2
     let ryoseiruiSection = 3
     let gyoruiSection = 4
-    
+
+    let defaultNum = 0
     
     //この配列に画像名を格納
     let sections = ["ho.png","tyou.png","hatyu.png","ryou.png","gyo.png"]
     
     var displayWidth: CGFloat = 0.0
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     //最初に宣言しておく
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -67,6 +66,11 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
         // Delegateを設定する.
         cardList.delegate = self
         
+        if(appDelegate.listFlg){
+            backButton.setTitle("Home　　", forState: .Normal)
+        }else{
+            backButton.setTitle("＜戻る　　", forState: .Normal)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -88,23 +92,26 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //ここの条件分岐でカードを獲得したのかしていないのか判定する
-        appDelegate.cardFlg = (NSUserDefaults.standardUserDefaults().arrayForKey("cardGet") as? [String])!
+        if((defaults.objectForKey("cardGet")) != nil){
+            appDelegate.cardFlg = (NSUserDefaults.standardUserDefaults().arrayForKey("cardGet") as? [String])!
+        }
         
-        
+        var i:Int
+        var j:Int
         if(section == honyuruiSection){
             //セクションごとの分類の配列を回す
-            for(var i = 0;i < honyurui.count; i++){
+            for(i = 0;i < honyurui.count; i++){
                 //次に、その配列と、appDelegateで定義した動物名の配列を回す
-                for(var j = 1;j < appDelegate.animals.count; j++){
+                for(j = 0;j < appDelegate.animals.count; j++){
                     //哺乳類の動物リストと、すべての動物リストを比較
                     if(honyurui[i] == appDelegate.animals[j]){
                         //動物名が同じなら、その配列番号のカード獲得状況を参照
                         //getなら獲得
                         if(appDelegate.cardFlg[j] == "get"){
-                           Hhonyurui[i] = appDelegate.animals[j]
+                           honyurui[i] = appDelegate.animals[j]
                         //そうでないなら未獲得
                         }else{
-                            Hhonyurui[i] = "　　?　?　?"
+                            honyurui[i] = "　　?　?　?"
                         }
                     }
                 }
@@ -113,13 +120,13 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             
             
         }else if(section == tyoruiSection){
-            for(var i = 0;i < tyorui.count; i++){
-                for(var j = 0;j < appDelegate.animals.count; j++){
+            for(i = 0;i < tyorui.count; i++){
+                for(j = 0;j < appDelegate.animals.count; j++){
                     if(tyorui[i] == appDelegate.animals[j]){
                         if(appDelegate.cardFlg[j] == "get"){
-                            Htyorui[i] = appDelegate.animals[j]
+                            tyorui[i] = appDelegate.animals[j]
                         }else{
-                            Htyorui[i] = "　　?　?　?"
+                            tyorui[i] = "　　?　?　?"
                         }
                     }
                 }
@@ -128,13 +135,13 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             
             
         }else if(section == hatyuruiSection){
-            for(var i = 0;i < hatyurui.count; i++){
-                for(var j = 0;j < appDelegate.animals.count; j++){
+            for(i = 0;i < hatyurui.count; i++){
+                for(j = 0;j < appDelegate.animals.count; j++){
                     if(hatyurui[i] == appDelegate.animals[j]){
                         if(appDelegate.cardFlg[j] == "get"){
-                            Hhatyurui[i] = appDelegate.animals[j]
+                            hatyurui[i] = appDelegate.animals[j]
                         }else{
-                            Hhatyurui[i] = "　　?　?　?"
+                            hatyurui[i] = "　　?　?　?"
                         }
                     }
                 }
@@ -148,9 +155,9 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
                 for(var j = 0;j < appDelegate.animals.count; j++){
                     if(ryoseirui[i] == appDelegate.animals[j]){
                         if(appDelegate.cardFlg[j] == "get"){
-                            Hryoseirui[i] = appDelegate.animals[j]
+                            ryoseirui[i] = appDelegate.animals[j]
                         }else{
-                            Hryoseirui[i] = "　　?　?　?"
+                            ryoseirui[i] = "　　?　?　?"
                         }
                     }
                 }
@@ -159,13 +166,13 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             
             
         }else if(section == gyoruiSection){
-            for(var i = 0;i < gyorui.count; i++){
-                for(var j = 0;j < appDelegate.animals.count; j++){
+            for(i = 0;i < gyorui.count; i++){
+                for(j = 0;j < appDelegate.animals.count; j++){
                     if(gyorui[i] == appDelegate.animals[j]){
                         if(appDelegate.cardFlg[j] == "get"){
-                            Hgyorui[i] = appDelegate.animals[j]
+                            gyorui[i] = appDelegate.animals[j]
                         }else{
-                            Hgyorui[i] = "　　?　?　?"
+                            gyorui[i] = "　　?　?　?"
                         }
                     }
                 }
@@ -176,7 +183,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             return 0
         }
     }
-    
+
     
 
     
@@ -209,20 +216,20 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         // Cellに値を設定する.
         //セクションごとにセルの記述処理をする
-        if(indexPath.section == hatyuruiSection){
-            cell.textLabel!.text = "\(Hhonyurui[indexPath.row])"
+        if(indexPath.section == honyuruiSection){
+            cell.textLabel!.text = "\(honyurui[indexPath.row])"
             
         }else if(indexPath.section == tyoruiSection){
-            cell.textLabel!.text = "\(Htyorui[indexPath.row])"
+            cell.textLabel!.text = "\(tyorui[indexPath.row])"
             
         }else if(indexPath.section == hatyuruiSection){
-            cell.textLabel!.text = "\(Hhatyurui[indexPath.row])"
+            cell.textLabel!.text = "\(hatyurui[indexPath.row])"
             
         }else if(indexPath.section == ryoseiruiSection){
-            cell.textLabel!.text = "\(Hryoseirui[indexPath.row])"
+            cell.textLabel!.text = "\(ryoseirui[indexPath.row])"
             
         }else if(indexPath.section == gyoruiSection){
-            cell.textLabel!.text = "\(Hgyorui[indexPath.row])"
+            cell.textLabel!.text = "\(gyorui[indexPath.row])"
         }
         
         return cell
@@ -234,9 +241,47 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //選択されたセル番号をセクションごとに判定
         //哺乳類セクション
+        
+        /*軽量化コード
+        func()を使って処理をひとまとめにするといいかも？
+        switch (indexPath.section){
+        case honyuruiSection:
+            
+            break
+            
+        case tyoruiSection:
+            
+            break
+            
+        case hatyuruiSection:
+            
+            break
+        
+        case ryoseiruiSection:
+            
+            break
+            
+        case gyoruiSection:
+            
+            break
+            
+        default:
+            break
+        }
+    }
+        
+    func selectCell(){
+        var i:Int
+        for(i = 0; i < appDelegate.animals.count; i++){
+            if(appDelegate.animals[i] == 
+        }
+    }
+
+*/
+        
         if(indexPath.section == honyuruiSection){
             var i:Int
-            for(i = 0; i < appDelegate.animals.count - 1; i++){
+            for(i = 0; i < appDelegate.animals.count; i++){
                 //選択されたセル番号の動物名と、AppDelegateで定義した動物リストと比較
                 if(appDelegate.animals[i] == honyurui[indexPath.row]){
                     //比較した動物名が同じで、その動物のカードを獲得していたら画面遷移

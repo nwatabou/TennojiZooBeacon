@@ -75,7 +75,7 @@ class CardViewController: UIViewController {
     //最初に宣言しておく
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
-    var base = "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji/document/show/id/"
+    var base = "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji_app/animal_reference.html?animal_id=z"
     var add = ""
     
     //初期化用の変数
@@ -93,13 +93,13 @@ class CardViewController: UIViewController {
         
         //カード獲得保存処理
         //カードを獲得したら、appDelegate.cardFlgをfalseからgetにかえる
+        
         appDelegate.cardFlg[appDelegate.decideRoute] = "get"
+        print(appDelegate.animals[appDelegate.decideRoute])
         //NSUserDefaults型でディスク書き込み(カード獲得情報記録の準備)
         NSUserDefaults.standardUserDefaults().setObject(appDelegate.cardFlg, forKey: "cardGet")
         NSUserDefaults.standardUserDefaults().synchronize()
         
-        
-        print(appDelegate.cardFlg[appDelegate.decideRoute])
         
         
         if(appDelegate.listFlg){

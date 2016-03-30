@@ -30,9 +30,16 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         if(flg){
         //画面移動する前に値を渡しておく
         appDelegate.decideRoute = beaconNo
-        
-        let quizViewController = self.storyboard!.instantiateViewControllerWithIdentifier("quiz")
-        self.presentViewController(quizViewController, animated: true, completion: nil)
+            if(appDelegate.decideRoute == 12){
+                let middleViewController = self.storyboard!.instantiateViewControllerWithIdentifier("middle")
+                self.presentViewController(middleViewController, animated: true, completion: nil)
+            }else if(appDelegate.decideRoute == 32){
+                let finishViewController = self.storyboard!.instantiateViewControllerWithIdentifier("finish")
+                self.presentViewController(finishViewController, animated: true, completion: nil)
+            }else{
+                let quizViewController = self.storyboard!.instantiateViewControllerWithIdentifier("quiz")
+                self.presentViewController(quizViewController, animated: true, completion: nil)
+            }
         }else{
             //falseの時は近くにBeaconがなくてルート表示したい時
             let URL = baseURL + addURL
@@ -167,7 +174,7 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         self.animalLabel.text = appDelegate.animals[beaconNo]
         
         if(beacon.proximity != CLProximity.Unknown && beacon.minor != appDelegate.nowBeaconNo){
-            self.checkLable.text = "この動物で良いかな?"
+            self.checkLable.text = "この場所で良いかな?"
             flg = true
         }else if(beacon.proximity == CLProximity.Unknown || beacon.minor == appDelegate.nowBeaconNo){
             self.checkLable.text = "選んだ動物までのルートを表示しますか?"

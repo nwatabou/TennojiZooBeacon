@@ -15,7 +15,7 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
 
     //図鑑表示
     @IBAction func dictionary(sender: AnyObject) {
-        let url:NSURL = NSURL(string: "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji/")!
+        let url:NSURL = NSURL(string: "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji_app/animal_reference.html")!
         if UIApplication.sharedApplication().canOpenURL(url){
             UIApplication.sharedApplication().openURL(url)
         }

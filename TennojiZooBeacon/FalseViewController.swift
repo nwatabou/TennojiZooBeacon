@@ -14,11 +14,8 @@ class FalseViewController: UIViewController {
     @IBOutlet weak var imageVIew: UIImageView!
     
     @IBAction func nextButton(sender: AnyObject) {
-        appDelegate.decideRoute = 0
-        appDelegate.route = 0
-        
-        let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
-        self.presentViewController(routeViewController, animated: true, completion: nil)
+        let comentViewController = self.storyboard!.instantiateViewControllerWithIdentifier("coment")
+        self.presentViewController(comentViewController, animated: true, completion: nil)
     }
     
     //最初に宣言しておく
