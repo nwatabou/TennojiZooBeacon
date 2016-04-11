@@ -23,7 +23,7 @@ class CorrectViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
         //画面表示から2秒後に func transition()を呼び、画面推移
-        NSTimer.scheduledTimerWithTimeInterval(3.0,target:self,selector:Selector("transition"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(3.0,target:self,selector:#selector(CorrectViewController.transition), userInfo: nil, repeats: false)
     }
     
     //2秒たったら呼ばれる

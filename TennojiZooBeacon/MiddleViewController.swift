@@ -14,6 +14,10 @@ class MiddleViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
 
     @IBOutlet weak var countLabel: UILabel!
+    @IBAction func homeButton(sender: AnyObject) {
+        let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
+        self.presentViewController(homeViewController, animated: true, completion: nil)
+    }
     @IBAction func endButton(sender: AnyObject) {
         let finishViewController = self.storyboard!.instantiateViewControllerWithIdentifier("finish")
         self.presentViewController(finishViewController, animated: true, completion: nil)
@@ -33,9 +37,9 @@ class MiddleViewController: UIViewController {
         let img = UIImage(named: "tyukan.png")
         imageView.image = img
         
-        for(i = 0;i < appDelegate.cardFlg.count;i++){
+        for(i = 0;i < appDelegate.cardFlg.count;i += 1){
             if(appDelegate.cardFlg[i] == "get"){
-                count++
+                count += 1
             }
         }
         

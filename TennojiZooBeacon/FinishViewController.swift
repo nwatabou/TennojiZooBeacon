@@ -18,21 +18,26 @@ class FinishViewController: UIViewController {
 
     @IBOutlet weak var dateLabel: UILabel!
     
-    //最初に宣言しておく
+    @IBAction func homeButton(sender: AnyObject) {
+        let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
+        self.presentViewController(homeViewController, animated: true, completion: nil)
+    }
+    
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
     var count = 0
     var i = 0
     
+    //日付を扱う変数
     let now = NSDate()
     
     override func viewDidLoad() {
         let img = UIImage(named: "finish.png")
         imageView.image = img
         
-        for(i=0;i<appDelegate.cardFlg.count;i++){
+        for(i=0;i<appDelegate.cardFlg.count;i += 1){
             if(appDelegate.cardFlg[i] == "get"){
-                count++
+                count += 1
             }
         }
         self.countLabel.text = "\(count)"

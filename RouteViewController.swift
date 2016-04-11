@@ -202,12 +202,13 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
         var i = 0
         var j = 0
         let routeDefault = beaconNo + add1
-        for(i=routeDefault;i<appDelegate.animals.count;i++){
+        for(i = routeDefault;i < appDelegate.animals.count;i += 1){
             if((defaults.objectForKey("cardGet")) != nil){
                 appDelegate.cardFlg = (NSUserDefaults.standardUserDefaults().arrayForKey("cardGet") as? [String])!
             }
-            if(appDelegate.cardFlg[i] == "false"){
-                j++
+            //今のbeaconNo + 1からカードを獲得していない近い動物を表示
+            if(appDelegate.cardFlg[i] != "get"){
+                j += 1
                 if(j > 3){
                     break
                 }else{

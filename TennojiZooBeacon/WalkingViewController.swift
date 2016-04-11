@@ -177,7 +177,7 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
             self.checkLable.text = "この場所で良いかな?"
             flg = true
         }else if(beacon.proximity == CLProximity.Unknown || beacon.minor == appDelegate.nowBeaconNo){
-            self.checkLable.text = "選んだ動物までのルートを表示しますか?"
+            self.checkLable.text = "選んだ場所までのルートを表示しますか?"
             flg = false
             addURL = appDelegate.routeURL[appDelegate.route]
         }
