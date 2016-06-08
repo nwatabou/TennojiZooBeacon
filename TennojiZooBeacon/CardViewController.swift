@@ -47,24 +47,14 @@ class CardViewController: UIViewController {
             
         //falseなら、クイズに正解してカードが表示された時の処理(図鑑ボタン)
         }else{
-            //動物ごとの図鑑に移動処理（Web）
-            let URLString = base + add
-            let url:NSURL = NSURL(string: URLString)!
-            if UIApplication.sharedApplication().canOpenURL(url){
-            UIApplication.sharedApplication().openURL(url)
-            }
+            dictionaryURL()
         }
     }
     
     @IBAction func rightButton(sender: AnyObject) {
         if(appDelegate.listFlg){
+            dictionaryURL()
             
-            //動物ごとの図鑑に移動処理（Web）(図鑑ボタン)
-            let URLString = base + add
-            let url:NSURL = NSURL(string: URLString)!
-            if UIApplication.sharedApplication().canOpenURL(url){
-                UIApplication.sharedApplication().openURL(url)
-            }
             //次の問題へボタン
         }else{
             let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
@@ -84,23 +74,23 @@ class CardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        add = appDelegate.url[appDelegate.decideRoute]
+        add = appDelegate.data[appDelegate.route][appDelegate.dictionaryID]
         
         //appDelegateに画像を配列で定義しておいて、配列番号で参照する。
-        let img = UIImage(named: appDelegate.image[appDelegate.decideRoute])
+        let img = UIImage(named: appDelegate.data[appDelegate.route][appDelegate.image])
         
         imageView!.image = img
         
         //カード獲得保存処理
         //カードを獲得したら、appDelegate.cardFlgをfalseからgetにかえる
         
-        appDelegate.cardFlg[appDelegate.decideRoute] = "get"
-        print(appDelegate.animals[appDelegate.decideRoute])
+        appDelegate.cardFlg[appDelegate.route] = "get"
+
         //NSUserDefaults型でディスク書き込み(カード獲得情報記録の準備)
         NSUserDefaults.standardUserDefaults().setObject(appDelegate.cardFlg, forKey: "cardGet")
         NSUserDefaults.standardUserDefaults().synchronize()
         
-        
+        print(appDelegate.route)
         
         if(appDelegate.listFlg){
             //カードリストから表示されたパターン
@@ -117,6 +107,16 @@ class CardViewController: UIViewController {
         }
         
         
+    }
+    
+    
+    //動物ごとの図鑑に移動処理（Web）
+    func dictionaryURL(){
+        let URLString = base + add
+        let url:NSURL = NSURL(string: URLString)!
+        if UIApplication.sharedApplication().canOpenURL(url){
+            UIApplication.sharedApplication().openURL(url)
+        }
     }
     
     override func didReceiveMemoryWarning() {

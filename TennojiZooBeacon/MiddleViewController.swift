@@ -30,14 +30,17 @@ class MiddleViewController: UIViewController {
     //最初に宣言しておく
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
-    var count = 0
-    var i = 0
+    let defaultNumber = 0
+    
+    
     
     override func viewDidLoad() {
+        var count = defaultNumber
+        
         let img = UIImage(named: "tyukan.png")
         imageView.image = img
         
-        for(i = 0;i < appDelegate.cardFlg.count;i += 1){
+        for i in 0 ..< appDelegate.data.count {
             if(appDelegate.cardFlg[i] == "get"){
                 count += 1
             }
@@ -45,7 +48,7 @@ class MiddleViewController: UIViewController {
         
         self.countLabel.text = "\(count)"
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         

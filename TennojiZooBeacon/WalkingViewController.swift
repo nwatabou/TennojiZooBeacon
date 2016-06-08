@@ -29,13 +29,16 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         //flg = trueの時は、近くにBeaconがある時
         if(flg){
         //画面移動する前に値を渡しておく
-        appDelegate.decideRoute = beaconNo
-            if(appDelegate.decideRoute == 12){
+        appDelegate.route = beaconNo
+            
+            if(appDelegate.route == 23){
                 let middleViewController = self.storyboard!.instantiateViewControllerWithIdentifier("middle")
                 self.presentViewController(middleViewController, animated: true, completion: nil)
-            }else if(appDelegate.decideRoute == 32){
+                
+            }else if(appDelegate.route == 32 || appDelegate.route == 0){
                 let finishViewController = self.storyboard!.instantiateViewControllerWithIdentifier("finish")
                 self.presentViewController(finishViewController, animated: true, completion: nil)
+                
             }else{
                 let quizViewController = self.storyboard!.instantiateViewControllerWithIdentifier("quiz")
                 self.presentViewController(quizViewController, animated: true, completion: nil)
@@ -72,10 +75,10 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         
         
         // ロケーションマネージャを作成する
-        self.trackLocationManager = CLLocationManager();
+        self.trackLocationManager = CLLocationManager()
         
         // デリゲートを自身に設定
-        self.trackLocationManager.delegate = self;
+        self.trackLocationManager.delegate = self
         
         // BeaconのUUIDを設定
         let uuid:NSUUID? = NSUUID(UUIDString: "00000000-7DE6-1001-B000-001C4DF13E76")
@@ -86,7 +89,7 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         let img = UIImage(named: "walking.png")
         imageView!.image = img
         
-        addURL = appDelegate.routeURL[appDelegate.route]
+        addURL = appDelegate.data[appDelegate.route][appDelegate.routeID]
         
     }
     
@@ -111,10 +114,10 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
     //観測の開始に成功すると呼ばれる
     func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
         
-        print("didStartMonitoringForRegion");
+        print("didStartMonitoringForRegion")
         
         //観測開始に成功したら、領域内にいるかどうかの判定をおこなう。→（didDetermineState）へ
-        trackLocationManager.requestStateForRegion(self.beaconRegion);
+        trackLocationManager.requestStateForRegion(self.beaconRegion)
     }
     
     
@@ -171,7 +174,7 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         //beacon.minorをint型に変換(appDelegate.decideRouteに渡す為に必要)
         beaconNo = (beacon.minor).integerValue
         
-        self.animalLabel.text = appDelegate.animals[beaconNo]
+        self.animalLabel.text = ("ここは　" + appDelegate.data[beaconNo][appDelegate.name] + "　の近くだよ")
         
         if(beacon.proximity != CLProximity.Unknown && beacon.minor != appDelegate.nowBeaconNo){
             self.checkLable.text = "この場所で良いかな?"
@@ -179,7 +182,7 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         }else if(beacon.proximity == CLProximity.Unknown || beacon.minor == appDelegate.nowBeaconNo){
             self.checkLable.text = "選んだ場所までのルートを表示しますか?"
             flg = false
-            addURL = appDelegate.routeURL[appDelegate.route]
+            addURL = appDelegate.data[appDelegate.route][appDelegate.routeID]
         }
     }
     

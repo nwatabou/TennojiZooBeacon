@@ -55,7 +55,7 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
         appDelegate.listFlg = false
         
         appDelegate.route = defaultNumber
-        appDelegate.decideRoute = defaultNumber
+        
     }
 
     override func didReceiveMemoryWarning() {

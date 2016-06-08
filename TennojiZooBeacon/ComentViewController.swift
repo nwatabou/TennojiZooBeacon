@@ -24,7 +24,6 @@ class ComentViewController: UIViewController {
             let cardViewController = self.storyboard!.instantiateViewControllerWithIdentifier("card")
             self.presentViewController(cardViewController, animated: true, completion: nil)
         }else{
-            appDelegate.decideRoute = defaultNum
             appDelegate.route = defaultNum
             
             let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
@@ -39,7 +38,7 @@ class ComentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let animalImg = appDelegate.image[appDelegate.decideRoute]
+        let animalImg = appDelegate.data[appDelegate.route][appDelegate.image]
         let head = "#"
         
         let comentImg = head + animalImg

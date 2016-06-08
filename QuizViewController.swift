@@ -30,36 +30,24 @@ class QuizViewController: UIViewController {
     
     //動物の番号を3(questionCount)で割った余りが正解の問題。
     @IBAction func answerButton1(sender: AnyObject) {
-        if(appDelegate.decideRoute % questionCount == remainder0){
-            appDelegate.quizFlg = true
-            let correctViewController = self.storyboard!.instantiateViewControllerWithIdentifier("correct")
-            self.presentViewController(correctViewController, animated: true, completion: nil)
+        if(appDelegate.route % questionCount == remainder0){
+            trueAnswer()
         }else{
-            appDelegate.quizFlg = false
-            let falseViewController = self.storyboard!.instantiateViewControllerWithIdentifier("false")
-            self.presentViewController(falseViewController, animated: true, completion: nil)
+            falseAnswer()
         }
     }
     @IBAction func answerButton2(sender: AnyObject) {
-        if(appDelegate.decideRoute % questionCount == remainder1){
-            appDelegate.quizFlg = true
-            let correctViewController = self.storyboard!.instantiateViewControllerWithIdentifier("correct")
-            self.presentViewController(correctViewController, animated: true, completion: nil)
+        if(appDelegate.route % questionCount == remainder1){
+            trueAnswer()
         }else{
-            appDelegate.quizFlg = false
-            let falseViewController = self.storyboard!.instantiateViewControllerWithIdentifier("false")
-            self.presentViewController(falseViewController, animated: true, completion: nil)
+            falseAnswer()
         }
     }
     @IBAction func answerButton3(sender: AnyObject) {
-        if(appDelegate.decideRoute % questionCount == remainder2){
-            appDelegate.quizFlg = true
-            let correctViewController = self.storyboard!.instantiateViewControllerWithIdentifier("correct")
-            self.presentViewController(correctViewController, animated: true, completion: nil)
+        if(appDelegate.route % questionCount == remainder2){
+            trueAnswer()
         }else{
-            appDelegate.quizFlg = false
-            let falseViewController = self.storyboard!.instantiateViewControllerWithIdentifier("false")
-            self.presentViewController(falseViewController, animated: true, completion: nil)
+            falseAnswer()
         }
     }
     
@@ -80,19 +68,31 @@ class QuizViewController: UIViewController {
         super.viewDidLoad()
         
         //appDelegate.decideRouteには最終的に選んだ動物のBeacon番号を格納
-        self.messageLabel.text = appDelegate.message[appDelegate.decideRoute]
-        self.animalLabel.text = appDelegate.animals[appDelegate.decideRoute]
+        self.messageLabel.text = appDelegate.data[appDelegate.route][appDelegate.message]
+        self.animalLabel.text = appDelegate.data[appDelegate.route][appDelegate.name]
         
-        self.quizLabel.text = appDelegate.quiz[appDelegate.decideRoute]
-        answerButton1.setTitle(appDelegate.answer1[appDelegate.decideRoute], forState: .Normal)
-        answerButton2.setTitle(appDelegate.answer2[appDelegate.decideRoute], forState: .Normal)
-        answerButton3.setTitle(appDelegate.answer3[appDelegate.decideRoute], forState: .Normal)
+        self.quizLabel.text = appDelegate.data[appDelegate.route][appDelegate.question]
+        answerButton1.setTitle(appDelegate.data[appDelegate.route][appDelegate.select1], forState: .Normal)
+        answerButton2.setTitle(appDelegate.data[appDelegate.route][appDelegate.select2], forState: .Normal)
+        answerButton3.setTitle(appDelegate.data[appDelegate.route][appDelegate.select3], forState: .Normal)
         
         let img = UIImage(named: "quiz.png")
         imageVIew.image = img
     }
     
-
+    //正解時の処理
+    func trueAnswer(){
+        appDelegate.quizFlg = true
+        let correctViewController = self.storyboard!.instantiateViewControllerWithIdentifier("correct")
+        self.presentViewController(correctViewController, animated: true, completion: nil)
+    }
+    
+    //不正解時の処理
+    func falseAnswer(){
+        appDelegate.quizFlg = false
+        let falseViewController = self.storyboard!.instantiateViewControllerWithIdentifier("false")
+        self.presentViewController(falseViewController, animated: true, completion: nil)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

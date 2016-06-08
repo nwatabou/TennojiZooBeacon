@@ -25,8 +25,8 @@ class FinishViewController: UIViewController {
     
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
-    var count = 0
-    var i = 0
+    let defaultNumber = 0
+    
     
     //日付を扱う変数
     let now = NSDate()
@@ -35,7 +35,9 @@ class FinishViewController: UIViewController {
         let img = UIImage(named: "finish.png")
         imageView.image = img
         
-        for(i=0;i<appDelegate.cardFlg.count;i += 1){
+        var count = defaultNumber
+        
+        for i in defaultNumber ..< appDelegate.data.count {
             if(appDelegate.cardFlg[i] == "get"){
                 count += 1
             }
