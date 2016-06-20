@@ -28,22 +28,22 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     //セクション別に動物を定義
     //この辺のカード獲得保存処理スマートにしたいなー
-    var honyurui = ["アミメキリン","アムールトラ","ヴィクトリアコアラ","カバ","カリフォルニアアシカ","コビトマングース","シシオザル","スナドリネコ","タイゾウ","チュウゴクオオカミ","チンパンジー","ヒガシクロサイ","ヒツジ","ピューマ","フサオネズミカンガルー","ホッキョクグマ","ムフロン","メガネグマ","ヤギ","ライオン"]
-    var tyorui = ["コサンケイ","シロフクロウ","セーカーハヤブサ","チリーフラミンゴ","フンボルトペンギン","ホオアカトキ"]
-    var hatyurui = ["ミシシッピワニ"]
-    var ryoseirui = ["ホソオオトカゲ"]
-    var gyorui = ["コイ"]
+    var honyurui:Array = ["アミメキリン","アムールトラ","ヴィクトリアコアラ","カバ","カリフォルニアアシカ","コビトマングース","シシオザル","スナドリネコ","タイゾウ","チュウゴクオオカミ","チンパンジー","ヒガシクロサイ","ヒツジ","ピューマ","フサオネズミカンガルー","ホッキョクグマ","ムフロン","メガネグマ","ヤギ","ライオン"]
+    var tyorui:Array = ["コサンケイ","シロフクロウ","セーカーハヤブサ","チリーフラミンゴ","フンボルトペンギン","ホオアカトキ"]
+    var hatyurui:Array = ["ミシシッピワニ"]
+    var ryoseirui:Array = ["ホソオオトカゲ"]
+    var gyorui:Array = ["コイ"]
 
-    let honyuruiSection = 0
-    let tyoruiSection = 1
-    let hatyuruiSection = 2
-    let ryoseiruiSection = 3
-    let gyoruiSection = 4
+    let honyuruiSection:Int = 0
+    let tyoruiSection:Int = 1
+    let hatyuruiSection:Int = 2
+    let ryoseiruiSection:Int = 3
+    let gyoruiSection:Int = 4
 
-    let defaultNum = 0
+    let defaultNum:Int = 0
     
     //この配列に画像名を格納
-    let sections = ["ho.png","tyou.png","hatyu.png","ryou.png","gyo.png"]
+    let sections:Array = ["ho.png","tyou.png","hatyu.png","ryou.png","gyo.png"]
     
     var displayWidth: CGFloat = 0.0
     
@@ -188,99 +188,6 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             return 0
         }
     }
-    
-        /*
-        if(section == honyuruiSection){
-            //セクションごとの分類の配列を回す
-            for i in defaultNum ..< honyurui.count{
-                //次に、その配列と、appDelegateで定義した動物名の配列を回す
-                for j in defaultNum ..< appDelegate.data.count{
-                    //哺乳類の動物リストと、すべての動物リストを比較
-                    if(honyurui[i] == appDelegate.data[j][appDelegate.name]){
-                        //動物名が同じなら、その配列番号のカード獲得状況を参照
-                        //getなら獲得
-                        if(appDelegate.cardFlg[j] == "get"){
-                           honyurui[i] = appDelegate.data[j][appDelegate.name]
-                        //そうでないなら未獲得
-                        }else{
-                            honyurui[i] = "　　?　?　?"
-                        }
-                        break
-                    }
-                }
-            }
-            return honyurui.count
-            
-            
-        }else if(section == tyoruiSection){
-            for i in defaultNum ..<  tyorui.count{
-                for j in defaultNum ..< appDelegate.data.count{
-                    if(tyorui[i] == appDelegate.data[j][appDelegate.name]){
-                        if(appDelegate.cardFlg[j] == "get"){
-                            tyorui[i] = appDelegate.data[j][appDelegate.name]
-                        }else{
-                            tyorui[i] = "　　?　?　?"
-                        }
-                        break
-                    }
-                }
-            }
-            return tyorui.count
-            
-            
-        }else if(section == hatyuruiSection){
-            for i in defaultNum ..< hatyurui.count{
-                for j in defaultNum ..< appDelegate.data.count{
-                    if(hatyurui[i] == appDelegate.data[j][appDelegate.name]){
-                        if(appDelegate.cardFlg[j] == "get"){
-                            hatyurui[i] = appDelegate.data[j][appDelegate.name]
-                        }else{
-                            hatyurui[i] = "　　?　?　?"
-                        }
-                        break
-                    }
-                }
-            }
-
-            return hatyurui.count
-            
-            
-        }else if(section == ryoseiruiSection){
-            for i in defaultNum ..< ryoseirui.count{
-                for j in defaultNum ..< appDelegate.data.count{
-                    if(ryoseirui[i] == appDelegate.data[j][appDelegate.name]){
-                        if(appDelegate.cardFlg[j] == "get"){
-                            ryoseirui[i] = appDelegate.data[j][appDelegate.name]
-                        }else{
-                            ryoseirui[i] = "　　?　?　?"
-                        }
-                        break
-                    }
-                }
-            }
-            return ryoseirui.count
-            
-            
-        }else if(section == gyoruiSection){
-            for i in defaultNum ..< gyorui.count{
-                for j in defaultNum ..< appDelegate.data.count{
-                    if(gyorui[i] == appDelegate.data[j][appDelegate.name]){
-                        if(appDelegate.cardFlg[j] == "get"){
-                            gyorui[i] = appDelegate.data[j][appDelegate.name]
-                        }else{
-                            gyorui[i] = "　　?　?　?"
-                        }
-                        break
-                    }
-                }
-            }
-            return gyorui.count
-            
-        }else{
-            return 0
-        }
-     }
- */
  
 
     

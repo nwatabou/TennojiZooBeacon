@@ -45,20 +45,20 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     var beaconNo = 0
     
     //初期化用の変数
-    let defaultNumber = 0
+    let defaultNumber:Int = 0
     
-    let routeNumber = 3
+    let routeNumber:Int = 3
     
     //beaconの近くにいるかどうかの判定のためのフラグ
     var flg = false
     
-    let add1 = 1
-    let add2 = 2
-    let add3 = 3
+    let add1:Int = 1
+    let add2:Int = 2
+    let add3:Int = 3
     
     //beacon番号の最初と最後を定義
-    let top = 0
-    let last = 31
+    let top:Int = 0
+    let last:Int = 31
     
     //beaconの値取得関係の変数
     var trackLocationManager : CLLocationManager!
@@ -187,10 +187,12 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
         みたいな処理でルート表示
         */
         
+        print(beaconNo)
+        
 
         //以下、カードを取得したルートを表示しない処理
         let routeDefault = beaconNo + add1
-
+        
         var j = 0
         for i in routeDefault ..< appDelegate.data.count {
             if(appDelegate.cardFlg[i] != "get"){

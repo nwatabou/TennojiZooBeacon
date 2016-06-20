@@ -59,9 +59,9 @@ class QuizViewController: UIViewController {
     let questionCount = 3
     
     //余りを定義
-    let remainder0 = 0
-    let remainder1 = 1
-    let remainder2 = 2
+    let remainder0:Int = 0
+    let remainder1:Int = 1
+    let remainder2:Int = 2
     
     
     override func viewDidLoad() {

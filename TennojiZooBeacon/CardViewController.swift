@@ -40,8 +40,6 @@ class CardViewController: UIViewController {
     //appDelegate.listFlgがtrueなら、カードリストからカードを表示された時の処理(戻るボタン)
     @IBAction func leftButton(sender: AnyObject) {
         if(appDelegate.listFlg){
-//            appDelegate.decideRoute = defaultNunber
-            
             let cardListViewController = self.storyboard!.instantiateViewControllerWithIdentifier("cardlist")
             self.presentViewController(cardListViewController, animated: true, completion: nil)
             
@@ -65,11 +63,11 @@ class CardViewController: UIViewController {
     //最初に宣言しておく
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
-    var base = "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji_app/animal_reference.html?animal_id=z"
-    var add = ""
+    var base:String = "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji_app/animal_reference.html?animal_id=z"
+    var add:String = ""
     
     //初期化用の変数
-    let defaultNunber = 0
+    let defaultNunber:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()

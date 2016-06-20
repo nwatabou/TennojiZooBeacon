@@ -58,11 +58,11 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
     var beaconRegion : CLBeaconRegion!
     
     
-    var beaconNo = 0
+    var beaconNo:Int = 0
     
     //道案内するか、クイズ画面に移動するのかの判定フラグ
     //falseなら案内、trueならクイズ画面へ
-    var flg = false
+    var flg:Bool = false
     
     //最初に宣言しておく
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -174,7 +174,7 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         //beacon.minorをint型に変換(appDelegate.decideRouteに渡す為に必要)
         beaconNo = (beacon.minor).integerValue
         
-        self.animalLabel.text = ("ここは　" + appDelegate.data[beaconNo][appDelegate.name] + "　の近くだよ")
+        self.animalLabel.text = ("ここは " + appDelegate.data[beaconNo][appDelegate.name] + " の近くだよ")
         
         if(beacon.proximity != CLProximity.Unknown && beacon.minor != appDelegate.nowBeaconNo){
             self.checkLable.text = "この場所で良いかな?"

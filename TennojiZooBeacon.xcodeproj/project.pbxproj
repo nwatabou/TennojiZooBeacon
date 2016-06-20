@@ -83,6 +83,8 @@
 		6388A2041C9050DB001B29F8 /* #yousukouwani.png in Resources */ = {isa = PBXBuildFile; fileRef = 6388A1E61C9050DB001B29F8 /* #yousukouwani.png */; };
 		6388A2061C9051D9001B29F8 /* ComentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388A2051C9051D9001B29F8 /* ComentViewController.swift */; };
 		638E85CF1CFEB7D6003ABE80 /* TennojiDataFile.csv in Resources */ = {isa = PBXBuildFile; fileRef = 638E85CE1CFEB7D6003ABE80 /* TennojiDataFile.csv */; };
+		63A7E9C11D13A20B00E7BE4B /* #misisipiwani.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A7E9C01D13A20B00E7BE4B /* #misisipiwani.png */; };
+		63A7E9C31D13A23400E7BE4B /* misisipiwani.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A7E9C21D13A23400E7BE4B /* misisipiwani.png */; };
 		63C350CD1CFEA1AA00766889 /* walking.png in Resources */ = {isa = PBXBuildFile; fileRef = 63C350CC1CFEA1AA00766889 /* walking.png */; };
 		63C591FC1CEAD0F100CCE11D /* #hosootokage.png in Resources */ = {isa = PBXBuildFile; fileRef = 63C591F41CEAD0F100CCE11D /* #hosootokage.png */; };
 		63C591FD1CEAD0F100CCE11D /* #kaba.png in Resources */ = {isa = PBXBuildFile; fileRef = 63C591F51CEAD0F100CCE11D /* #kaba.png */; };
@@ -202,6 +204,8 @@
 		6388A1E61C9050DB001B29F8 /* #yousukouwani.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "#yousukouwani.png"; sourceTree = SOURCE_ROOT; };
 		6388A2051C9051D9001B29F8 /* ComentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComentViewController.swift; sourceTree = "<group>"; };
 		638E85CE1CFEB7D6003ABE80 /* TennojiDataFile.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TennojiDataFile.csv; sourceTree = "<group>"; };
+		63A7E9C01D13A20B00E7BE4B /* #misisipiwani.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "#misisipiwani.png"; sourceTree = "<group>"; };
+		63A7E9C21D13A23400E7BE4B /* misisipiwani.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = misisipiwani.png; sourceTree = "<group>"; };
 		63C350CC1CFEA1AA00766889 /* walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walking.png; sourceTree = "<group>"; };
 		63C591F41CEAD0F100CCE11D /* #hosootokage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "#hosootokage.png"; sourceTree = SOURCE_ROOT; };
 		63C591F51CEAD0F100CCE11D /* #kaba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "#kaba.png"; sourceTree = SOURCE_ROOT; };
@@ -331,6 +335,7 @@
 				6388A1D41C9050DB001B29F8 /* #koi.png */,
 				6388A1D51C9050DB001B29F8 /* #kosankei.png */,
 				6388A1D61C9050DB001B29F8 /* #meganeguma.png */,
+				63A7E9C01D13A20B00E7BE4B /* #misisipiwani.png */,
 				6388A1D71C9050DB001B29F8 /* #muhuron.png */,
 				6388A1D91C9050DB001B29F8 /* #raion.png */,
 				6388A1DA1C9050DB001B29F8 /* #ressa-panda.png */,
@@ -364,6 +369,7 @@
 				635BA5621C834CF7008AD16B /* kosankei.png */,
 				635BA5631C834CF7008AD16B /* lion.png */,
 				635BA5651C834CF7008AD16B /* meganeguma.png */,
+				63A7E9C21D13A23400E7BE4B /* misisipiwani.png */,
 				635BA5661C834CF7008AD16B /* muhuron.png */,
 				635BA56A1C834CF7008AD16B /* raion.png */,
 				635BA56B1C834CF7008AD16B /* ressa-panda.png */,
@@ -516,6 +522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				635BA58A1C834CF7008AD16B /* ho.png in Resources */,
+				63A7E9C11D13A20B00E7BE4B /* #misisipiwani.png in Resources */,
 				63770C431CECBA8700B0AFBD /* amimekirin.png in Resources */,
 				635BA5911C834CF7008AD16B /* kobito-mangusu.png in Resources */,
 				635BA5801C834CF7008AD16B /* amurutora.png in Resources */,
@@ -583,6 +590,7 @@
 				633EAEF51CA2CC590048262E /* finish.png in Resources */,
 				635BA5AA1C834CF7008AD16B /* true.png in Resources */,
 				635BA5881C834CF7008AD16B /* higasikurosai.png in Resources */,
+				63A7E9C31D13A23400E7BE4B /* misisipiwani.png in Resources */,
 				6388A2001C9050DB001B29F8 /* #tinpanji.png in Resources */,
 				635BA58C1C834CF7008AD16B /* hooakatoki.png in Resources */,
 				635BA5A81C834CF7008AD16B /* tinpanji.png in Resources */,
