@@ -27,17 +27,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="OWD-nb-dk0" kind="presentation" identifier="start" id="dvx-QM-Aez"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWv-hp-JRA">
-                                <rect key="frame" x="61" y="598" width="266" height="49"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <state key="normal" title="カードリスト">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="POr-SL-PKJ" kind="presentation" id="32w-Pb-vrn"/>
+                                    <segue destination="OWD-nb-dk0" kind="show" id="UJ1-qr-Kf9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dML-wk-JpQ">
@@ -47,7 +37,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ldK-DH-0fn" kind="presentation" id="Qph-ah-nnI"/>
+                                    <segue destination="ldK-DH-0fn" kind="show" id="X0V-Dk-Laa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6c-in-58A">
@@ -58,6 +48,16 @@
                                 </state>
                                 <connections>
                                     <action selector="dictionary:" destination="C07-bc-xdK" eventType="touchUpInside" id="HVy-a9-7OG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWv-hp-JRA">
+                                <rect key="frame" x="61" y="598" width="266" height="49"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="カードリスト">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="POr-SL-PKJ" kind="show" id="wws-lA-ZtT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -135,12 +135,13 @@
                                 <items>
                                     <navigationItem id="uce-hV-bax">
                                         <barButtonItem key="leftBarButtonItem" title=" " style="plain" id="NfJ-DU-lrd">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nWt-dz-d7e">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nWt-dz-d7e" userLabel="＜戻る">
                                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="＜戻る　　"/>
                                                 <connections>
-                                                    <segue destination="C07-bc-xdK" kind="presentation" id="aLb-wu-kVW"/>
+                                                    <action selector="backButton:" destination="ldK-DH-0fn" eventType="touchUpInside" id="OLh-dN-3Uc"/>
+                                                    <segue destination="C07-bc-xdK" kind="show" id="Mvp-Kx-i6a"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -196,7 +197,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="＜戻る　　"/>
                                                 <connections>
-                                                    <segue destination="C07-bc-xdK" kind="presentation" id="BRT-n4-KDT"/>
+                                                    <segue destination="C07-bc-xdK" kind="show" id="VFt-vh-5xa"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -208,15 +209,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="routeButton1:" destination="OWD-nb-dk0" eventType="touchUpInside" id="Ra2-ah-TeV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDc-N6-HQx">
-                                <rect key="frame" x="87" y="356" width="288" height="70"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="routeButton2:" destination="OWD-nb-dk0" eventType="touchUpInside" id="UgP-4T-6I2"/>
+                                    <segue destination="9bo-V1-WXY" kind="show" identifier="select1" id="gNz-hX-JBU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aba-ve-tn0">
@@ -224,7 +217,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="routeButton3:" destination="OWD-nb-dk0" eventType="touchUpInside" id="ZTD-Tc-TjP"/>
+                                    <segue destination="9bo-V1-WXY" kind="show" identifier="select3" id="aqZ-z7-PxW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDc-N6-HQx">
+                                <rect key="frame" x="87" y="356" width="288" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="9bo-V1-WXY" kind="show" identifier="select2" id="mFt-Zp-8Aj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -233,9 +234,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="imageView" destination="Fwd-IT-D6c" id="dLB-f4-ZVK"/>
-                        <outlet property="routeButton1" destination="bRM-kV-7vh" id="MY5-rw-k9g"/>
-                        <outlet property="routeButton2" destination="uDc-N6-HQx" id="G9M-7v-mBO"/>
-                        <outlet property="routeButton3" destination="aba-ve-tn0" id="Asf-da-OZe"/>
+                        <outlet property="routeButton1" destination="bRM-kV-7vh" id="DN3-QX-Q63"/>
+                        <outlet property="routeButton2" destination="uDc-N6-HQx" id="fDh-eX-gGk"/>
+                        <outlet property="routeButton3" destination="aba-ve-tn0" id="7JG-Sh-oDh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PhG-0d-IOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -258,7 +259,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3T-eS-8MS">
-                                <rect key="frame" x="40" y="310" width="335" height="70"/>
+                                <rect key="frame" x="54" y="310" width="321" height="70"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -266,7 +267,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSX-ga-vYQ">
-                                <rect key="frame" x="40" y="378" width="335" height="70"/>
+                                <rect key="frame" x="54" y="378" width="321" height="70"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -300,22 +301,11 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="40h-PB-p0V">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem id="P5O-GN-jZ3">
-                                        <barButtonItem key="leftBarButtonItem" title=" " style="plain" id="n5d-CE-z0M">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FBI-gg-hnZ" userLabel="＜戻る">
-                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="＜戻る　　"/>
-                                                <connections>
-                                                    <action selector="backButton:" destination="sps-3J-OL0" eventType="touchUpInside" id="125-5W-sGr"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem id="P5O-GN-jZ3"/>
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XhU-e3-aOZ">
-                                <rect key="frame" x="40" y="450" width="335" height="70"/>
+                                <rect key="frame" x="54" y="450" width="321" height="70"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -325,13 +315,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="vai-nn-f6U"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="animalLabel" destination="vSK-y5-7lb" id="HLJ-wx-zot"/>
                         <outlet property="answerButton1" destination="z3T-eS-8MS" id="Kb1-8b-CKd"/>
                         <outlet property="answerButton2" destination="iSX-ga-vYQ" id="34X-lo-WRM"/>
                         <outlet property="answerButton3" destination="XhU-e3-aOZ" id="y5s-x9-yy3"/>
-                        <outlet property="backButton" destination="FBI-gg-hnZ" id="GzZ-Xx-nR1"/>
                         <outlet property="imageVIew" destination="ih9-rz-QL4" id="DJl-WL-HyS"/>
                         <outlet property="messageLabel" destination="ZdP-dm-aFC" id="z9p-rM-01f"/>
                         <outlet property="quizLabel" destination="z7B-hO-2Yz" id="5Zj-qv-ktK"/>
@@ -402,6 +392,7 @@
                                                 <state key="normal" title="Home　　"/>
                                                 <connections>
                                                     <action selector="homeButton:" destination="yZf-pG-5me" eventType="touchUpInside" id="fnP-HQ-7Tw"/>
+                                                    <segue destination="C07-bc-xdK" kind="show" id="8AS-Rr-uBm"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -446,6 +437,7 @@
                             <constraint firstItem="PIc-uO-pah" firstAttribute="leading" secondItem="xFE-ei-bQJ" secondAttribute="leading" id="yWi-va-eku"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="QUY-vQ-12g"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="countLabel" destination="n3d-rI-iHN" id="VBq-W2-n2O"/>
@@ -479,6 +471,7 @@
                                                 <state key="normal" title="Home　　"/>
                                                 <connections>
                                                     <action selector="homeButton:" destination="DKP-to-akP" eventType="touchUpInside" id="ddb-Bo-14H"/>
+                                                    <segue destination="C07-bc-xdK" kind="show" id="RnP-Od-vlL"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -501,7 +494,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJc-CC-SyM">
-                                <rect key="frame" x="169" y="159" width="68" height="34"/>
+                                <rect key="frame" x="169" y="180" width="68" height="34"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -590,6 +583,7 @@
                                 </state>
                                 <connections>
                                     <action selector="nextButton:" destination="8ip-89-nEl" eventType="touchUpInside" id="OcX-C5-ice"/>
+                                    <segue destination="xgN-Jf-uin" kind="show" identifier="cardView" id="4Xa-Rd-kTX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -702,7 +696,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="ルート検索"/>
                                                 <connections>
-                                                    <action selector="routeSearchButton:" destination="9bo-V1-WXY" eventType="touchUpInside" id="gnx-l4-VWD"/>
+                                                    <action selector="routeSearchButton:" destination="9bo-V1-WXY" eventType="touchUpInside" id="eRs-hN-vOf"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -723,7 +717,7 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <state key="normal" title="Yes"/>
                                 <connections>
-                                    <action selector="nextButton:" destination="9bo-V1-WXY" eventType="touchUpInside" id="q99-Jx-uQf"/>
+                                    <action selector="nextButton:" destination="9bo-V1-WXY" eventType="touchUpInside" id="bIF-fZ-AHI"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRq-ov-v8R">
@@ -749,6 +743,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aLb-wu-kVW"/>
+        <segue reference="VFt-vh-5xa"/>
+        <segue reference="mFt-Zp-8Aj"/>
     </inferredMetricsTieBreakers>
 </document>

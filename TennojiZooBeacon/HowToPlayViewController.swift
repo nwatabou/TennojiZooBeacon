@@ -11,6 +11,10 @@ import UIKit
 
 class HowToPlayViewController: UIViewController {
     
+    @IBAction func backButton(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {

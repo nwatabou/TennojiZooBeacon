@@ -27,13 +27,25 @@ class FinishViewController: UIViewController {
     
     let defaultNumber = 0
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+
+
     
     //日付を扱う変数
     let now = NSDate()
     
     override func viewDidLoad() {
-        let img = UIImage(named: "finish.png")
-        imageView.image = img
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy年　MM月　dd日"
+        let string = formatter.stringFromDate(now)
+        self.dateLabel.text = string
+        
+        
+        //獲得カード数確認処理
+        if((defaults.objectForKey("cardGet")) != nil){
+            appDelegate.cardFlg = (NSUserDefaults.standardUserDefaults().arrayForKey("cardGet") as? [String])!
+        }
         
         var count = defaultNumber
         
@@ -42,12 +54,43 @@ class FinishViewController: UIViewController {
                 count += 1
             }
         }
+        
         self.countLabel.text = "\(count)"
-
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy年　MM月　dd日"
-        let string = formatter.stringFromDate(now)
-        self.dateLabel.text = string
+        
+        var img:UIImage
+        
+        
+        //以下，獲得カード数に応じてメッセージ分岐処理
+        switch count {
+        case 0...11:
+            titleLabel.hidden = true
+            img = UIImage(named: "finish2.png")!
+            imageView.image = img
+            
+        case 12...17:
+            img = UIImage(named: "finish1.png")!
+            imageView.image = img
+            
+            self.titleLabel.hidden = false
+            self.titleLabel.text = "動物博士の見習い"
+            
+        case 18...25:
+            img = UIImage(named: "finish1.png")!
+            imageView.image = img
+            
+            self.titleLabel.hidden = false
+            self.titleLabel.text = "動物博士"
+            
+        case 26...30:
+            img = UIImage(named: "finish1.png")!
+            imageView.image = img
+            
+            self.titleLabel.hidden = false
+            self.titleLabel.text = "動物王"
+            
+        default:
+            break
+        }
     }
     
     override func didReceiveMemoryWarning() {

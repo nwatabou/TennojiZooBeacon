@@ -19,8 +19,9 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
         //flgがtrueならHome画面へ
         if(appDelegate.listFlg){
             appDelegate.route = defaultNum
-            let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
-            self.presentViewController(homeViewController, animated: true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
+            //let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
+            //self.presentViewController(homeViewController, animated: true, completion: nil)
         //falseなら前の画面へ
         }else{
             self.dismissViewControllerAnimated(true, completion: nil)
@@ -48,8 +49,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     var displayWidth: CGFloat = 0.0
     
     let defaults = NSUserDefaults.standardUserDefaults()
-    
-    //最初に宣言しておく
+
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
     override func viewDidLoad() {

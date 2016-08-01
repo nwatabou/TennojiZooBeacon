@@ -28,7 +28,6 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func nextButton(sender: AnyObject) {
         //flg = trueの時は、近くにBeaconがある時
         if(flg){
-        //画面移動する前に値を渡しておく
         appDelegate.route = beaconNo
             
             if(appDelegate.route == 23){
@@ -60,15 +59,19 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
     
     var beaconNo:Int = 0
     
+    var firstBeacon:Int!
+    var selectRoute:Int!
+    
     //道案内するか、クイズ画面に移動するのかの判定フラグ
     //falseなら案内、trueならクイズ画面へ
     var flg:Bool = false
     
-    //最初に宣言しておく
+
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
-    var baseURL = "http://158.217.45.5/zoo/map3d_gps15.html?id="
+    var baseURL = "http://158.217.45.5/zoo/map3d_gps16_ogi.html?id="
     var addURL = ""
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +92,8 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         let img = UIImage(named: "walking.png")
         imageView!.image = img
         
-        addURL = appDelegate.data[appDelegate.route][appDelegate.routeID]
+        addURL = appDelegate.data[selectRoute!][appDelegate.routeID]
+
         
     }
     
@@ -175,17 +179,31 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         beaconNo = (beacon.minor).integerValue
         
         self.animalLabel.text = ("ここは " + appDelegate.data[beaconNo][appDelegate.name] + " の近くだよ")
+        if(beaconNo == selectRoute){
+            appDelegate.route = beaconNo
+            
+            if(appDelegate.route == 23){
+                let middleViewController = self.storyboard!.instantiateViewControllerWithIdentifier("middle")
+                self.presentViewController(middleViewController, animated: true, completion: nil)
+                
+            }else if(appDelegate.route == 32 || appDelegate.route == 0){
+                let finishViewController = self.storyboard!.instantiateViewControllerWithIdentifier("finish")
+                self.presentViewController(finishViewController, animated: true, completion: nil)
+                
+            }else{
+                let quizViewController = self.storyboard!.instantiateViewControllerWithIdentifier("quiz")
+                self.presentViewController(quizViewController, animated: true, completion: nil)
+            }
         
-        if(beacon.proximity != CLProximity.Unknown && beacon.minor != appDelegate.nowBeaconNo){
+        }else if(beacon.minor != firstBeacon){
             self.checkLable.text = "この場所で良いかな?"
             flg = true
-        }else if(beacon.proximity == CLProximity.Unknown || beacon.minor == appDelegate.nowBeaconNo){
+        }else if(beacon.minor == firstBeacon){
             self.checkLable.text = "選んだ場所までのルートを表示しますか?"
             flg = false
-            addURL = appDelegate.data[appDelegate.route][appDelegate.routeID]
+            addURL = appDelegate.data[selectRoute!][appDelegate.routeID]
         }
     }
-    
     
     
     override func didReceiveMemoryWarning() {

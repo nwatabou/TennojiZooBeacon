@@ -40,8 +40,7 @@ class CardViewController: UIViewController {
     //appDelegate.listFlgがtrueなら、カードリストからカードを表示された時の処理(戻るボタン)
     @IBAction func leftButton(sender: AnyObject) {
         if(appDelegate.listFlg){
-            let cardListViewController = self.storyboard!.instantiateViewControllerWithIdentifier("cardlist")
-            self.presentViewController(cardListViewController, animated: true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
             
         //falseなら、クイズに正解してカードが表示された時の処理(図鑑ボタン)
         }else{
@@ -60,14 +59,15 @@ class CardViewController: UIViewController {
         }
         
     }
-    //最初に宣言しておく
+
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
-    var base:String = "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji_app/animal_reference.html?animal_id=z"
+    let base:String = "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji_app/animal_reference.html?animal_id=z"
     var add:String = ""
     
     //初期化用の変数
     let defaultNunber:Int = 0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,14 +81,11 @@ class CardViewController: UIViewController {
         
         //カード獲得保存処理
         //カードを獲得したら、appDelegate.cardFlgをfalseからgetにかえる
-        
         appDelegate.cardFlg[appDelegate.route] = "get"
 
         //NSUserDefaults型でディスク書き込み(カード獲得情報記録の準備)
         NSUserDefaults.standardUserDefaults().setObject(appDelegate.cardFlg, forKey: "cardGet")
         NSUserDefaults.standardUserDefaults().synchronize()
-        
-        print(appDelegate.route)
         
         if(appDelegate.listFlg){
             //カードリストから表示されたパターン

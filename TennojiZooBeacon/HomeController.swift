@@ -34,17 +34,16 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         //起動したらHome画面で位置情報の許可を得る
         // ロケーションマネージャを作成する
-        self.trackLocationManager = CLLocationManager();
+        self.trackLocationManager = CLLocationManager()
         
         // デリゲートを自身に設定
-        self.trackLocationManager.delegate = self;
+        self.trackLocationManager.delegate = self
         
         // セキュリティ認証のステータスを取得
         let status = CLLocationManager.authorizationStatus()
         
         // まだ認証が得られていない場合は、認証ダイアログを表示
         if(status == CLAuthorizationStatus.NotDetermined) {
-            
             self.trackLocationManager.requestAlwaysAuthorization();
         }
         

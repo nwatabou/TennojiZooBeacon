@@ -18,31 +18,8 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     
     @IBOutlet weak var imageView: UIImageView!
     
-    //押されたボタンによって選択されたルートを変化させて画面移動
-    @IBAction func routeButton1(sender: AnyObject) {
-        if(flg){
-            appDelegate.route = beaconNo+add1
-            
-            moveView()
-        }
-    }
-    @IBAction func routeButton2(sender: AnyObject) {
-        if(flg){
-            appDelegate.route = beaconNo+add2
-            
-            moveView()
-        }
-    }
-    @IBAction func routeButton3(sender: AnyObject) {
-        if(flg){
-            appDelegate.route = beaconNo+add3
-            
-            moveView()
-        }
-    }
-    
     //beacon番号格納用変数
-    var beaconNo = 0
+    var beaconNo:Int = 0
     
     //初期化用の変数
     let defaultNumber:Int = 0
@@ -64,17 +41,19 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     var trackLocationManager : CLLocationManager!
     var beaconRegion : CLBeaconRegion!
     
-    let defaults = NSUserDefaults.standardUserDefaults()
+    var route = (NSUserDefaults.standardUserDefaults().integerForKey("route"))
     
-    //最初に宣言しておく
+    
+    
+    
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        routeButton1.setTitle("？　？　？", forState: .Normal)
-        routeButton2.setTitle("？　？　？", forState: .Normal)
-        routeButton3.setTitle("？　？　？", forState: .Normal)
+        routeButton1.hidden = true
+        routeButton2.hidden = true
+        routeButton3.hidden = true
         
         // ロケーションマネージャを作成する
         self.trackLocationManager = CLLocationManager();
@@ -92,6 +71,12 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
         
         let img = UIImage(named: "select.png")
         imageView.image = img
+        
+        //以前にアプリ終了等で異常終了した際に，記録されたビーコン番号を確認
+        if(route != 0){
+            beaconNo = NSUserDefaults.standardUserDefaults().integerForKey("route")
+        }
+        
     }
     
     
@@ -180,55 +165,66 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
         
         flg = true
         
-        /*
-        for文でappDelegate.cardFlgを回す
-        獲得してなかったらルート表示　+　j++
-        j=3になったら終了
-        みたいな処理でルート表示
-        */
-        
-        print(beaconNo)
-        
 
         //以下、カードを取得したルートを表示しない処理
         let routeDefault = beaconNo + add1
         
+        NSUserDefaults.standardUserDefaults().setInteger(beaconNo, forKey: "route")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
         var j = 0
-        for i in routeDefault ..< appDelegate.data.count {
+        
+        for_i:for i in routeDefault ..< appDelegate.data.count {
             if(appDelegate.cardFlg[i] != "get"){
                 j += 1
-                if(j > routeNumber){
-                    break
-                }else{
-                    switch j {
-                    case 1:
-                        routeButton1.setTitle(appDelegate.data[i][3], forState: .Normal)
-                    case 2:
-                        routeButton2.setTitle(appDelegate.data[i][3], forState: .Normal)
-                        
-                    case 3:
-                        routeButton3.setTitle(appDelegate.data[i][3], forState: .Normal)
-                        
-                    default:
-                        break
-                    }
+                
+                switch j {
+                case 1:
+                    routeButton1.hidden = false
+                    routeButton1.setTitle(appDelegate.data[i][3], forState: .Normal)
+                    
+                case 2:
+                    routeButton2.hidden = false
+                    routeButton2.setTitle(appDelegate.data[i][3], forState: .Normal)
+                    
+                    
+                case 3:
+                    routeButton3.hidden = false
+                    routeButton3.setTitle(appDelegate.data[i][3], forState: .Normal)
+                    
+                default:
+                    break for_i
+                    
                 }
             }
         }
     }
-
-    func moveView(){
-        //ルート選択時の現在地Beacon番号を格納
-        appDelegate.nowBeaconNo = beaconNo
-        
-        let walkViewController = self.storyboard!.instantiateViewControllerWithIdentifier("walk")
-        self.presentViewController(walkViewController, animated: true, completion: nil)
+    
+    
+    //segueで値渡し
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "select1"){
+            let walkingViewController = segue.destinationViewController as! WalkingViewController
+            walkingViewController.firstBeacon = beaconNo
+            walkingViewController.selectRoute = beaconNo + add1
+            
+        }else if(segue.identifier == "select2"){
+            let walkingViewController = segue.destinationViewController as! WalkingViewController
+            walkingViewController.firstBeacon = beaconNo
+            walkingViewController.selectRoute = beaconNo + add2
+            
+        }else if(segue.identifier == "select3"){
+            let walkingViewController = segue.destinationViewController as! WalkingViewController
+            walkingViewController.firstBeacon = beaconNo
+            walkingViewController.selectRoute = beaconNo + add3
+        }
     }
+
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    
+
 }

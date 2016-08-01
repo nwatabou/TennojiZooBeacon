@@ -21,11 +21,7 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var answerButton3: UIButton!
     
     @IBOutlet weak var imageVIew: UIImageView!
-    //デバッグ用戻るボタン
-    @IBAction func backButton(sender: AnyObject) {
-        let walkingViewController = self.storyboard!.instantiateViewControllerWithIdentifier("walk")
-        self.presentViewController(walkingViewController, animated: true, completion: nil)
-    }
+    
     
     
     //動物の番号を3(questionCount)で割った余りが正解の問題。
@@ -64,6 +60,9 @@ class QuizViewController: UIViewController {
     let remainder2:Int = 2
     
     
+    var beaconNo:Int!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -93,6 +92,10 @@ class QuizViewController: UIViewController {
         let falseViewController = self.storyboard!.instantiateViewControllerWithIdentifier("false")
         self.presentViewController(falseViewController, animated: true, completion: nil)
     }
+    
+
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
