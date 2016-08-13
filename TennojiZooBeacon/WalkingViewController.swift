@@ -173,35 +173,38 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
     
     //領域内にいるので測定をする
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion){
-        let beacon = beacons[0]
         
-        //beacon.minorをint型に変換(appDelegate.decideRouteに渡す為に必要)
-        beaconNo = (beacon.minor).integerValue
+        if(beacons.count > 0){
+            let beacon = beacons[0]
         
-        self.animalLabel.text = ("ここは " + appDelegate.data[beaconNo][appDelegate.name] + " の近くだよ")
-        if(beaconNo == selectRoute){
-            appDelegate.route = beaconNo
+            //beacon.minorをint型に変換(appDelegate.decideRouteに渡す為に必要)
+            beaconNo = (beacon.minor).integerValue
+        
+            self.animalLabel.text = ("ここは " + appDelegate.data[beaconNo][appDelegate.name] + " の近くだよ")
+            if(beaconNo == selectRoute){
+                appDelegate.route = beaconNo
             
-            if(appDelegate.route == 23){
-                let middleViewController = self.storyboard!.instantiateViewControllerWithIdentifier("middle")
-                self.presentViewController(middleViewController, animated: true, completion: nil)
+                if(appDelegate.route == 23){
+                    let middleViewController = self.storyboard!.instantiateViewControllerWithIdentifier("middle")
+                    self.presentViewController(middleViewController, animated: true, completion: nil)
                 
-            }else if(appDelegate.route == 32 || appDelegate.route == 0){
-                let finishViewController = self.storyboard!.instantiateViewControllerWithIdentifier("finish")
-                self.presentViewController(finishViewController, animated: true, completion: nil)
+                }else if(appDelegate.route == 32 || appDelegate.route == 0){
+                    let finishViewController = self.storyboard!.instantiateViewControllerWithIdentifier("finish")
+                    self.presentViewController(finishViewController, animated: true, completion: nil)
                 
-            }else{
-                let quizViewController = self.storyboard!.instantiateViewControllerWithIdentifier("quiz")
-                self.presentViewController(quizViewController, animated: true, completion: nil)
-            }
+                }else{
+                    let quizViewController = self.storyboard!.instantiateViewControllerWithIdentifier("quiz")
+                    self.presentViewController(quizViewController, animated: true, completion: nil)
+                }
         
-        }else if(beacon.minor != firstBeacon){
-            self.checkLable.text = "この場所で良いかな?"
-            flg = true
-        }else if(beacon.minor == firstBeacon){
-            self.checkLable.text = "選んだ場所までのルートを表示しますか?"
-            flg = false
-            addURL = appDelegate.data[selectRoute!][appDelegate.routeID]
+            }else if(beacon.minor != firstBeacon){
+                self.checkLable.text = "この場所で良いかな?"
+                flg = true
+            }else if(beacon.minor == firstBeacon){
+                self.checkLable.text = "選んだ場所までのルートを表示しますか?"
+                flg = false
+                addURL = appDelegate.data[selectRoute!][appDelegate.routeID]
+            }
         }
     }
     

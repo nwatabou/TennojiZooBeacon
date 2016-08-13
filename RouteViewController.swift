@@ -26,8 +26,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     
     let routeNumber:Int = 3
     
-    //beaconの近くにいるかどうかの判定のためのフラグ
-    var flg = false
     
     let add1:Int = 1
     let add2:Int = 2
@@ -40,11 +38,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     //beaconの値取得関係の変数
     var trackLocationManager : CLLocationManager!
     var beaconRegion : CLBeaconRegion!
-    
-    var route = (NSUserDefaults.standardUserDefaults().integerForKey("route"))
-    
-    
-    
     
     let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
@@ -71,11 +64,6 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
         
         let img = UIImage(named: "select.png")
         imageView.image = img
-        
-        //以前にアプリ終了等で異常終了した際に，記録されたビーコン番号を確認
-        if(route != 0){
-            beaconNo = NSUserDefaults.standardUserDefaults().integerForKey("route")
-        }
         
     }
     
@@ -119,21 +107,26 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
         switch (state) {
             
         case .Inside: // すでに領域内にいる場合は（didEnterRegion）は呼ばれない
+            print("inside")
             
-            trackLocationManager.startRangingBeaconsInRegion(beaconRegion);
-            // →(didRangeBeacons)で測定をはじめる
+            
             break;
             
         case .Outside:
+            print("outside")
             
             // 領域外→領域に入った場合はdidEnterRegionが呼ばれる
             break;
             
         case .Unknown:
+            print("unkonwn")
 
             // 不明→領域に入った場合はdidEnterRegionが呼ばれる
             break;
         }
+        
+        trackLocationManager.startRangingBeaconsInRegion(beaconRegion)
+        // →(didRangeBeacons)で測定をはじめる
     }
     
     
@@ -142,6 +135,7 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     //領域に入った時
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
         // →(didRangeBeacons)で測定をはじめる
+        print("in")
         self.trackLocationManager.startRangingBeaconsInRegion(self.beaconRegion)
     }
     
@@ -151,53 +145,51 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     //領域から出た時
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
         //測定を停止する
+        print("out")
         self.trackLocationManager.stopRangingBeaconsInRegion(self.beaconRegion)
-        flg = false
     }
+    
+    
     
     
     //領域内にいるので測定をする
     func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion){
-        let beacon = beacons[0]
+        print(beacons)
+        
+        if(beacons.count > 0){
+            let beacon = beacons[0]
+            
+                //beacon.minorをint型に変換
+                self.beaconNo = (beacon.minor).integerValue
 
-        //beacon.minorをint型に変換
-        beaconNo = (beacon.minor).integerValue
-        
-        flg = true
-        
-
-        //以下、カードを取得したルートを表示しない処理
-        let routeDefault = beaconNo + add1
-        
-        NSUserDefaults.standardUserDefaults().setInteger(beaconNo, forKey: "route")
-        NSUserDefaults.standardUserDefaults().synchronize()
-        
-        var j = 0
-        
-        for_i:for i in routeDefault ..< appDelegate.data.count {
-            if(appDelegate.cardFlg[i] != "get"){
-                j += 1
+                //以下、カードを取得したルートを表示しない処理
+                let routeDefault = self.beaconNo + self.add1
+    
+                var j = 0
+            
+                for_i:for i in routeDefault ..< self.appDelegate.data.count {
+                    if(self.appDelegate.cardFlg[i] != "get"){
+                        j += 1
                 
-                switch j {
-                case 1:
-                    routeButton1.hidden = false
-                    routeButton1.setTitle(appDelegate.data[i][3], forState: .Normal)
+                        switch j {
+                        case 1:
+                            self.routeButton1.hidden = false
+                            self.routeButton1.setTitle(self.appDelegate.data[i][3], forState: .Normal)
                     
-                case 2:
-                    routeButton2.hidden = false
-                    routeButton2.setTitle(appDelegate.data[i][3], forState: .Normal)
+                        case 2:
+                            self.routeButton2.hidden = false
+                            self.routeButton2.setTitle(self.appDelegate.data[i][3], forState: .Normal)
                     
-                    
-                case 3:
-                    routeButton3.hidden = false
-                    routeButton3.setTitle(appDelegate.data[i][3], forState: .Normal)
-                    
-                default:
-                    break for_i
-                    
+                        case 3:
+                            self.routeButton3.hidden = false
+                            self.routeButton3.setTitle(self.appDelegate.data[i][3], forState: .Normal)
+                
+                        default:
+                            break for_i
+                        }
+                    }
                 }
             }
-        }
     }
     
     
