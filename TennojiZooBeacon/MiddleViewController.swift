@@ -15,33 +15,33 @@ class MiddleViewController: UIViewController {
 
     @IBOutlet weak var countLabel: UILabel!
     
-    @IBAction func homeButton(sender: AnyObject) {
-        let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
-        self.presentViewController(homeViewController, animated: true, completion: nil)
+    @IBAction func homeButton(_ sender: AnyObject) {
+        let homeViewController = self.storyboard!.instantiateViewController(withIdentifier: "home")
+        self.present(homeViewController, animated: true, completion: nil)
     }
     
-    @IBAction func endButton(sender: AnyObject) {
-        let finishViewController = self.storyboard!.instantiateViewControllerWithIdentifier("finish")
-        self.presentViewController(finishViewController, animated: true, completion: nil)
+    @IBAction func endButton(_ sender: AnyObject) {
+        let finishViewController = self.storyboard!.instantiateViewController(withIdentifier: "finish")
+        self.present(finishViewController, animated: true, completion: nil)
     }
     
-    @IBAction func nextButton(sender: AnyObject) {
-        let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
-        self.presentViewController(routeViewController, animated: true, completion: nil)
+    @IBAction func nextButton(_ sender: AnyObject) {
+        let routeViewController = self.storyboard!.instantiateViewController(withIdentifier: "route")
+        self.present(routeViewController, animated: true, completion: nil)
     }
     
     //最初に宣言しておく
-    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    let appDelegate:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
     let defaultNumber = 0
     
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = UserDefaults.standard
     
     
     
     override func viewDidLoad() {
-        if((defaults.objectForKey("cardGet")) != nil){
-            appDelegate.cardFlg = (NSUserDefaults.standardUserDefaults().arrayForKey("cardGet") as? [String])!
+        if((defaults.object(forKey: "cardGet")) != nil){
+            appDelegate.cardFlg = (UserDefaults.standard.array(forKey: "cardGet") as? [String])!
         }
         
         var count = defaultNumber

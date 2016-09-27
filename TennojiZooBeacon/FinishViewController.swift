@@ -18,33 +18,33 @@ class FinishViewController: UIViewController {
 
     @IBOutlet weak var dateLabel: UILabel!
     
-    @IBAction func homeButton(sender: AnyObject) {
-        let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
-        self.presentViewController(homeViewController, animated: true, completion: nil)
+    @IBAction func homeButton(_ sender: AnyObject) {
+        let homeViewController = self.storyboard!.instantiateViewController(withIdentifier: "home")
+        self.present(homeViewController, animated: true, completion: nil)
     }
     
-    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    let appDelegate:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
     let defaultNumber = 0
     
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = UserDefaults.standard
 
 
     
     //日付を扱う変数
-    let now = NSDate()
+    let now = Date()
     
     override func viewDidLoad() {
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy年　MM月　dd日"
-        let string = formatter.stringFromDate(now)
+        let string = formatter.string(from: now)
         self.dateLabel.text = string
         
         
         //獲得カード数確認処理
-        if((defaults.objectForKey("cardGet")) != nil){
-            appDelegate.cardFlg = (NSUserDefaults.standardUserDefaults().arrayForKey("cardGet") as? [String])!
+        if((defaults.object(forKey: "cardGet")) != nil){
+            appDelegate.cardFlg = (UserDefaults.standard.array(forKey: "cardGet") as? [String])!
         }
         
         var count = defaultNumber
@@ -63,7 +63,7 @@ class FinishViewController: UIViewController {
         //以下，獲得カード数に応じてメッセージ分岐処理
         switch count {
         case 0...11:
-            titleLabel.hidden = true
+            titleLabel.isHidden = true
             img = UIImage(named: "finish2.png")!
             imageView.image = img
             
@@ -71,21 +71,21 @@ class FinishViewController: UIViewController {
             img = UIImage(named: "finish1.png")!
             imageView.image = img
             
-            self.titleLabel.hidden = false
+            self.titleLabel.isHidden = false
             self.titleLabel.text = "動物博士の見習い"
             
         case 18...25:
             img = UIImage(named: "finish1.png")!
             imageView.image = img
             
-            self.titleLabel.hidden = false
+            self.titleLabel.isHidden = false
             self.titleLabel.text = "動物博士"
             
         case 26...30:
             img = UIImage(named: "finish1.png")!
             imageView.image = img
             
-            self.titleLabel.hidden = false
+            self.titleLabel.isHidden = false
             self.titleLabel.text = "動物王"
             
         default:

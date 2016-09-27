@@ -39,14 +39,14 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     var trackLocationManager : CLLocationManager!
     var beaconRegion : CLBeaconRegion!
     
-    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    let appDelegate:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        routeButton1.hidden = true
-        routeButton2.hidden = true
-        routeButton3.hidden = true
+        routeButton1.isHidden = true
+        routeButton2.isHidden = true
+        routeButton3.isHidden = true
         
         // ロケーションマネージャを作成する
         self.trackLocationManager = CLLocationManager();
@@ -55,7 +55,7 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
         self.trackLocationManager.delegate = self;
         
         // BeaconのUUIDを設定
-        let uuid:NSUUID? = NSUUID(UUIDString: "00000000-7DE6-1001-B000-001C4DF13E76")
+        let uuid:UUID? = UUID(uuidString: "00000000-7DE6-1001-B000-001C4DF13E76")
         
         //Beacon領域を作成
         self.beaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: "net.noumenon-th")
@@ -72,7 +72,7 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     
     
     //位置認証のステータスが変更された時に呼ばれる
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         // 認証のステータス
         let statusStr = "";
@@ -82,7 +82,7 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
         print(" CLAuthorizationStatus: \(statusStr)")
         
         //観測を開始させる
-        trackLocationManager.startMonitoringForRegion(self.beaconRegion)
+        trackLocationManager.startMonitoring(for: self.beaconRegion)
         
     }
     
@@ -90,42 +90,42 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     
     
     //観測の開始に成功すると呼ばれる
-    func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
         
         print("didStartMonitoringForRegion");
         
         //観測開始に成功したら、領域内にいるかどうかの判定をおこなう。→（didDetermineState）へ
-        trackLocationManager.requestStateForRegion(self.beaconRegion);
+        trackLocationManager.requestState(for: self.beaconRegion);
     }
     
     
     
     
     //領域内にいるかどうかを判定する
-    func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion inRegion: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for inRegion: CLRegion) {
         
         switch (state) {
             
-        case .Inside: // すでに領域内にいる場合は（didEnterRegion）は呼ばれない
+        case .inside: // すでに領域内にいる場合は（didEnterRegion）は呼ばれない
             print("inside")
             
             
             break;
             
-        case .Outside:
+        case .outside:
             print("outside")
             
             // 領域外→領域に入った場合はdidEnterRegionが呼ばれる
             break;
             
-        case .Unknown:
+        case .unknown:
             print("unkonwn")
 
             // 不明→領域に入った場合はdidEnterRegionが呼ばれる
             break;
         }
         
-        trackLocationManager.startRangingBeaconsInRegion(beaconRegion)
+        trackLocationManager.startRangingBeacons(in: beaconRegion)
         // →(didRangeBeacons)で測定をはじめる
     }
     
@@ -133,34 +133,34 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     
     
     //領域に入った時
-    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         // →(didRangeBeacons)で測定をはじめる
         print("in")
-        self.trackLocationManager.startRangingBeaconsInRegion(self.beaconRegion)
+        self.trackLocationManager.startRangingBeacons(in: self.beaconRegion)
     }
     
     
     
     
     //領域から出た時
-    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         //測定を停止する
         print("out")
-        self.trackLocationManager.stopRangingBeaconsInRegion(self.beaconRegion)
+        self.trackLocationManager.stopRangingBeacons(in: self.beaconRegion)
     }
     
     
     
     
     //領域内にいるので測定をする
-    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion){
+    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion){
         print(beacons)
         
         if(beacons.count > 0){
             let beacon = beacons[0]
             
                 //beacon.minorをint型に変換
-                self.beaconNo = (beacon.minor).integerValue
+                self.beaconNo = (beacon.minor).intValue
 
                 //以下、カードを取得したルートを表示しない処理
                 let routeDefault = self.beaconNo + self.add1
@@ -173,16 +173,16 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
                 
                         switch j {
                         case 1:
-                            self.routeButton1.hidden = false
-                            self.routeButton1.setTitle(self.appDelegate.data[i][3], forState: .Normal)
+                            self.routeButton1.isHidden = false
+                            self.routeButton1.setTitle(self.appDelegate.data[i][3], for: UIControlState())
                     
                         case 2:
-                            self.routeButton2.hidden = false
-                            self.routeButton2.setTitle(self.appDelegate.data[i][3], forState: .Normal)
+                            self.routeButton2.isHidden = false
+                            self.routeButton2.setTitle(self.appDelegate.data[i][3], for: UIControlState())
                     
                         case 3:
-                            self.routeButton3.hidden = false
-                            self.routeButton3.setTitle(self.appDelegate.data[i][3], forState: .Normal)
+                            self.routeButton3.isHidden = false
+                            self.routeButton3.setTitle(self.appDelegate.data[i][3], for: UIControlState())
                 
                         default:
                             break for_i
@@ -194,19 +194,19 @@ class RouteViewController: UIViewController, CLLocationManagerDelegate{
     
     
     //segueで値渡し
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "select1"){
-            let walkingViewController = segue.destinationViewController as! WalkingViewController
+            let walkingViewController = segue.destination as! WalkingViewController
             walkingViewController.firstBeacon = beaconNo
             walkingViewController.selectRoute = beaconNo + add1
             
         }else if(segue.identifier == "select2"){
-            let walkingViewController = segue.destinationViewController as! WalkingViewController
+            let walkingViewController = segue.destination as! WalkingViewController
             walkingViewController.firstBeacon = beaconNo
             walkingViewController.selectRoute = beaconNo + add2
             
         }else if(segue.identifier == "select3"){
-            let walkingViewController = segue.destinationViewController as! WalkingViewController
+            let walkingViewController = segue.destination as! WalkingViewController
             walkingViewController.firstBeacon = beaconNo
             walkingViewController.selectRoute = beaconNo + add3
         }

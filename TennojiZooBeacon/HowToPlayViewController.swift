@@ -11,8 +11,8 @@ import UIKit
 
 class HowToPlayViewController: UIViewController {
     
-    @IBAction func backButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func backButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -23,13 +23,13 @@ class HowToPlayViewController: UIViewController {
         let img = UIImage(named: "HowToPlay.png")
         imageView.image = img
         
-        scrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
+        scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
         
-        imageView.frame = CGRectMake(0, 0, img!.size.width, img!.size.height)
+        imageView.frame = CGRect(x: 0, y: 0, width: img!.size.width, height: img!.size.height)
         
         scrollView.addSubview(imageView)
         
-        scrollView.contentSize = CGSizeMake((img?.size.width)!, (img?.size.height)!)
+        scrollView.contentSize = CGSize(width: (img?.size.width)!, height: (img?.size.height)!)
         
         self.view.addSubview(scrollView)
     }

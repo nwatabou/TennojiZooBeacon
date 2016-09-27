@@ -14,10 +14,10 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var imageView: UIImageView!
 
     //図鑑表示
-    @IBAction func dictionary(sender: AnyObject) {
-        let url:NSURL = NSURL(string: "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji_app/animal_list.html")!
-        if UIApplication.sharedApplication().canOpenURL(url){
-            UIApplication.sharedApplication().openURL(url)
+    @IBAction func dictionary(_ sender: AnyObject) {
+        let url:URL = URL(string: "http://www.hz.kutc.kansai-u.ac.jp/city.osaka/tennoji_app/animal_list.html")!
+        if UIApplication.shared.canOpenURL(url){
+            UIApplication.shared.openURL(url)
         }
     }
     
@@ -25,7 +25,7 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
     var trackLocationManager : CLLocationManager!
     var beaconRegion : CLBeaconRegion!
     
-    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    let appDelegate:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
     //初期化用の変数
     let defaultNumber = 0
@@ -43,7 +43,7 @@ class HomeController: UIViewController, CLLocationManagerDelegate {
         let status = CLLocationManager.authorizationStatus()
         
         // まだ認証が得られていない場合は、認証ダイアログを表示
-        if(status == CLAuthorizationStatus.NotDetermined) {
+        if(status == CLAuthorizationStatus.notDetermined) {
             self.trackLocationManager.requestAlwaysAuthorization();
         }
         

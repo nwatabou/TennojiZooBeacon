@@ -20,16 +20,16 @@ class CorrectViewController: UIViewController {
         imageView.image = img
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         //画面表示から2秒後に func transition()を呼び、画面推移
-        NSTimer.scheduledTimerWithTimeInterval(3.0,target:self,selector:#selector(CorrectViewController.transition), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 3.0,target:self,selector:#selector(CorrectViewController.transition as (CorrectViewController) -> () -> ()), userInfo: nil, repeats: false)
     }
     
     //2秒たったら呼ばれる
     func transition(){
-        let comentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("coment")
-        self.presentViewController(comentViewController, animated: true, completion: nil)
+        let comentViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "coment")
+        self.present(comentViewController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

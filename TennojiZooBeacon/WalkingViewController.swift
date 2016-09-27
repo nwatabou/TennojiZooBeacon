@@ -17,37 +17,37 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
 
-    @IBAction func routeSearchButton(sender: AnyObject) {
+    @IBAction func routeSearchButton(_ sender: AnyObject) {
         let URL = baseURL + addURL
-        let url:NSURL = NSURL(string:URL)!
-        if UIApplication.sharedApplication().canOpenURL(url){
-            UIApplication.sharedApplication().openURL(url)
+        let url:Foundation.URL = Foundation.URL(string:URL)!
+        if UIApplication.shared.canOpenURL(url){
+            UIApplication.shared.openURL(url)
         }
     }
     
-    @IBAction func nextButton(sender: AnyObject) {
+    @IBAction func nextButton(_ sender: AnyObject) {
         //flg = trueの時は、近くにBeaconがある時
         if(flg){
         appDelegate.route = beaconNo
             
             if(appDelegate.route == 23){
-                let middleViewController = self.storyboard!.instantiateViewControllerWithIdentifier("middle")
-                self.presentViewController(middleViewController, animated: true, completion: nil)
+                let middleViewController = self.storyboard!.instantiateViewController(withIdentifier: "middle")
+                self.present(middleViewController, animated: true, completion: nil)
                 
             }else if(appDelegate.route == 32 || appDelegate.route == 0){
-                let finishViewController = self.storyboard!.instantiateViewControllerWithIdentifier("finish")
-                self.presentViewController(finishViewController, animated: true, completion: nil)
+                let finishViewController = self.storyboard!.instantiateViewController(withIdentifier: "finish")
+                self.present(finishViewController, animated: true, completion: nil)
                 
             }else{
-                let quizViewController = self.storyboard!.instantiateViewControllerWithIdentifier("quiz")
-                self.presentViewController(quizViewController, animated: true, completion: nil)
+                let quizViewController = self.storyboard!.instantiateViewController(withIdentifier: "quiz")
+                self.present(quizViewController, animated: true, completion: nil)
             }
         }else{
             //falseの時は近くにBeaconがなくてルート表示したい時
             let URL = baseURL + addURL
-            let url:NSURL = NSURL(string:URL)!
-            if UIApplication.sharedApplication().canOpenURL(url){
-                UIApplication.sharedApplication().openURL(url)
+            let url:Foundation.URL = Foundation.URL(string:URL)!
+            if UIApplication.shared.canOpenURL(url){
+                UIApplication.shared.openURL(url)
             }
         }
     }
@@ -67,7 +67,7 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
     var flg:Bool = false
     
 
-    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    let appDelegate:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
     var baseURL = "http://158.217.45.5/zoo/map3d_gps16_ogi.html?id="
     var addURL = ""
@@ -84,7 +84,7 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         self.trackLocationManager.delegate = self
         
         // BeaconのUUIDを設定
-        let uuid:NSUUID? = NSUUID(UUIDString: "00000000-7DE6-1001-B000-001C4DF13E76")
+        let uuid:UUID? = UUID(uuidString: "00000000-7DE6-1001-B000-001C4DF13E76")
         
         //Beacon領域を作成
         self.beaconRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: "net.noumenon-th")
@@ -100,7 +100,7 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
     
     
     //位置認証のステータスが変更された時に呼ばれる
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         // 認証のステータス
         let statusStr = "";
@@ -110,39 +110,39 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
         print(" CLAuthorizationStatus: \(statusStr)")
         
         //観測を開始させる
-        trackLocationManager.startMonitoringForRegion(self.beaconRegion)
+        trackLocationManager.startMonitoring(for: self.beaconRegion)
         
     }
     
     
     //観測の開始に成功すると呼ばれる
-    func locationManager(manager: CLLocationManager, didStartMonitoringForRegion region: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
         
         print("didStartMonitoringForRegion")
         
         //観測開始に成功したら、領域内にいるかどうかの判定をおこなう。→（didDetermineState）へ
-        trackLocationManager.requestStateForRegion(self.beaconRegion)
+        trackLocationManager.requestState(for: self.beaconRegion)
     }
     
     
     
     //領域内にいるかどうかを判定する
-    func locationManager(manager: CLLocationManager, didDetermineState state: CLRegionState, forRegion inRegion: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for inRegion: CLRegion) {
         
         switch (state) {
             
-        case .Inside: // すでに領域内にいる場合は（didEnterRegion）は呼ばれない
+        case .inside: // すでに領域内にいる場合は（didEnterRegion）は呼ばれない
             
-            trackLocationManager.startRangingBeaconsInRegion(beaconRegion);
+            trackLocationManager.startRangingBeacons(in: beaconRegion);
             // →(didRangeBeacons)で測定をはじめる
             break;
             
-        case .Outside:
+        case .outside:
             
             // 領域外→領域に入った場合はdidEnterRegionが呼ばれる
             break;
             
-        case .Unknown:
+        case .unknown:
             
             // 不明→領域に入った場合はdidEnterRegionが呼ばれる
             break;
@@ -154,53 +154,53 @@ class WalkingViewController: UIViewController, CLLocationManagerDelegate {
     
     
     //領域に入った時
-    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         // →(didRangeBeacons)で測定をはじめる
-        self.trackLocationManager.startRangingBeaconsInRegion(self.beaconRegion)
+        self.trackLocationManager.startRangingBeacons(in: self.beaconRegion)
     }
     
     
     
     
     //領域から出た時
-    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         //測定を停止する
-        self.trackLocationManager.stopRangingBeaconsInRegion(self.beaconRegion)
+        self.trackLocationManager.stopRangingBeacons(in: self.beaconRegion)
     }
     
     
     
     
     //領域内にいるので測定をする
-    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion){
+    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion){
         
         if(beacons.count > 0){
             let beacon = beacons[0]
         
             //beacon.minorをint型に変換(appDelegate.decideRouteに渡す為に必要)
-            beaconNo = (beacon.minor).integerValue
+            beaconNo = (beacon.minor).intValue
         
             self.animalLabel.text = ("ここは " + appDelegate.data[beaconNo][appDelegate.name] + " の近くだよ")
             if(beaconNo == selectRoute){
                 appDelegate.route = beaconNo
             
                 if(appDelegate.route == 23){
-                    let middleViewController = self.storyboard!.instantiateViewControllerWithIdentifier("middle")
-                    self.presentViewController(middleViewController, animated: true, completion: nil)
+                    let middleViewController = self.storyboard!.instantiateViewController(withIdentifier: "middle")
+                    self.present(middleViewController, animated: true, completion: nil)
                 
                 }else if(appDelegate.route == 32 || appDelegate.route == 0){
-                    let finishViewController = self.storyboard!.instantiateViewControllerWithIdentifier("finish")
-                    self.presentViewController(finishViewController, animated: true, completion: nil)
+                    let finishViewController = self.storyboard!.instantiateViewController(withIdentifier: "finish")
+                    self.present(finishViewController, animated: true, completion: nil)
                 
                 }else{
-                    let quizViewController = self.storyboard!.instantiateViewControllerWithIdentifier("quiz")
-                    self.presentViewController(quizViewController, animated: true, completion: nil)
+                    let quizViewController = self.storyboard!.instantiateViewController(withIdentifier: "quiz")
+                    self.present(quizViewController, animated: true, completion: nil)
                 }
         
-            }else if(beacon.minor != firstBeacon){
+            }else if(beaconNo != firstBeacon){
                 self.checkLable.text = "この場所で良いかな?"
                 flg = true
-            }else if(beacon.minor == firstBeacon){
+            }else if(beaconNo == firstBeacon){
                 self.checkLable.text = "選んだ場所までのルートを表示しますか?"
                 flg = false
                 addURL = appDelegate.data[selectRoute!][appDelegate.routeID]

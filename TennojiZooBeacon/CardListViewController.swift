@@ -14,17 +14,17 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var cardList: UITableView!
     
     @IBOutlet weak var backButton: UIButton!
-    @IBAction func backButton(sender: AnyObject) {
+    @IBAction func backButton(_ sender: AnyObject) {
         //カード表示された状況によって挙動の修正
         //flgがtrueならHome画面へ
         if(appDelegate.listFlg){
             appDelegate.route = defaultNum
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             //let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("home")
             //self.presentViewController(homeViewController, animated: true, completion: nil)
         //falseなら前の画面へ
         }else{
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     //セクション別に動物を定義
@@ -48,17 +48,17 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var displayWidth: CGFloat = 0.0
     
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = UserDefaults.standard
 
-    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    let appDelegate:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        displayWidth = UIApplication.sharedApplication().statusBarFrame.size.width
+        displayWidth = UIApplication.shared.statusBarFrame.size.width
         
         // Cell名の登録をおこなう.
-        cardList.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        cardList.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         
         // DataSourceの設定をする.
         cardList.dataSource = self
@@ -67,9 +67,9 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
         cardList.delegate = self
         
         if(appDelegate.listFlg){
-            backButton.setTitle("Home　　", forState: .Normal)
+            backButton.setTitle("Home　　", for: UIControlState())
         }else{
-            backButton.setTitle("＜戻る　　", forState: .Normal)
+            backButton.setTitle("＜戻る　　", for: UIControlState())
         }
     }
     
@@ -81,7 +81,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     //sectionの数を返す
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
     
@@ -89,11 +89,11 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     //cellの数を返す
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //ここの条件分岐でカードを獲得したのかしていないのか判定する
-        if((defaults.objectForKey("cardGet")) != nil){
-            appDelegate.cardFlg = (NSUserDefaults.standardUserDefaults().arrayForKey("cardGet") as? [String])!
+        if((defaults.object(forKey: "cardGet")) != nil){
+            appDelegate.cardFlg = (UserDefaults.standard.array(forKey: "cardGet") as? [String])!
         }
         
         switch section {
@@ -194,7 +194,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
 
     
     //sectionの記述処理
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section] as String
     }
     
@@ -202,11 +202,11 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     //セクション記述処理
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionView = UIView()
         let sectionImage = UIImage(named: sections[section])
         let sectionImageView = UIImageView(image: sectionImage)
-        sectionImageView.frame = CGRectMake(0, 0, displayWidth, 50)
+        sectionImageView.frame = CGRect(x: 0, y: 0, width: displayWidth, height: 50)
         sectionView.addSubview(sectionImageView)
         
         return sectionView
@@ -216,27 +216,27 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     
 
     //cellの記述処理
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 再利用するCellを取得する.
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
         
         // Cellに値を設定する.
         //セクションごとにセルの記述処理をする
-        switch indexPath.section {
+        switch (indexPath as NSIndexPath).section {
         case honyuruiSection:
-            cell.textLabel!.text = "\(honyurui[indexPath.row])"
+            cell.textLabel!.text = "\(honyurui[(indexPath as NSIndexPath).row])"
             
         case tyoruiSection:
-            cell.textLabel!.text = "\(tyorui[indexPath.row])"
+            cell.textLabel!.text = "\(tyorui[(indexPath as NSIndexPath).row])"
             
         case hatyuruiSection:
-            cell.textLabel!.text = "\(hatyurui[indexPath.row])"
+            cell.textLabel!.text = "\(hatyurui[(indexPath as NSIndexPath).row])"
             
         case ryoseiruiSection:
-            cell.textLabel!.text = "\(ryoseirui[indexPath.row])"
+            cell.textLabel!.text = "\(ryoseirui[(indexPath as NSIndexPath).row])"
             
         case gyoruiSection:
-            cell.textLabel!.text = "\(gyorui[indexPath.row])"
+            cell.textLabel!.text = "\(gyorui[(indexPath as NSIndexPath).row])"
             
         default:
             break
@@ -247,17 +247,17 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     
 
     //選択されたcellを判断する処理
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //選択されたセル番号をセクションごとに判定
         //哺乳類セクション
         
         //軽量化コード
         //func()を使って処理をひとまとめにするといいかも？
-        switch (indexPath.section){
+        switch ((indexPath as NSIndexPath).section){
         case honyuruiSection:
             for i in 0 ..< appDelegate.data.count{
                 //選択されたセル番号の動物名と、AppDelegateで定義した動物リストと比較
-                if(appDelegate.data[i][appDelegate.name] == honyurui[indexPath.row]){
+                if(appDelegate.data[i][appDelegate.name] == honyurui[(indexPath as NSIndexPath).row]){
                     //比較した動物名が同じで、その動物のカードを獲得していたら画面遷移
                     if(appDelegate.cardFlg[i] == "get"){
                         screenTransitionCardlist(i)
@@ -268,7 +268,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             
         case tyoruiSection:
             for i in defaultNum ..< appDelegate.data.count{
-                if(appDelegate.data[i][appDelegate.name] == tyorui[indexPath.row]){
+                if(appDelegate.data[i][appDelegate.name] == tyorui[(indexPath as NSIndexPath).row]){
                     if(appDelegate.cardFlg[i] == "get"){
                         screenTransitionCardlist(i)
                         break
@@ -278,7 +278,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             
         case hatyuruiSection:
             for i in defaultNum ..< appDelegate.data.count{
-                if(appDelegate.data[i][appDelegate.name] == hatyurui[indexPath.row]){
+                if(appDelegate.data[i][appDelegate.name] == hatyurui[(indexPath as NSIndexPath).row]){
                     if(appDelegate.cardFlg[i] == "get"){
                         screenTransitionCardlist(i)
                         break
@@ -288,7 +288,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         case ryoseiruiSection:
             for i in defaultNum ..< appDelegate.data.count{
-                if(appDelegate.data[i][appDelegate.name] == ryoseirui[indexPath.row]){
+                if(appDelegate.data[i][appDelegate.name] == ryoseirui[(indexPath as NSIndexPath).row]){
                     if(appDelegate.cardFlg[i] == "get"){
                         screenTransitionCardlist(i)
                         break
@@ -298,7 +298,7 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
             
         case gyoruiSection:
             for i in defaultNum ..< appDelegate.data.count{
-                if(appDelegate.data[i][appDelegate.name] == gyorui[indexPath.row]){
+                if(appDelegate.data[i][appDelegate.name] == gyorui[(indexPath as NSIndexPath).row]){
                     if(appDelegate.cardFlg[i] == "get"){
                         screenTransitionCardlist(i)
                         break
@@ -312,13 +312,13 @@ class CardListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     
-    func screenTransitionCardlist(routeNumber:Int){
+    func screenTransitionCardlist(_ routeNumber:Int){
         //移動先でカードを表示するためにappDelegate.decideRouteに代入
         //appDelegate.listFlgをtrueにすることで、カード表示画面のボタン処理を変更
         appDelegate.route = routeNumber
         appDelegate.listFlg = true
-        let cardViewController = self.storyboard!.instantiateViewControllerWithIdentifier("card")
-        self.presentViewController(cardViewController, animated: true, completion: nil)
+        let cardViewController = self.storyboard!.instantiateViewController(withIdentifier: "card")
+        self.present(cardViewController, animated: true, completion: nil)
     }
 
 }

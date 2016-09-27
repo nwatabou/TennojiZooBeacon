@@ -14,29 +14,29 @@ class ComentViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var dictionaryButton: UIButton!
-    @IBAction func dictionaryButton(sender: AnyObject) {
+    @IBAction func dictionaryButton(_ sender: AnyObject) {
         let URLString = base + add
-        let url:NSURL = NSURL(string: URLString)!
-        if UIApplication.sharedApplication().canOpenURL(url){
-            UIApplication.sharedApplication().openURL(url)
+        let url:URL = URL(string: URLString)!
+        if UIApplication.shared.canOpenURL(url){
+            UIApplication.shared.openURL(url)
         }
     }
     
     @IBOutlet weak var nextButton: UIButton!
-    @IBAction func nextButton(sender: AnyObject) {
+    @IBAction func nextButton(_ sender: AnyObject) {
         if(appDelegate.quizFlg){
-            let cardViewController = self.storyboard!.instantiateViewControllerWithIdentifier("card")
-            self.presentViewController(cardViewController, animated: true, completion: nil)
+            let cardViewController = self.storyboard!.instantiateViewController(withIdentifier: "card")
+            self.present(cardViewController, animated: true, completion: nil)
             
         }else{
             appDelegate.route = defaultNum
             
-            let routeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("route")
-            self.presentViewController(routeViewController, animated: true, completion: nil)
+            let routeViewController = self.storyboard!.instantiateViewController(withIdentifier: "route")
+            self.present(routeViewController, animated: true, completion: nil)
         }
     }
     
-    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    let appDelegate:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
     let defaultNum = 0
     

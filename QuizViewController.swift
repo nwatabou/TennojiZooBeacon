@@ -25,21 +25,21 @@ class QuizViewController: UIViewController {
     
     
     //動物の番号を3(questionCount)で割った余りが正解の問題。
-    @IBAction func answerButton1(sender: AnyObject) {
+    @IBAction func answerButton1(_ sender: AnyObject) {
         if(appDelegate.route % questionCount == remainder0){
             trueAnswer()
         }else{
             falseAnswer()
         }
     }
-    @IBAction func answerButton2(sender: AnyObject) {
+    @IBAction func answerButton2(_ sender: AnyObject) {
         if(appDelegate.route % questionCount == remainder1){
             trueAnswer()
         }else{
             falseAnswer()
         }
     }
-    @IBAction func answerButton3(sender: AnyObject) {
+    @IBAction func answerButton3(_ sender: AnyObject) {
         if(appDelegate.route % questionCount == remainder2){
             trueAnswer()
         }else{
@@ -48,7 +48,7 @@ class QuizViewController: UIViewController {
     }
     
     //最初に宣言しておく
-    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    let appDelegate:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
     
     //問題数を指定する変数
@@ -71,9 +71,9 @@ class QuizViewController: UIViewController {
         self.animalLabel.text = appDelegate.data[appDelegate.route][appDelegate.name]
         
         self.quizLabel.text = appDelegate.data[appDelegate.route][appDelegate.question]
-        answerButton1.setTitle(appDelegate.data[appDelegate.route][appDelegate.select1], forState: .Normal)
-        answerButton2.setTitle(appDelegate.data[appDelegate.route][appDelegate.select2], forState: .Normal)
-        answerButton3.setTitle(appDelegate.data[appDelegate.route][appDelegate.select3], forState: .Normal)
+        answerButton1.setTitle(appDelegate.data[appDelegate.route][appDelegate.select1], for: UIControlState())
+        answerButton2.setTitle(appDelegate.data[appDelegate.route][appDelegate.select2], for: UIControlState())
+        answerButton3.setTitle(appDelegate.data[appDelegate.route][appDelegate.select3], for: UIControlState())
         
         let img = UIImage(named: "quiz.png")
         imageVIew.image = img
@@ -82,15 +82,15 @@ class QuizViewController: UIViewController {
     //正解時の処理
     func trueAnswer(){
         appDelegate.quizFlg = true
-        let correctViewController = self.storyboard!.instantiateViewControllerWithIdentifier("correct")
-        self.presentViewController(correctViewController, animated: true, completion: nil)
+        let correctViewController = self.storyboard!.instantiateViewController(withIdentifier: "correct")
+        self.present(correctViewController, animated: true, completion: nil)
     }
     
     //不正解時の処理
     func falseAnswer(){
         appDelegate.quizFlg = false
-        let falseViewController = self.storyboard!.instantiateViewControllerWithIdentifier("false")
-        self.presentViewController(falseViewController, animated: true, completion: nil)
+        let falseViewController = self.storyboard!.instantiateViewController(withIdentifier: "false")
+        self.present(falseViewController, animated: true, completion: nil)
     }
     
 

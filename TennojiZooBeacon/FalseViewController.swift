@@ -13,13 +13,13 @@ class FalseViewController: UIViewController {
     
     @IBOutlet weak var imageVIew: UIImageView!
     
-    @IBAction func nextButton(sender: AnyObject) {
-        let comentViewController = self.storyboard!.instantiateViewControllerWithIdentifier("coment")
-        self.presentViewController(comentViewController, animated: true, completion: nil)
+    @IBAction func nextButton(_ sender: AnyObject) {
+        let comentViewController = self.storyboard!.instantiateViewController(withIdentifier: "coment")
+        self.present(comentViewController, animated: true, completion: nil)
     }
     
     //最初に宣言しておく
-    let appDelegate:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    let appDelegate:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
     
     override func viewDidLoad() {
         super.viewDidLoad()
